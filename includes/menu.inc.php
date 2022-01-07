@@ -1,7 +1,4 @@
-<?php
-
-?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,11 +9,6 @@
         foreach($menupontok as $key => $value) {
             $active = '';
             if($_SERVER['REQUEST_URI'] == '/banki/index.php?page='.$key) $active = ' active';
-            
-            if($key == 'felhasznalo') $key.='&action='.$action;
-            if($key == 'chPass' && empty($_SESSION["id"])){
-              continue;
-            }
             ?>
             <li class="nav-item<?php echo $active; ?>">
                 <a class="nav-link" href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a>
