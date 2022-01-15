@@ -3,6 +3,8 @@
 session_start();
 
 require 'includes/db.inc.php';
+require 'model/Company.php';
+require 'model/Driver.php';
 
 // default oldal
 $page = 'index';
@@ -29,7 +31,8 @@ if(isset($_REQUEST['page'])) {
         }
 }
 
-$menupontok = array(    'index' => "Főoldal"
+$menupontok = array(    'index' => "Főoldal",
+                        'register' => "Regisztrálás"
                 );
 
 $title = $menupontok[$page];

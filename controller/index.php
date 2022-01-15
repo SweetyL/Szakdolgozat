@@ -1,3 +1,3 @@
 <?php
-    echo "The Division Bell";
+    include 'view/index.php';
 ?>
