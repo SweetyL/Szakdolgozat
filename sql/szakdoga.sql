@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2022 at 09:40 PM
+-- Generation Time: Jan 17, 2022 at 08:00 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -30,6 +30,13 @@ SET time_zone = "+00:00";
 CREATE TABLE `admins` (
   `id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`) VALUES
+(999);
 
 -- --------------------------------------------------------
 
@@ -71,8 +78,18 @@ CREATE TABLE `companies` (
   `houseNumber` int(10) NOT NULL,
   `email` varchar(120) NOT NULL,
   `phoneNumber` varchar(15) NOT NULL,
-  `webpage` varchar(120) NOT NULL
+  `webpage` varchar(120) NOT NULL,
+  `username` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `password` varchar(32) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`compID`, `name`, `countryID`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `webpage`, `username`, `password`) VALUES
+(1, 'Fluid Inc.', 'GBR', 12, 'Chicken Street', 12, 'fluid@gbr.com', '+89/1234567', 'www.example.com', 'fluid', '5cfea13ba1397f696bea7b2ff62c0188'),
+(2, 'Asd Inc.', 'LUX', 19, 'asd', 111, 'asd@lux.com', '+56/1234567', 'www.example.com', 'asd', '7815696ecbf1c96e6894b779456d330e');
 
 -- --------------------------------------------------------
 
@@ -84,6 +101,40 @@ CREATE TABLE `countries` (
   `countryID` varchar(3) NOT NULL,
   `name` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`countryID`, `name`) VALUES
+('AUT', 'Ausztria'),
+('BEL', 'Belgium'),
+('BGR', 'Bulgária'),
+('CYP', 'Ciprus'),
+('CZE', 'Csehország'),
+('DEU', 'Németország'),
+('DNK', 'Dánia'),
+('ESP', 'Spanyolország'),
+('EST', 'Észtország'),
+('FIN', 'Finnország'),
+('FRA', 'Franciaország'),
+('GBR', 'Egyesült Királyság'),
+('GRC', 'Görögország'),
+('HRV', 'Horvátország'),
+('HUN', 'Magyarország'),
+('IRL', 'Írország'),
+('ITA', 'Olaszország'),
+('LTU', 'Litvánia'),
+('LUX', 'Luxemburg'),
+('LVA', 'Lettország'),
+('MLT', 'Málta'),
+('NLD', 'Hollandia'),
+('POL', 'Lengyelország'),
+('PRT', 'Portugália'),
+('ROU', 'Románia'),
+('SVK', 'Szlovákia'),
+('SVN', 'Szlovénia'),
+('SWE', 'Svédország');
 
 -- --------------------------------------------------------
 
@@ -110,8 +161,19 @@ CREATE TABLE `drivers` (
   `street` varchar(120) NOT NULL,
   `houseNumber` int(10) NOT NULL,
   `email` varchar(120) NOT NULL,
-  `phoneNumber` varchar(15) NOT NULL
+  `phoneNumber` varchar(15) NOT NULL,
+  `username` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `password` varchar(32) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `drivers`
+--
+
+INSERT INTO `drivers` (`driverID`, `firstname`, `lastname`, `countryID`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `username`, `password`) VALUES
+(1, 'Lajos', 'Nagy', 'HUN', 15, 'Hősök tere', 12, 'nagylajos@hunmail.hu', '+3612/3456789', 'nagylajos', '7141ceba42ac5ac8a89d6945b54ac85a'),
+(2, 'Günther', 'Schwarz', 'DEU', 6, 'Krawatte Straße', 5, 'swagu@deumail.de', '+4998/7654321', 'swagu', '699b865c7e88a69f00ced034382ea0d1'),
+(999, 'ADMIN', '', 'HUN', 15, '', 0, '', '', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
@@ -185,9 +247,42 @@ CREATE TABLE `skills` (
 CREATE TABLE `towns` (
   `townID` int(10) NOT NULL,
   `name` varchar(120) NOT NULL,
-  `zipCode` int(12) NOT NULL,
   `countryID` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `towns`
+--
+
+INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
+(1, 'Bécs', 'AUT'),
+(2, 'Brüsszel', 'BEL'),
+(3, 'Szófia', 'BGR'),
+(4, 'Nicosia', 'CYP'),
+(5, 'Prága', 'CZE'),
+(6, 'Berlin', 'DEU'),
+(7, 'Koppenhága', 'DNK'),
+(8, 'Madrid', 'ESP'),
+(9, 'Tallinn', 'EST'),
+(10, 'Helsinki', 'FIN'),
+(11, 'Párizs', 'FRA'),
+(12, 'London', 'GBR'),
+(13, 'Athén', 'GRC'),
+(14, 'Zágráb', 'HRV'),
+(15, 'Budapest', 'HUN'),
+(16, 'Dublin', 'IRL'),
+(17, 'Róma', 'ITA'),
+(18, 'Vilnius', 'LTU'),
+(19, 'Luxembourg', 'LUX'),
+(20, 'Riga', 'LVA'),
+(21, 'Valletta', 'MLT'),
+(22, 'Amszterdam', 'NLD'),
+(23, 'Varsó', 'POL'),
+(24, 'Lisszabon', 'PRT'),
+(25, 'Bukarest', 'ROU'),
+(26, 'Pozsony', 'SVK'),
+(27, 'Ljubljana', 'SVN'),
+(28, 'Stockholm', 'SWE');
 
 -- --------------------------------------------------------
 
@@ -217,19 +312,6 @@ CREATE TABLE `trucks` (
   `tankSize` varchar(120) NOT NULL,
   `consumption` varchar(120) NOT NULL,
   `numberOfAxles` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `userID` int(10) NOT NULL,
-  `username` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `password` varchar(32) CHARACTER SET latin1 NOT NULL,
-  `type` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -343,12 +425,6 @@ ALTER TABLE `trucks`
   ADD KEY `ibfk_connect_engines` (`engineID`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`userID`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -368,13 +444,13 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `driverID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `driverID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 
 --
 -- AUTO_INCREMENT for table `engines`
@@ -404,7 +480,7 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `towns`
 --
 ALTER TABLE `towns`
-  MODIFY `townID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `townID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `trips`
@@ -417,12 +493,6 @@ ALTER TABLE `trips`
 --
 ALTER TABLE `trucks`
   MODIFY `truckID` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -503,13 +573,6 @@ ALTER TABLE `trips`
 --
 ALTER TABLE `trucks`
   ADD CONSTRAINT `ibfk_connect_engines` FOREIGN KEY (`engineID`) REFERENCES `engines` (`engineID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `ibfk_connect_comptouser` FOREIGN KEY (`userID`) REFERENCES `companies` (`compID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ibfk_connect_drivertouser` FOREIGN KEY (`userID`) REFERENCES `drivers` (`driverID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

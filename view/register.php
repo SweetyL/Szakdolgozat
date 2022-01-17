@@ -1,11 +1,13 @@
 <form action="index.php?page=register" method="post">
     <fieldset>
         <legend>Sofőr regisztráció:</legend>
-        Vezetéknév: <input class="form-control" type="text" name="lastname">
+        <label for="ln" >Vezetéknév: </label>
+        <input class="form-control" type="text" id="ln" name="lastname">
         <br>
-        Keresztnév: <input  class="form-control" type="text" name="firstname">
+        <label for="fn" >Keresztnév:</label>
+        <input  class="form-control" type="text" id="fn" name="firstname">
         <br>
-        Ország:
+        <label for="country">Ország:</label>
         <select class="form-control" name="country" id="country">
             <option value="">Válasszon országot!</option>
 			<?php
@@ -18,16 +20,25 @@
 			?>							
 		</select>
         <br>
-        Város:
+        <label for="town" >Város:</label>
         <select class="form-control" name="town" id="town">
             <option value="">Válasszon várost!</option>
         </select>
         <br>
-        Utca: <input class="form-control" type="text" name="street">
+        <label for="str" >Utca: </label>
+        <input class="form-control" type="text" id="str" name="street">
         <br>
-        Házszám: <input class="form-control" type="text" name="houseNumber">
+        <label for="hn" >Házszám: </label>
+        <input class="form-control" type="text" id="hn" name="houseNumber">
         <br>
-        E-mail: <input class="form-control" type="email" name="email">
+        <label for="em" >E-mail: </label>
+        <input class="form-control" type="email" id="em" name="email">
+        <br>
+        <label for="pn" >Telefonszám: </label>
+        <input class="form-control" type="text" id="pn" name="phoneNumber">
+        <br>
+        <label for="password">Jelszó:</label>
+        <input class="form-control" type="password" name="password" id="password">
         <br>
         <input class="btn btn-primary" type="submit" value="Regisztrálás">
     </fieldset>
@@ -45,4 +56,4 @@
             }
         });
     });
-  </script>
+</script>
