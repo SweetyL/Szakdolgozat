@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2022 at 08:00 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Jan 18, 2022 at 11:57 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,7 +36,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`) VALUES
-(999);
+(3);
 
 -- --------------------------------------------------------
 
@@ -132,6 +132,7 @@ INSERT INTO `countries` (`countryID`, `name`) VALUES
 ('POL', 'Lengyelország'),
 ('PRT', 'Portugália'),
 ('ROU', 'Románia'),
+('SRB', 'Szerbia'),
 ('SVK', 'Szlovákia'),
 ('SVN', 'Szlovénia'),
 ('SWE', 'Svédország');
@@ -173,7 +174,7 @@ CREATE TABLE `drivers` (
 INSERT INTO `drivers` (`driverID`, `firstname`, `lastname`, `countryID`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `username`, `password`) VALUES
 (1, 'Lajos', 'Nagy', 'HUN', 15, 'Hősök tere', 12, 'nagylajos@hunmail.hu', '+3612/3456789', 'nagylajos', '7141ceba42ac5ac8a89d6945b54ac85a'),
 (2, 'Günther', 'Schwarz', 'DEU', 6, 'Krawatte Straße', 5, 'swagu@deumail.de', '+4998/7654321', 'swagu', '699b865c7e88a69f00ced034382ea0d1'),
-(999, 'ADMIN', '', 'HUN', 15, '', 0, '', '', 'admin', '21232f297a57a5a743894a0e4a801fc3');
+(3, 'ADMIN', '', 'HUN', 15, '', 0, '', '', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
@@ -282,7 +283,8 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (25, 'Bukarest', 'ROU'),
 (26, 'Pozsony', 'SVK'),
 (27, 'Ljubljana', 'SVN'),
-(28, 'Stockholm', 'SWE');
+(28, 'Stockholm', 'SWE'),
+(29, 'Belgrád', 'SRB');
 
 -- --------------------------------------------------------
 
@@ -444,13 +446,13 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `driverID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  MODIFY `driverID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
 
 --
 -- AUTO_INCREMENT for table `engines`
@@ -480,7 +482,7 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `towns`
 --
 ALTER TABLE `towns`
-  MODIFY `townID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `townID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `trips`
