@@ -4,3 +4,7 @@
 .success{
     color: green;
 }
+.formatbtn > a{
+    text-decoration: none;
+    color:white;
+}

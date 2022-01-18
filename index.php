@@ -35,7 +35,14 @@ $menupontok = array(    'index' => "Főoldal",
                         'register' => "Regisztrálás"
                 );
 
-$title = $menupontok[$page];
+
+if($_REQUEST['page']=="driverRegister"){
+        $title = "Sofőr Regisztrálás";
+}else if($_REQUEST['page']=="companyRegister"){
+        $title = "Vállalat Regisztrálás";
+}else{
+        $title = $menupontok[$page];
+}
 
 include 'includes/htmlheader.inc.php';
 ?>
