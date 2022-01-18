@@ -37,6 +37,10 @@
         <label for="pn" >Telefonszám: </label>
         <input class="form-control" type="text" id="pn" name="phoneNumber">
         <br>
+        <label for="username">Felhasználónév:</label>
+        <input class="form-control" type="text" id="username" name="username">
+        <span id="result"></span>
+        <br>
         <label for="password">Jelszó:</label>
         <input class="form-control" type="password" name="password" id="password">
         <br>
@@ -53,6 +57,20 @@
             data:{countryID:countryID},
             success:function(data){
                 $("#town").html(data);
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $("#username").on("input", function(){
+        var username = $(this).val();
+        $.ajax({
+            url :"ajax/checkUsernameAvailable.php",
+            type:"POST",
+            cache:false,
+            data:{username:username},
+            success:function(data){
+                $("#result").html(data);
             }
         });
     });

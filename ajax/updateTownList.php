@@ -14,5 +14,7 @@ if (isset($_POST['countryID']) && !empty($_POST['countryID'])) {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
     }
+}else{
+    echo '<option value="">Válasszon várost!</option>';
 }
 ?>
