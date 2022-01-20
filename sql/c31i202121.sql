@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 18, 2022 at 11:57 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- Host: localhost
+-- Generation Time: Jan 20, 2022 at 08:54 AM
+-- Server version: 10.3.29-MariaDB-0+deb10u1
+-- PHP Version: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `szakdoga`
+-- Database: `c31i202121`
 --
 
 -- --------------------------------------------------------
@@ -36,7 +36,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`) VALUES
-(3);
+(999);
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,6 @@ CREATE TABLE `cargo` (
 CREATE TABLE `companies` (
   `compID` int(10) NOT NULL,
   `name` varchar(120) NOT NULL,
-  `countryID` varchar(3) NOT NULL,
   `townID` int(10) NOT NULL,
   `street` varchar(120) NOT NULL,
   `houseNumber` int(10) NOT NULL,
@@ -87,9 +86,20 @@ CREATE TABLE `companies` (
 -- Dumping data for table `companies`
 --
 
-INSERT INTO `companies` (`compID`, `name`, `countryID`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `webpage`, `username`, `password`) VALUES
-(1, 'Fluid Inc.', 'GBR', 12, 'Chicken Street', 12, 'fluid@gbr.com', '+89/1234567', 'www.example.com', 'fluid', '5cfea13ba1397f696bea7b2ff62c0188'),
-(2, 'Asd Inc.', 'LUX', 19, 'asd', 111, 'asd@lux.com', '+56/1234567', 'www.example.com', 'asd', '7815696ecbf1c96e6894b779456d330e');
+INSERT INTO `companies` (`compID`, `name`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `webpage`, `username`, `password`) VALUES
+(1, 'Fluid Inc.', 12, 'Chicken Street', 12, 'fluid@gbr.com', '+89/1234567', 'www.example.com', 'fluid', '5cfea13ba1397f696bea7b2ff62c0188'),
+(2, 'Asd Inc.', 19, 'asd', 111, 'asd@lux.com', '+56/1234567', 'www.example.com', 'asd', '7815696ecbf1c96e6894b779456d330e');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `compstatus`
+--
+
+CREATE TABLE `compstatus` (
+  `id` int(10) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -132,20 +142,9 @@ INSERT INTO `countries` (`countryID`, `name`) VALUES
 ('POL', 'Lengyelország'),
 ('PRT', 'Portugália'),
 ('ROU', 'Románia'),
-('SRB', 'Szerbia'),
 ('SVK', 'Szlovákia'),
 ('SVN', 'Szlovénia'),
 ('SWE', 'Svédország');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `curonline`
---
-
-CREATE TABLE `curonline` (
-  `id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -157,7 +156,6 @@ CREATE TABLE `drivers` (
   `driverID` int(10) NOT NULL,
   `firstname` varchar(120) NOT NULL,
   `lastname` varchar(120) NOT NULL,
-  `countryID` varchar(3) NOT NULL,
   `townID` int(10) NOT NULL,
   `street` varchar(120) NOT NULL,
   `houseNumber` int(10) NOT NULL,
@@ -171,10 +169,21 @@ CREATE TABLE `drivers` (
 -- Dumping data for table `drivers`
 --
 
-INSERT INTO `drivers` (`driverID`, `firstname`, `lastname`, `countryID`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `username`, `password`) VALUES
-(1, 'Lajos', 'Nagy', 'HUN', 15, 'Hősök tere', 12, 'nagylajos@hunmail.hu', '+3612/3456789', 'nagylajos', '7141ceba42ac5ac8a89d6945b54ac85a'),
-(2, 'Günther', 'Schwarz', 'DEU', 6, 'Krawatte Straße', 5, 'swagu@deumail.de', '+4998/7654321', 'swagu', '699b865c7e88a69f00ced034382ea0d1'),
-(3, 'ADMIN', '', 'HUN', 15, '', 0, '', '', 'admin', '21232f297a57a5a743894a0e4a801fc3');
+INSERT INTO `drivers` (`driverID`, `firstname`, `lastname`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `username`, `password`) VALUES
+(1, 'Lajos', 'Nagy', 15, 'Hősök tere', 12, 'nagylajos@hunmail.hu', '+3612/3456789', 'nagylajos', '7141ceba42ac5ac8a89d6945b54ac85a'),
+(2, 'Günther', 'Schwarz', 6, 'Krawatte Straße', 5, 'swagu@deumail.de', '+4998/7654321', 'swagu', '699b865c7e88a69f00ced034382ea0d1'),
+(999, 'ADMIN', '', 15, '', 0, '', '', 'admin', '21232f297a57a5a743894a0e4a801fc3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `driverstatus`
+--
+
+CREATE TABLE `driverstatus` (
+  `id` int(10) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -201,18 +210,8 @@ CREATE TABLE `jobs` (
   `tripID` int(10) NOT NULL,
   `truckID` int(10) NOT NULL,
   `reward` int(6) NOT NULL,
-  `comment` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lastseen`
---
-
-CREATE TABLE `lastseen` (
-  `id` int(10) NOT NULL,
-  `date` date NOT NULL
+  `comment` varchar(200) NOT NULL,
+  `deadline` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -283,8 +282,7 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (25, 'Bukarest', 'ROU'),
 (26, 'Pozsony', 'SVK'),
 (27, 'Ljubljana', 'SVN'),
-(28, 'Stockholm', 'SWE'),
-(29, 'Belgrád', 'SRB');
+(28, 'Stockholm', 'SWE');
 
 -- --------------------------------------------------------
 
@@ -343,8 +341,13 @@ ALTER TABLE `cargo`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`compID`),
-  ADD KEY `ibfk_connect_compcountries` (`countryID`),
   ADD KEY `ibfk_connect_comptowns` (`townID`);
+
+--
+-- Indexes for table `compstatus`
+--
+ALTER TABLE `compstatus`
+  ADD KEY `ibfk_conn_comptostatus` (`id`);
 
 --
 -- Indexes for table `countries`
@@ -353,18 +356,17 @@ ALTER TABLE `countries`
   ADD PRIMARY KEY (`countryID`);
 
 --
--- Indexes for table `curonline`
---
-ALTER TABLE `curonline`
-  ADD KEY `ibfk_connect_comp_to_curonline` (`id`);
-
---
 -- Indexes for table `drivers`
 --
 ALTER TABLE `drivers`
   ADD PRIMARY KEY (`driverID`),
-  ADD KEY `ibfk_connect_drivercountry` (`countryID`),
   ADD KEY `ibfk_connect_drivertown` (`townID`);
+
+--
+-- Indexes for table `driverstatus`
+--
+ALTER TABLE `driverstatus`
+  ADD KEY `ibfk_conn_driverToStatus` (`id`);
 
 --
 -- Indexes for table `engines`
@@ -380,12 +382,6 @@ ALTER TABLE `jobs`
   ADD KEY `ibfk_connect_drivertojob` (`driverID`),
   ADD KEY `ibfk_connect_triptojob` (`tripID`),
   ADD KEY `ibfk_connect_trucktojob` (`truckID`);
-
---
--- Indexes for table `lastseen`
---
-ALTER TABLE `lastseen`
-  ADD KEY `ibfk_lastseen_driver` (`id`);
 
 --
 -- Indexes for table `owneroftrucks`
@@ -446,13 +442,13 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `driverID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
+  MODIFY `driverID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 
 --
 -- AUTO_INCREMENT for table `engines`
@@ -482,7 +478,7 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `towns`
 --
 ALTER TABLE `towns`
-  MODIFY `townID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `townID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `trips`
@@ -510,22 +506,25 @@ ALTER TABLE `admins`
 -- Constraints for table `companies`
 --
 ALTER TABLE `companies`
-  ADD CONSTRAINT `ibfk_connect_compcountries` FOREIGN KEY (`countryID`) REFERENCES `countries` (`countryID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ibfk_connect_comptowns` FOREIGN KEY (`townID`) REFERENCES `towns` (`townID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `curonline`
+-- Constraints for table `compstatus`
 --
-ALTER TABLE `curonline`
-  ADD CONSTRAINT `ibfk_connect_comp_to_curonline` FOREIGN KEY (`id`) REFERENCES `companies` (`compID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ibfk_connect_driver_to_curonline` FOREIGN KEY (`id`) REFERENCES `drivers` (`driverID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `compstatus`
+  ADD CONSTRAINT `ibfk_conn_comptostatus` FOREIGN KEY (`id`) REFERENCES `companies` (`compID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `drivers`
 --
 ALTER TABLE `drivers`
-  ADD CONSTRAINT `ibfk_connect_drivercountry` FOREIGN KEY (`countryID`) REFERENCES `countries` (`countryID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ibfk_connect_drivertown` FOREIGN KEY (`townID`) REFERENCES `towns` (`townID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `driverstatus`
+--
+ALTER TABLE `driverstatus`
+  ADD CONSTRAINT `ibfk_conn_driverToStatus` FOREIGN KEY (`id`) REFERENCES `drivers` (`driverID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `jobs`
@@ -534,13 +533,6 @@ ALTER TABLE `jobs`
   ADD CONSTRAINT `ibfk_connect_drivertojob` FOREIGN KEY (`driverID`) REFERENCES `drivers` (`driverID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ibfk_connect_triptojob` FOREIGN KEY (`tripID`) REFERENCES `trips` (`tripID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ibfk_connect_trucktojob` FOREIGN KEY (`truckID`) REFERENCES `trucks` (`truckID`);
-
---
--- Constraints for table `lastseen`
---
-ALTER TABLE `lastseen`
-  ADD CONSTRAINT `ibfk_lastseen_comp` FOREIGN KEY (`id`) REFERENCES `companies` (`compID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ibfk_lastseen_driver` FOREIGN KEY (`id`) REFERENCES `drivers` (`driverID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `owneroftrucks`

@@ -4,7 +4,6 @@ class Company {
 
     private $compID;
     private $name;
-    private $countryID;
     private $townID;
     private $street;
     private $houseNumber;
@@ -15,7 +14,7 @@ class Company {
     private $password;
 
     public function set_user($id, $conn) {
-        $sql = "SELECT compID, `name`, countryID, townID, street, houseNumber, email, phoneNumber, webpage, username, `password` FROM drivers";
+        $sql = "SELECT compID, `name`, townID, street, houseNumber, email, phoneNumber, webpage, username, `password` FROM drivers";
         $sql .= " WHERE compID = $id ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
@@ -23,7 +22,6 @@ class Company {
                 $row = $result->fetch_assoc();
                 $this->compID = $row['compID'];
                 $this->name = $row['name'];
-                $this->countryID = $row['countryID'];
                 $this->townID = $row['townID'];
                 $this->street = $row['street'];
                 $this->houseNumber = $row['houseNumber'];
@@ -45,10 +43,6 @@ class Company {
 
     public function get_name(){
         return $this->name;
-    }
-
-    public function get_countryID(){
-        return $this->countryID;
     }
 
     public function get_townID(){

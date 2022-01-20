@@ -5,7 +5,6 @@ class Driver {
     private $driverID;
     private $firstname;
     private $lastname;
-    private $countryID;
     private $townID;
     private $street;
     private $houseNumber;
@@ -15,7 +14,7 @@ class Driver {
     private $password;
 
     public function set_user($id, $conn) {
-        $sql = "SELECT driverID, firstname, lastname, countryID, townID, street, houseNumber, email, phoneNumber, username, `password` FROM drivers";
+        $sql = "SELECT driverID, firstname, lastname, townID, street, houseNumber, email, phoneNumber, username, `password` FROM drivers";
         $sql .= " WHERE driverID = $id ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
@@ -24,7 +23,6 @@ class Driver {
                 $this->driverID = $row['driverID'];
                 $this->firstname = $row['firstname'];
                 $this->lastname = $row['lastname'];
-                $this->countryID = $row['countryID'];
                 $this->townID = $row['townID'];
                 $this->street = $row['street'];
                 $this->houseNumber = $row['houseNumber'];
@@ -49,10 +47,6 @@ class Driver {
 
     public function get_lastname(){
         return $this->lastname;
-    }
-
-    public function get_countryID(){
-        return $this->countryID;
     }
 
     public function get_townID(){

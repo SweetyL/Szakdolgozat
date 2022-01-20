@@ -6,8 +6,13 @@ require 'includes/db.inc.php';
 require 'model/Company.php';
 require 'model/Driver.php';
 
+if(!isset($_REQUEST['page'])){
+        header('Location: index.php?page=index');
+        exit();
+}
 // default oldal
 $page = 'index';
+$GLOBALS['action'] = "";
 
 // kilépés végrehajtása
 if(!empty($_REQUEST['action'])) {
@@ -16,7 +21,7 @@ if(!empty($_REQUEST['action'])) {
 
 // ki vagy be vagyok lépve?
 if(!empty($_SESSION["id"])) {
-        $szoveg = $_SESSION["nev"].": Kilépés";
+        $szoveg = $_SESSION["name"].": Kilépés";
         $action = "kilepes";
 }
 else {
@@ -32,14 +37,21 @@ if(isset($_REQUEST['page'])) {
 }
 
 $menupontok = array(    'index' => "Főoldal",
-                        'register' => "Regisztrálás"
+                        'register' => "Regisztrálás",
+                        'login' => "Belépés"
                 );
 
 
 if($_REQUEST['page']=="driverRegister"){
-        $title = "Sofőr Regisztrálás";
+        $title = "Sofőr regisztrálás";
 }else if($_REQUEST['page']=="companyRegister"){
-        $title = "Vállalat Regisztrálás";
+        $title = "Vállalat regisztrálás";
+}else if($_REQUEST['page']=="loginPanel" and $_REQUEST['action']=="drivers"){
+        $GLOBALS['action'] = "drivers";
+        $title = "Sofőr belépés";
+}else if($_REQUEST['page']=="loginPanel" and $_REQUEST['action']=="companies"){
+        $GLOBALS['action'] = "companies";
+        $title = "Vállalati belépés";
 }else{
         $title = $menupontok[$page];
 }
