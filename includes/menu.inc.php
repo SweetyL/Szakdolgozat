@@ -8,7 +8,10 @@
       
         foreach($menupontok as $key => $value) {
             $active = '';
-            if($_SERVER['REQUEST_URI'] == '/banki/index.php?page='.$key) $active = ' active';
+            if($_SERVER['REQUEST_URI'] == '/Szakdolgozat/index.php?page='.$key) $active = ' active';
+            if(!empty($_SESSION["id"]) and $key=="profile"){
+
+            }
             ?>
             <li class="nav-item<?php echo $active; ?>">
                 <a class="nav-link" href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a>

@@ -30,6 +30,7 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
                         if(md5($_POST['pw']) == $driver->get_password()) {
                             $_SESSION["id"] = $row['driverID'];
                             $_SESSION["name"] = $driver->get_lastname()." ".$driver->get_firstname();
+                            $_SESSION["type"] = "driver";
                             header('Location: index.php?page=index');
                             exit();
                         }
@@ -40,6 +41,7 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
                         if(md5($_POST['pw']) == $company->get_password()) {
                             $_SESSION["id"] = $row['compID'];
                             $_SESSION["name"] = $company->get_name();
+                            $_SESSION["type"] = "company";
                             header('Location: index.php?page=index');
                             exit();
                         }
