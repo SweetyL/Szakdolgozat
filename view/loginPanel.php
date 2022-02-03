@@ -8,17 +8,29 @@
     }
     else{
 	    if(isset($_POST['user'])) {
-		    echo $loginError;
+			
+		    echo "<div class='alert alert-danger alert-dismissible'>
+					<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+					<p>".$loginError."</p>
+				</div>";
 	    }
-	    else echo "<h2>Belépés</h2>";
 ?>
-<form action="index.php?page=loginPanel&action=<?php echo $_REQUEST['action']; ?>" method="post">
-    Felhasználó:<br><input type="text" name="user">
-	<br>
-	Jelszó: <br><input type="password" name="pw">
-	<br>
-	<input type="submit">
-</form>
+<div class="container">
+	<form action="index.php?page=loginPanel&action=<?php echo $_REQUEST['action']; ?>" method="post">
+	<fieldset>
+		<legend class="text-center">Belépés</legend>
+		<div class="input-group">
+			<label for="usr">Felhasználó név:</label>
+			<input type="text" id="usr" name="user" class="form-control">
+		</div>
+		<div class="input-group">
+			<label for="pass">Jelszó:</label>
+			<input type="password" id="pass" name="pw" class="form-control">
+		</div>
+			<input class="btn btn-primary" type="submit" value="Belépés">
+	</fieldset>
+	</form>
+</div>
 <?php						
 		}
 ?>

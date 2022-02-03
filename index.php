@@ -6,6 +6,7 @@ require 'includes/db.inc.php';
 require 'model/Company.php';
 require 'model/Driver.php';
 require 'model/Country.php';
+require 'model/Town.php';
 
 if(!isset($_REQUEST['page'])){
         header('Location: index.php?page=index');

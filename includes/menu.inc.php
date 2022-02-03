@@ -9,8 +9,11 @@
         foreach($menupontok as $key => $value) {
             $active = '';
             if($_SERVER['REQUEST_URI'] == '/Szakdolgozat/index.php?page='.$key) $active = ' active';
-            if(!empty($_SESSION["id"]) and $key=="profile"){
-
+            if(!empty($_SESSION["id"]) and $key=="register"){
+              continue;
+            }
+            if(empty($_SESSION["id"]) and $key=="profile"){
+              continue;
             }
             ?>
             <li class="nav-item<?php echo $active; ?>">

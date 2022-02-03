@@ -1,11 +1,11 @@
 <?php
 
-class Country{
+class Town{
     private $tID;
     private $name;
     private $cID;
 
-    public function set_user($id, $conn) {
+    public function set_town($id, $conn) {
         $sql = "SELECT townID, name, countryID FROM towns";
         $sql .= " WHERE townID LIKE '$id' ";
         $result = $conn->query($sql);

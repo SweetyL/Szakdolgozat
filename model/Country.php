@@ -4,7 +4,7 @@ class Country{
     private $cID;
     private $name;
 
-    public function set_user($id, $conn) {
+    public function set_country($id, $conn) {
         $sql = "SELECT countryID, name FROM countries";
         $sql .= " WHERE countryID LIKE '$id' ";
         $result = $conn->query($sql);
