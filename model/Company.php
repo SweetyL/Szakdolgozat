@@ -14,7 +14,7 @@ class Company {
     private $password;
 
     public function set_user($id, $conn) {
-        $sql = "SELECT compID, `name`, townID, street, houseNumber, email, phoneNumber, webpage, username, `password` FROM drivers";
+        $sql = "SELECT compID, `name`, townID, street, houseNumber, email, phoneNumber, webpage, username, `password` FROM companies";
         $sql .= " WHERE compID = $id ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {

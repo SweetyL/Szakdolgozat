@@ -14,21 +14,6 @@ if(!isset($_REQUEST['page'])){
 $page = 'index';
 $GLOBALS['action'] = "";
 
-// kilépés végrehajtása
-if(!empty($_REQUEST['action'])) {
-	if($_REQUEST['action'] == 'kilepes') session_unset();
-}
-
-// ki vagy be vagyok lépve?
-if(!empty($_SESSION["id"])) {
-        $szoveg = $_SESSION["name"].": Kilépés";
-        $action = "kilepes";
-}
-else {
-        $szoveg = "Belépés";
-        $action = "belepes";        
-} 
-
 // router
 if(isset($_REQUEST['page'])) {
         if(file_exists('controller/'.$_REQUEST['page'].'.php')) {
@@ -37,8 +22,8 @@ if(isset($_REQUEST['page'])) {
 }
 
 $menupontok = array(    'index' => "Főoldal",
-                        'register' => "Regisztrálás",
-                        'login' => "Belépés"
+                        'login' => "Belépés",
+                        'register' => "Regisztrálás"
                 );
 
 

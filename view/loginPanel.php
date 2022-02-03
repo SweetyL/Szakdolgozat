@@ -1,7 +1,7 @@
 <?php
     if(!empty($_SESSION["id"])) {
     ?>
-        <form action="loginPanel.php" method="get">
+        <form action="index.php?page=loginPanel&action=logout" method="post">
 	        <input type="submit" name="logout" value="Kilépés">
 	    </form>
 <?php
@@ -12,7 +12,7 @@
 	    }
 	    else echo "<h2>Belépés</h2>";
 ?>
-<form action="index.php?page=loginPanel&action="<?php echo $GLOBALS['action']; ?>" method="post">
+<form action="index.php?page=loginPanel&action=<?php echo $_REQUEST['action']; ?>" method="post">
     Felhasználó:<br><input type="text" name="user">
 	<br>
 	Jelszó: <br><input type="password" name="pw">
@@ -21,5 +21,4 @@
 </form>
 <?php						
 		}
-        echo $GLOBALS['action'];
 ?>
