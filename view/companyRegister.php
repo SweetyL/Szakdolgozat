@@ -1,3 +1,4 @@
+<div class="container">
 <form action="index.php?page=companyRegister" method="post">
     <fieldset>
         <legend>Vállalat regisztráció:</legend>
@@ -10,7 +11,7 @@
 			<?php
                 if ($countryIDs) {
 					foreach($countryIDs as $row) {
-						$country->set_user($row, $conn);
+						$country->set_country($row, $conn);
 						if($country->get_name()) echo '<option value="'.$row.'">'.$country->get_name().'</option>';
 					}
 				}
@@ -47,6 +48,7 @@
         <input class="btn btn-primary" type="submit" value="Regisztrálás">
     </fieldset>
 </form>
+</div>
 <script type="text/javascript">
     $("#country").on("change", function(){
         var countryID = $(this).val();

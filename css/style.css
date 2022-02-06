@@ -22,3 +22,14 @@
     display: block;
     width: 95%;
 }
+nav{
+    border-bottom: 4px solid #e47908;
+}
+.bbody{
+    background-color: #2d4156;
+    color: white;
+}
+.btn-hcbutton{
+    background-color: #e47908;
+    color: white;
+}

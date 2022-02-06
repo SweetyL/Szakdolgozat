@@ -14,7 +14,6 @@ if(!isset($_REQUEST['page'])){
 }
 // default oldal
 $page = 'index';
-$GLOBALS['action'] = "";
 
 // router
 if(isset($_REQUEST['page'])) {
@@ -26,7 +25,7 @@ if(isset($_REQUEST['page'])) {
 $menupontok = array(    'index' => "Főoldal",
                         'login' => "Belépés",
                         'register' => "Regisztrálás",
-                        'profile' => "Profil"
+                        'myProfile' => "Profilom"
                 );
 
 
@@ -35,18 +34,18 @@ if($_REQUEST['page']=="driverRegister"){
 }else if($_REQUEST['page']=="companyRegister"){
         $title = "Vállalat regisztrálás";
 }else if($_REQUEST['page']=="loginPanel" and $_REQUEST['action']=="drivers"){
-        $GLOBALS['action'] = "drivers";
         $title = "Sofőr belépés";
 }else if($_REQUEST['page']=="loginPanel" and $_REQUEST['action']=="companies"){
-        $GLOBALS['action'] = "companies";
         $title = "Vállalati belépés";
+}else if($_REQUEST['page']=="profile" and isset($_REQUEST['action'])){
+        $title = "X profilja";
 }else{
         $title = $menupontok[$page];
 }
 
 include 'includes/htmlheader.inc.php';
 ?>
-<body>
+<body class="bbody">
 <?php
 
 include 'includes/menu.inc.php';
