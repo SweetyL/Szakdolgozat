@@ -27,7 +27,7 @@
 			<label for="pass">Jelszó:</label>
 			<input type="password" id="pass" name="pw" class="form-control">
 		</div>
-			<input class="btn btn-primary" type="submit" value="Belépés">
+			<input class="btn btn-hcbutton" type="submit" value="Belépés">
 	</fieldset>
 	</form>
 </div>

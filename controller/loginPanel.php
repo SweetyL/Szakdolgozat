@@ -16,9 +16,9 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
     if(strlen($_POST['pw']) == 0) $loginError .= "Nem írtál be jelszót<br>";
     if($loginError == '') {
         if($_REQUEST['action']=="drivers"){
-            $sql = "SELECT driverID FROM ".$_REQUEST['action']." WHERE username LIKE '".$_POST['user']."'";
+            $sql = "SELECT driverID FROM ".$_REQUEST['action']." WHERE username LIKE '".mysqli_real_escape_string($conn,$_POST['user'])."'";
         }else{
-            $sql = "SELECT compID FROM ".$_REQUEST['action']." WHERE username LIKE '".$_POST['user']."'";
+            $sql = "SELECT compID FROM ".$_REQUEST['action']." WHERE username LIKE '".mysqli_real_escape_string($conn,$_POST['user'])."'";
         }
         if(!$result = $conn->query($sql)) echo $conn->error;
     

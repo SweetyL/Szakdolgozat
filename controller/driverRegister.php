@@ -5,11 +5,11 @@
     if(isset($_POST['lastname']) and isset($_POST['firstname']) and isset($_POST['town']) and 
     isset($_POST['street']) and isset($_POST['houseNumber']) and isset($_POST['email']) and isset($_POST['phoneNumber']) and 
     isset($_POST['username']) and isset($_POST['password'])) {
-        $sql = "SELECT * FROM drivers WHERE username LIKE '".$_POST['username']."'";
+        $sql = "SELECT * FROM drivers WHERE username LIKE '".mysqli_real_escape_string($conn,$_POST['username'])."'";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if (!($result->num_rows > 0)) {
-                $sql2 = "INSERT INTO `drivers`(`firstname`, `lastname`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `username`, `password`) VALUES ('".$_POST['firstname']."','".$_POST['lastname']."','".$_POST['town']."','".$_POST['street']."','".$_POST['houseNumber']."','".$_POST['email']."','".$_POST['phoneNumber']."','".$_POST['username']."',MD5('".$_POST['password']."'));";
+                $sql2 = "INSERT INTO `drivers`(`firstname`, `lastname`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `username`, `password`) VALUES ('".mysqli_real_escape_string($conn,$_POST['firstname'])."','".mysqli_real_escape_string($conn,$_POST['lastname'])."','".mysqli_real_escape_string($conn,$_POST['town'])."','".mysqli_real_escape_string($conn,$_POST['street'])."','".mysqli_real_escape_string($conn,$_POST['houseNumber'])."','".mysqli_real_escape_string($conn,$_POST['email'])."','".mysqli_real_escape_string($conn,$_POST['phoneNumber'])."','".mysqli_real_escape_string($conn,$_POST['username'])."',MD5('".mysqli_real_escape_string($conn,$_POST['password'])."'));";
                 $result = $conn->query($sql2);
                 header('Location: index.php?page=index');
                 exit();

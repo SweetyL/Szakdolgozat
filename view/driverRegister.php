@@ -45,7 +45,7 @@
         <label for="password">Jelszó:</label>
         <input class="form-control" type="password" name="password" id="password" required>
         <br>
-        <input class="btn btn-primary" type="submit" value="Regisztrálás">
+        <input class="btn btn-hcbutton" type="submit" value="Regisztrálás">
     </fieldset>
 </form>
 </div>
