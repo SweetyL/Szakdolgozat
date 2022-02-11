@@ -39,6 +39,8 @@ if($_REQUEST['page']=="driverRegister"){
         $title = "Vállalati belépés";
 }else if($_REQUEST['page']=="profile" and isset($_REQUEST['action'])){
         $title = "X profilja";
+}else if($_REQUEST['page']=="404"){
+        $title = "Hiba 404";
 }else{
         $title = $menupontok[$page];
 }
