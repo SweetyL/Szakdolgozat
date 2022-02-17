@@ -8,7 +8,7 @@ class Engine{
 
     public function set_engine($id, $conn) {
         $sql = "SELECT engineID, name, brand, `power` FROM engines";
-        $sql .= " WHERE engineID = '".mysqli_real_escape_string($conn,$id)."' ";
+        $sql .= " WHERE engineID = '$id' ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
