@@ -11,7 +11,7 @@ class Engine{
 
     public function set_engine($id, $conn) {
         $sql = "SELECT truckID, name, brand, engineID, tankSize, consumption, numberOfAxles FROM engines";
-        $sql .= " WHERE truckID = '$id' ";
+        $sql .= " WHERE truckID = '".mysqli_real_escape_string($conn,$id)."' ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
