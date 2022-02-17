@@ -7,7 +7,7 @@ class Town{
 
     public function set_town($id, $conn) {
         $sql = "SELECT townID, name, countryID FROM towns";
-        $sql .= " WHERE townID LIKE '$id' ";
+        $sql .= " WHERE townID LIKE '".mysqli_real_escape_string($conn,$id)."' ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {

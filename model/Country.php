@@ -6,7 +6,7 @@ class Country{
 
     public function set_country($id, $conn) {
         $sql = "SELECT countryID, name FROM countries";
-        $sql .= " WHERE countryID LIKE '$id' ";
+        $sql .= " WHERE countryID LIKE '".mysqli_real_escape_string($conn,$id)."' ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
