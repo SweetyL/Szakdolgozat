@@ -25,7 +25,10 @@ if(isset($_REQUEST['page'])) {
 $menupontok = array(    'index' => "Főoldal",
                         'login' => "Belépés",
                         'register' => "Regisztrálás",
-                        'myProfile' => "Profilom"
+                        'myProfile' => "Profilom",
+                        'browser' => "Böngészés",
+                        'search' => "Alap keresés",
+                        'advancedSearch' => "Részletes keresés"
                 );
 
 
@@ -41,7 +44,7 @@ if($_REQUEST['page']=="driverRegister"){
         $title = "X profilja";
 }else if($_REQUEST['page']=="404"){
         $title = "Hiba 404";
-}else if($_REQUEST['page']="myProfile"){
+}else if($_REQUEST['page']=="myProfile"){
         $title = "Profilom";
 }else{
         $title = $menupontok[$page];
@@ -53,7 +56,12 @@ include 'includes/htmlheader.inc.php';
 <?php
 
 include 'includes/menu.inc.php';
-include 'controller/'.$page.'.php';
+if(file_exists('controller/'.$_REQUEST['page'].'.php')){
+        include 'controller/'.$page.'.php';
+}else{
+        header('Location: index.php?page=404');
+        exit();
+}
 
 ?>
 </body>

@@ -12,7 +12,7 @@
             if(!empty($_SESSION["id"]) and $key=="register"){
               continue;
             }
-            if(empty($_SESSION["id"]) and $key=="myProfile"){
+            if(empty($_SESSION["id"]) and ($key=="myProfile" or $key=="search" or $key=="advancedSearch" or $key=="browser")){
               continue;
             }
             ?>
