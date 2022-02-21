@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2022 at 12:14 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- Generation Time: Feb 21, 2022 at 09:33 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -102,7 +102,10 @@ CREATE TABLE `companies` (
 
 INSERT INTO `companies` (`compID`, `name`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `webpage`, `username`, `password`) VALUES
 (1, 'Fluid Inc.', 12, 'Chicken Street', 12, 'fluid@gbr.com', '+89/1234567', 'www.example.com', 'fluid', '5cfea13ba1397f696bea7b2ff62c0188'),
-(2, 'Asd Inc.', 19, 'asd', 111, 'asd@lux.com', '+56/1234567', 'www.example.com', 'asd', '7815696ecbf1c96e6894b779456d330e');
+(2, 'Asd Inc.', 19, 'asd', 111, 'asd@lux.com', '+56/1234567', 'www.example.com', 'asd', '7815696ecbf1c96e6894b779456d330e'),
+(3, 'Német teszt', 25299, 'Etwas Straße', 12, 'asd@galaxy.de', '+99123456', 'www.example.com', 'test1', '5a105e8b9d40e1329780d62ea2265d8a'),
+(4, 'Német teszt 2', 6, 'Bruh straße', 69, 'asd@asd.asd', '+69985644', 'www.example.com', 'teszt2', 'e970707c584b0c4574564ad239301c01'),
+(5, 'Német teszt 3', 25785, 'drei straße', 11, 'asd@asd.asd', '+55654321', 'www.example.com', 'teszt3', 'f6529e2a4a0fcfb629ac78007f71379c');
 
 -- --------------------------------------------------------
 
@@ -6024,8 +6027,7 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (12813, 'Le Péage-de-Roussillon', 'FRA'),
 (12814, 'Mehun-sur-Yèvre', 'FRA'),
 (12815, 'Frouard', 'FRA'),
-(12816, 'Carnoux-en-Provence', 'FRA');
-INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
+(12816, 'Carnoux-en-Provence', 'FRA'),
 (21003, 'Thessaloníki', 'GRC'),
 (21004, 'Pátra', 'GRC'),
 (21005, 'Piraeus', 'GRC'),
@@ -6038,8 +6040,7 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (21012, 'Vólos', 'GRC'),
 (21013, 'Chaniá', 'GRC'),
 (21014, 'Chalándri', 'GRC'),
-(21015, 'Kalamáta', 'GRC');
-INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
+(21015, 'Kalamáta', 'GRC'),
 (21016, 'Néa Ionía', 'GRC'),
 (21017, 'Ioánnina', 'GRC'),
 (21018, 'Palaió Fáliro', 'GRC'),
@@ -7698,7 +7699,8 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (22671, 'Lopar', 'HRV'),
 (22672, 'Trpinja', 'HRV'),
 (22673, 'Negoslavci', 'HRV'),
-(22674, 'Bedenica', 'HRV'),
+(22674, 'Bedenica', 'HRV');
+INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (22675, 'Satnica Đakovačka', 'HRV'),
 (22676, 'Semeljci', 'HRV'),
 (22677, 'Viljevo', 'HRV'),
@@ -7915,8 +7917,7 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (22888, 'Dugopolje', 'HRV'),
 (22889, 'Otok', 'HRV'),
 (22890, 'Korčula', 'HRV'),
-(22891, 'Donji Proložac', 'HRV');
-INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
+(22891, 'Donji Proložac', 'HRV'),
 (22892, 'Polača', 'HRV'),
 (22893, 'Poličnik', 'HRV'),
 (22894, 'Jelenje', 'HRV'),
@@ -9587,7 +9588,8 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (24640, 'Alap', 'HUN'),
 (24641, 'Szurdokpüspöki', 'HUN'),
 (24642, 'Jászfelsőszentgyörgy', 'HUN'),
-(24643, 'Écs', 'HUN'),
+(24643, 'Écs', 'HUN');
+INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (24644, 'Fehérvárcsurgó', 'HUN'),
 (24645, 'Újszentiván', 'HUN'),
 (24646, 'Hejőbába', 'HUN'),
@@ -9730,8 +9732,7 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (24783, 'Fajsz', 'HUN'),
 (24784, 'Szilvásvárad', 'HUN'),
 (24785, 'Tardosbánya', 'HUN'),
-(24786, 'Nagyfüged', 'HUN');
-INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
+(24786, 'Nagyfüged', 'HUN'),
 (24787, 'Mezőtárkány', 'HUN'),
 (24788, 'Kőtelek', 'HUN'),
 (24789, 'Ozora', 'HUN'),
@@ -11433,7 +11434,8 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (26527, 'Rubano', 'ITA'),
 (26528, 'Sorrento', 'ITA'),
 (26530, 'Brusciano', 'ITA'),
-(26531, 'Este', 'ITA'),
+(26531, 'Este', 'ITA');
+INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (26532, 'Ispica', 'ITA'),
 (26533, 'Copparo', 'ITA'),
 (26534, 'Tarquinia', 'ITA'),
@@ -11524,8 +11526,7 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (26621, 'Cossato', 'ITA'),
 (26622, 'Santa Croce sull’ Arno', 'ITA'),
 (26623, 'Riposto', 'ITA'),
-(26624, 'Impruneta', 'ITA');
-INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
+(26624, 'Impruneta', 'ITA'),
 (26625, 'Pedara', 'ITA'),
 (26626, 'Sant’Arpino', 'ITA'),
 (26627, 'Roncade', 'ITA'),
@@ -13138,7 +13139,8 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (28266, 'Arcevia', 'ITA'),
 (28267, 'Galzignano', 'ITA'),
 (28268, 'Arcidosso', 'ITA'),
-(28269, 'Amaseno', 'ITA'),
+(28269, 'Amaseno', 'ITA');
+INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (28270, 'Locate Varesino', 'ITA'),
 (28271, 'Paglieta', 'ITA'),
 (28272, 'Ponte Lambro', 'ITA'),
@@ -13197,8 +13199,7 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (28325, 'Santa Maria Nuova', 'ITA'),
 (28326, 'Gorgo al Monticano', 'ITA'),
 (28327, 'Pofi', 'ITA'),
-(28328, 'Boffalora sopra Ticino', 'ITA');
-INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
+(28328, 'Boffalora sopra Ticino', 'ITA'),
 (28329, 'Fumane', 'ITA'),
 (28331, 'Montopoli in Sabina', 'ITA'),
 (28332, 'Cursi', 'ITA'),
@@ -14921,9 +14922,9 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (30110, 'Bolintin Deal', 'ROU'),
 (30111, 'Focuri', 'ROU'),
 (30112, 'Burueneşti', 'ROU'),
-(30113, 'Teşila', 'ROU');
+(30113, 'Teşila', 'ROU'),
+(30114, 'Unirea', 'ROU');
 INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
-(30114, 'Unirea', 'ROU'),
 (30115, 'Radovanu', 'ROU'),
 (30116, 'Bârsana', 'ROU'),
 (30117, 'Palanca', 'ROU'),
@@ -16713,8 +16714,7 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (31921, 'Puentes de García Rodríguez', 'ESP'),
 (31922, 'Illora', 'ESP'),
 (31923, 'Caspe', 'ESP'),
-(31924, 'La Guardia', 'ESP');
-INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
+(31924, 'La Guardia', 'ESP'),
 (31925, 'Foz', 'ESP'),
 (31926, 'Caudete', 'ESP'),
 (31927, 'Mengibar', 'ESP'),
@@ -16734,7 +16734,8 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (31942, 'Binéfar', 'ESP'),
 (31943, 'Alcarraz', 'ESP'),
 (31944, 'Grado', 'ESP'),
-(31945, 'Cuéllar', 'ESP'),
+(31945, 'Cuéllar', 'ESP');
+INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (31947, 'Santa María de Palautordera', 'ESP'),
 (31948, 'Alfaro', 'ESP'),
 (31949, 'Piedras Blancas', 'ESP'),
@@ -18351,8 +18352,7 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (33642, 'Agulo', 'ESP'),
 (33643, 'Ribarroja de Ebro', 'ESP'),
 (33644, 'Arbizu', 'ESP'),
-(33645, 'San Carlos del Valle', 'ESP');
-INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
+(33645, 'San Carlos del Valle', 'ESP'),
 (33646, 'Entrimo', 'ESP'),
 (33647, 'Fabara', 'ESP'),
 (33648, 'Vegasdel Condado', 'ESP'),
@@ -18451,7 +18451,8 @@ INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (33748, 'Villanueva del Rey', 'ESP'),
 (33749, 'La Mezquita', 'ESP'),
 (33750, 'San José', 'ESP'),
-(33751, 'Alhama de Aragón', 'ESP'),
+(33751, 'Alhama de Aragón', 'ESP');
+INSERT INTO `towns` (`townID`, `name`, `countryID`) VALUES
 (33752, 'Albanchez de Úbeda', 'ESP'),
 (33753, 'Otívar', 'ESP'),
 (33754, 'Arenas de San Juan', 'ESP'),
@@ -18634,7 +18635,7 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `drivers`
