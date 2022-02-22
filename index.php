@@ -23,12 +23,12 @@ if(isset($_REQUEST['page'])) {
 }
 
 $menupontok = array(    'index' => "Főoldal",
-                        'login' => "Belépés",
                         'register' => "Regisztrálás",
                         'myProfile' => "Profilom",
                         'browser' => "Böngészés",
                         'search' => "Alap keresés",
-                        'advancedSearch' => "Részletes keresés"
+                        'advancedSearch' => "Részletes keresés",
+                        'login' => "Belépés"
                 );
 
 

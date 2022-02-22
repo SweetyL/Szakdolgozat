@@ -3,12 +3,13 @@
         header('Location: index.php?page=404');
         exit();
     }
+    include 'view/browser.php';
+    echo '<div class="d-flex flex-column align-items-center justify-content-center">';
     $driver = new Driver();
     $company = new Company();
     $country = new Country();
     $town = new Town();
     $nearList = array();
-    $otherList = array();
     if($_SESSION["type"]=="driver"){
         $driver->set_user($_SESSION["id"], $conn);
         $town->set_town($driver->get_townID(),$conn);
@@ -21,9 +22,38 @@
                 }
             }
         }
+        //show near profiles (drivers)
+        foreach($nearList as $item){
+            $company->set_user($item,$conn);
+            $town->set_town($company->get_townID(),$conn);
+            $country->set_country($town->get_country(),$conn);
+            echo '<div class="result p-2 flex-fill">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
+                <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$company->get_name().'</a></h1>
+                <p>Ország: '.$country->get_name().'</p>
+                <p>Város: '.$town->get_name().'</p>
+                <p>Utca, házszám: '.$company->get_street().' '.$company->get_houseNumber().'</p>
+                <p>Email: '.$company->get_email().'</p>
+                <p>Telefonszám: '.$company->get_phone().'</p>
+                <p>Weboldal: <a href="https://"'.$company->get_webpage().'" target="_blank">'.$company->get_webpage().'"</a>
+            </div>';
+        }
+        //show other profiles (drivers)
         foreach ($company->companiesList($conn) as $item){
             if(!in_array($item,$nearList)){
-                $otherList[] = $item;
+                $company->set_user($item,$conn);
+                $town->set_town($company->get_townID(),$conn);
+                $country->set_country($town->get_country(),$conn);
+                echo '<div class="result p-2 flex-fill">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
+                    <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$company->get_name().'</a></h1>
+                    <p>Ország: '.$country->get_name().'</p>
+                    <p>Város: '.$town->get_name().'</p>
+                    <p>Utca, házszám: '.$company->get_street().' '.$company->get_houseNumber().'</p>
+                    <p>Email: '.$company->get_email().'</p>
+                    <p>Telefonszám: '.$company->get_phone().'</p>
+                    <p>Weboldal: <a href="https://"'.$company->get_webpage().'" target="_blank">'.$company->get_webpage().'"</a>
+                </div>';
             }
         }
     }else if($_SESSION["type"]=="company"){
@@ -38,11 +68,50 @@
                 }
             }
         }
+        //show near profiles (companies)
+        foreach($nearList as $item){
+            $driver->set_user($item,$conn);
+            $town->set_town($driver->get_townID(),$conn);
+            $country->set_country($town->get_country(),$conn);
+            // skip admins HOTFIX
+            #region
+            if(empty($driver->get_email())){
+                continue;
+            }
+            #endregion
+            echo '<div class="result p-2 flex-fill">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
+                <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$driver->get_lastname().' '.$driver->get_firstname().'</a></h1>
+                <p>Ország: '.$country->get_name().'</p>
+                <p>Város: '.$town->get_name().'</p>
+                <p>Utca, házszám: '.$driver->get_street().' '.$driver->get_houseNumber().'</p>
+                <p>Email: '.$driver->get_email().'</p>
+                <p>Telefonszám: '.$driver->get_phone().'</p>
+            </div>';
+        }
+        //show other profiles (companies)
         foreach ($driver->driversList($conn) as $item){
             if(!in_array($item,$nearList)){
-                $otherList[] = $item;
+                $driver->set_user($item,$conn);
+                $town->set_town($driver->get_townID(),$conn);
+                $country->set_country($town->get_country(),$conn);
+                // skip admins HOTFIX
+                #region
+                if(empty($driver->get_email())){
+                    continue;
+                }
+                #endregion
+                echo '<div class="result p-2 flex-fill">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
+                    <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$driver->get_lastname().' '.$driver->get_firstname().'</a></h1>
+                    <p>Ország: '.$country->get_name().'</p>
+                    <p>Város: '.$town->get_name().'</p>
+                    <p>Utca, házszám: '.$driver->get_street().' '.$driver->get_houseNumber().'</p>
+                    <p>Email: '.$driver->get_email().'</p>
+                    <p>Telefonszám: '.$driver->get_phone().'</p>
+                </div>';
             }
         }
     }
-    include 'view/browser.php';
+    echo '</div>';
 ?>
