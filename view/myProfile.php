@@ -22,4 +22,5 @@
 <?php
 }
 ?>
+<br>
 <button type="button" class="btn btn-hcbutton" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>

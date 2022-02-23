@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2022 at 09:33 PM
+-- Generation Time: Feb 23, 2022 at 10:24 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -105,7 +105,8 @@ INSERT INTO `companies` (`compID`, `name`, `townID`, `street`, `houseNumber`, `e
 (2, 'Asd Inc.', 19, 'asd', 111, 'asd@lux.com', '+56/1234567', 'www.example.com', 'asd', '7815696ecbf1c96e6894b779456d330e'),
 (3, 'Német teszt', 25299, 'Etwas Straße', 12, 'asd@galaxy.de', '+99123456', 'www.example.com', 'test1', '5a105e8b9d40e1329780d62ea2265d8a'),
 (4, 'Német teszt 2', 6, 'Bruh straße', 69, 'asd@asd.asd', '+69985644', 'www.example.com', 'teszt2', 'e970707c584b0c4574564ad239301c01'),
-(5, 'Német teszt 3', 25785, 'drei straße', 11, 'asd@asd.asd', '+55654321', 'www.example.com', 'teszt3', 'f6529e2a4a0fcfb629ac78007f71379c');
+(5, 'Német teszt 3', 25785, 'drei straße', 11, 'asd@asd.asd', '+55654321', 'www.example.com', 'teszt3', 'f6529e2a4a0fcfb629ac78007f71379c'),
+(6, 'Roland East Europe Kft.', 23960, 'FSD Park', 3, 'ree.service@roland.com', '', 'www.roland.com/hu/', 'roland', '2055167ef63a43fcb1e6e589bd0e4e4f');
 
 -- --------------------------------------------------------
 
@@ -189,7 +190,8 @@ CREATE TABLE `drivers` (
 INSERT INTO `drivers` (`driverID`, `firstname`, `lastname`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `username`, `password`) VALUES
 (1, 'Lajos', 'Nagy', 15, 'Hősök tere', 12, 'nagylajos@hunmail.hu', '+3612/3456789', 'nagylajos', '7141ceba42ac5ac8a89d6945b54ac85a'),
 (2, 'Günther', 'Schwarz', 6, 'Krawatte Straße', 5, 'swagu@deumail.de', '+4998/7654321', 'swagu', '699b865c7e88a69f00ced034382ea0d1'),
-(3, 'ADMIN', '', 15, '', 0, '', '', 'admin', '21232f297a57a5a743894a0e4a801fc3');
+(3, 'ADMIN', '', 15, '', 0, '', '', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
+(1001, 'Elek', 'Teszt', 15, 'Állatkerti körút', 6, 'tesztelek@valami.hu', '+3612/321654', 'tesztelek', '0157963f1d2a74182cbf964caacd39d7');
 
 -- --------------------------------------------------------
 
@@ -18635,13 +18637,13 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `driverID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `driverID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
 
 --
 -- AUTO_INCREMENT for table `engines`

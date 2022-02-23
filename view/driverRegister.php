@@ -26,17 +26,17 @@
             <option value="">Válasszon várost!</option>
         </select>
         <br>
-        <label for="str" >Utca: </label>
-        <input class="form-control" type="text" id="str" name="street" required>
+        <label for="str" >Utca (opcionális): </label>
+        <input class="form-control" type="text" id="str" name="street">
         <br>
-        <label for="hn" >Házszám: </label>
-        <input class="form-control" type="text" id="hn" name="houseNumber" required>
+        <label for="hn" >Házszám (opcionális): </label>
+        <input class="form-control" type="text" id="hn" name="houseNumber">
         <br>
         <label for="em" >E-mail: </label>
         <input class="form-control" type="email" id="em" name="email" required>
         <br>
-        <label for="pn" >Telefonszám: </label>
-        <input class="form-control" type="text" id="pn" name="phoneNumber" required>
+        <label for="pn" >Telefonszám (opcionális): </label>
+        <input class="form-control" type="text" id="pn" name="phoneNumber">
         <br>
         <label for="username">Felhasználónév:</label>
         <input class="form-control" type="text" id="username" name="username" required>

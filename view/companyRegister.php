@@ -32,8 +32,8 @@
         <label for="em" >E-mail: </label>
         <input class="form-control" type="email" id="em" name="email" required>
         <br>
-        <label for="pn" >Telefonszám: </label>
-        <input class="form-control" type="text" id="pn" name="phoneNumber" required>
+        <label for="pn" >Telefonszám (opcionális): </label>
+        <input class="form-control" type="text" id="pn" name="phoneNumber">
         <br>
         <label for="www" >Weboldal: </label>
         <input class="form-control" type="text" id="www" name="webpage">
