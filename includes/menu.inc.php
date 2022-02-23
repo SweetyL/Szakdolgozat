@@ -9,6 +9,12 @@
         foreach($menupontok as $key => $value) {
             $active = '';
             if($_SERVER['REQUEST_URI'] == '/Szakdolgozat/index.php?page='.$key) $active = ' active';
+            if(!empty($_SESSION["id"]) and $key=="login"){
+                echo '<li class="nav-item">
+                <a class="nav-link" href="index.php?page=loginPanel&amp;action=logout">Kilépés</a>
+                </li>';
+                continue;
+            }
             if(!empty($_SESSION["id"]) and $key=="register"){
               continue;
             }

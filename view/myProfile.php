@@ -22,4 +22,4 @@
 <?php
 }
 ?>
-<button type="button">Teszt</button>
+<button type="button" class="btn btn-hcbutton" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>

@@ -46,7 +46,10 @@ if($_REQUEST['page']=="driverRegister"){
         $title = "Hiba 404";
 }else if($_REQUEST['page']=="myProfile"){
         $title = "Profilom";
-}else{
+}else if($_REQUEST['page']=="settings"){
+        $title = "Beállítások";
+}
+else{
         $title = $menupontok[$page];
 }
 
