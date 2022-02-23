@@ -35,7 +35,7 @@
                 <p>Utca, házszám: '.$company->get_street().' '.$company->get_houseNumber().'</p>
                 <p>Email: '.$company->get_email().'</p>
                 <p>Telefonszám: '.$company->get_phone().'</p>
-                <p>Weboldal: <a href="https://"'.$company->get_webpage().'" target="_blank">'.$company->get_webpage().'"</a>
+                <p>Weboldal: <a href="https://'.$company->get_webpage().'" target="_blank">'.$company->get_webpage().'</a>
             </div>';
         }
         //show other profiles (drivers)
@@ -52,7 +52,7 @@
                     <p>Utca, házszám: '.$company->get_street().' '.$company->get_houseNumber().'</p>
                     <p>Email: '.$company->get_email().'</p>
                     <p>Telefonszám: '.$company->get_phone().'</p>
-                    <p>Weboldal: <a href="https://"'.$company->get_webpage().'" target="_blank">'.$company->get_webpage().'"</a>
+                    <p>Weboldal: <a href="https://'.$company->get_webpage().'" target="_blank">'.$company->get_webpage().'</a>
                 </div>';
             }
         }
