@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 10:24 PM
+-- Generation Time: Mar 01, 2022 at 05:46 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -63,7 +63,8 @@ INSERT INTO `adr` (`adrID`, `name`, `icon`, `comment`) VALUES
 (5, 'Oxidáló anyagok', '', 'Osztály 5'),
 (6, 'Mérgező és fertőző anyagok', '', 'Osztály 6'),
 (7, 'Radioaktív anyag', '', 'Osztály 7'),
-(8, 'Korrozív anyagok', '', 'Osztály 8');
+(8, 'Korrozív anyagok', '', 'Osztály 8'),
+(9, 'Nincsen', '', 'nem szükséges adr');
 
 -- --------------------------------------------------------
 
@@ -74,8 +75,148 @@ INSERT INTO `adr` (`adrID`, `name`, `icon`, `comment`) VALUES
 CREATE TABLE `cargo` (
   `cargoID` int(10) NOT NULL,
   `name` varchar(120) NOT NULL,
-  `mass` varchar(120) NOT NULL
+  `mass` varchar(120) NOT NULL,
+  `adr` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cargo`
+--
+
+INSERT INTO `cargo` (`cargoID`, `name`, `mass`, `adr`) VALUES
+(1, 'name', 'mass', 0),
+(2, 'Acetilén', '12 tonna', 2),
+(3, 'Sav', '20 tonna', 8),
+(4, 'Légkondícionáló egységek', '11 tonna', 9),
+(5, 'Repülőgépkerék gumik', '18 tonna', 9),
+(6, 'Mandula', '17 tonna', 9),
+(7, 'Alma', '18 tonna', 9),
+(8, 'Arzén', '23 tonna', 6),
+(9, 'Atlanti tőkehal filé', '16 tonna', 9),
+(10, 'Visszafolyásgátlók', '24 tonna', 9),
+(11, 'Markológép', '8 tonna', 9),
+(12, 'Árpa', '17 tonna', 9),
+(13, 'Bazsalikom', '20 tonna', 9),
+(14, 'Bab', '12 tonna', 9),
+(15, 'Marhahús', '21 tonna', 9),
+(16, 'Italok', '19 tonna', 9),
+(17, 'Magok becsomagolva', '19 tonna', 9),
+(18, 'Kazánrészek', '40 tonna', 9),
+(19, 'Bórsav', '16 tonna', 9),
+(20, 'Palackozott víz', '23 tonna', 9),
+(21, 'Furgonok', '12 tonna', 9),
+(22, 'Fékfolyadék', '7 tonna', 9),
+(23, 'Fékbetét', '20 tonna', 9),
+(24, 'Tégla', '20 tonna', 9),
+(25, 'Babkonzerv', '16 tonna', 9),
+(26, 'Marhahús konzerv', '18 tonna', 9),
+(27, 'Dobozos jegeskávé', '21 tonna', 9),
+(28, 'Disznóhús konzerv', '17 tonna', 9),
+(29, 'Szardínia konzerv', '18 tonna', 9),
+(30, 'Tonhal konzerv', '17 tonna', 9),
+(31, 'Szénsavas víz', '21 tonna', 9),
+(32, 'Répa', '14 tonna', 9),
+(33, 'Ipari korom', '12 tonna', 9),
+(34, 'Cement', '22 tonna', 9),
+(35, 'Sajt', '15 tonna', 9),
+(36, 'Karfiol', '9 tonna', 9),
+(37, 'Vegyszer szorbens', '6 tonna', 9),
+(38, 'Rágógumi', '22 tonna', 9),
+(39, 'Csirkehús', '17 tonna', 9),
+(40, 'Kémény rendszer darabok', '18 tonna', 9),
+(41, 'Klór', '17 tonna', 2),
+(42, 'Csokoládé', '19 tonna', 9),
+(43, 'Ruhák', '15 tonna', 9),
+(44, 'Szén', '14 tonna', 9),
+(45, 'Kókusztej', '20 tonna', 9),
+(46, 'Kókuszolaj', '20 tonna', 9),
+(47, 'Számítógép processzorok', '5 tonna', 9),
+(48, 'Rostos gyümölcslevek', '20 tonna', 9),
+(49, 'Betongerendák', '17 tonna', 9),
+(50, 'Betonhengerek', '18 tonna', 9),
+(51, 'Betonlépcsők', '17 tonna', 9),
+(52, 'Facsemeték', '4 tonna', 9),
+(53, 'Szennyezett anyag', '6 tonna', 9),
+(54, 'Réz ereszcsatornák', '8 tonna', 9),
+(55, 'Parafadugó', '5 tonna', 9),
+(56, 'Túró', '17 tonna', 9),
+(57, 'Vágott növények', '1 tonna', 9),
+(58, 'Cián', '18 tonna', 6),
+(59, 'Dízel', '23 tonna', 3),
+(60, 'Dízel generátorok', '21 tonna', 9),
+(61, 'Fertőtlenítő', '16 tonna', 9),
+(62, 'Mosogatógépek', '13 tonna', 9),
+(63, 'Tejpor', '17 tonna', 9),
+(64, 'Dinamit', '17 tonna', 1),
+(65, 'Műszaki cikkek', '10 tonna', 9),
+(66, 'Üres hordók', '9 tonna', 9),
+(67, 'Üres boroshordók', '6 tonna', 9),
+(68, 'Elektromos vezetékek', '15 tonna', 9),
+(69, 'Raklapok', '21 tonna', 9),
+(70, 'Kotrógép', '24 tonna', 9),
+(71, 'Használt föld', '23 tonna', 9),
+(72, 'Kotrógép fej', '10 tonna', 9),
+(73, 'Kipufogó csövek', '18 tonna', 9),
+(74, 'Robbanóanyagok', '12 tonna', 9),
+(75, 'Tűzijáték', '9 tonna', 9),
+(76, 'Halrudak', '17 tonna', 9),
+(77, 'Trágya', '20 tonna', 9),
+(78, 'Járólapok', '23 tonna', 9),
+(79, 'Liszt', '20 tonna', 9),
+(80, 'Fluor', '8 tonna', 2),
+(81, 'Targoncák', '11 tonna', 9),
+(82, 'Friss hal', '18 tonna', 9),
+(83, 'Fűszerek', '5 tonna', 9),
+(84, 'Fagyasztott halfilé', '17 tonna', 9),
+(85, 'Fagyasztott polip', '14 tonna', 9),
+(86, 'Üzemanyagtankok', '10 tonna', 9),
+(87, 'Üzemanyag kannák', '12 tonna', 3),
+(88, 'Gázolaj', '19 tonna', 3),
+(89, 'Bútorok', '16 tonna', 9),
+(90, 'Fokhagyma', '12 tonna', 9),
+(91, 'Gázcső-vezeték darabok', '22 tonna', 9),
+(92, 'Üvegpanelek', '21 tonna', 9),
+(93, 'Kecske sajt', '15 tonna', 9),
+(94, 'Gránit tömbök', '23 tonna', 9),
+(95, 'Szőlő', '14 tonna', 9),
+(96, 'Grafitzsír', '16 tonna', 9),
+(97, 'Kavics', '16 tonna', 9),
+(98, 'Fű bálák', '15 tonna', 9),
+(99, 'Szalagkorlát', '14 tonna', 9),
+(100, 'Gumicukor', '20 tonna', 9),
+(101, 'Nagyfeszültségű vezetékek', '21 tonna', 9),
+(102, 'Méz', '20 tonna', 9),
+(103, 'Nehézfém', '24 tonna', 6),
+(104, 'Szennyezett korházi szemét', '16 tonna', 6),
+(105, 'Sósav', '22 tonna', 8),
+(106, 'Hidrogén', 'nem mérhető', 2),
+(107, 'Jégkrém', '14', 9),
+(108, 'Vascsövek', '24', 9),
+(109, 'Kerozin', '18', 3),
+(110, 'Higany', '23', 8),
+(111, 'Levendula', '8', 9),
+(112, 'Ketchup', '15', 9),
+(113, 'Juhbél', '13', 9),
+(114, 'LPG', '21', 3),
+(115, 'Magnézium', '17', 4),
+(116, 'Orvosi felszerelések', '5', 9),
+(117, 'Orvosi tűk', '5', 6),
+(118, 'Higanyklorid', '15', 6),
+(119, 'Tej', '14', 9),
+(120, 'Cellulóz-nitrát', '14', 4),
+(121, 'Nitrogén', '7', 2),
+(122, 'Narancs', '20', 9),
+(123, 'Tészta', '20', 9),
+(124, 'Nátrium', '16', 4),
+(125, 'Nátrium-hidroxid', '18', 8),
+(126, 'Nátrium-hipoklorit', '19', 8),
+(127, 'Kénsav', '15', 8),
+(128, 'Gumikerekek', '16', 9),
+(129, 'Ecet', '10', 9),
+(130, 'Radioaktív hulladék', 'nem mérhető', 7),
+(131, 'Fehér foszfor', '10', 4),
+(132, 'Kobalt-60 izotóp', 'nem mérhető', 7),
+(133, 'Cézium-137 izotóp', 'nem mérhető', 7);
 
 -- --------------------------------------------------------
 
@@ -106,7 +247,8 @@ INSERT INTO `companies` (`compID`, `name`, `townID`, `street`, `houseNumber`, `e
 (3, 'Német teszt', 25299, 'Etwas Straße', 12, 'asd@galaxy.de', '+99123456', 'www.example.com', 'test1', '5a105e8b9d40e1329780d62ea2265d8a'),
 (4, 'Német teszt 2', 6, 'Bruh straße', 69, 'asd@asd.asd', '+69985644', 'www.example.com', 'teszt2', 'e970707c584b0c4574564ad239301c01'),
 (5, 'Német teszt 3', 25785, 'drei straße', 11, 'asd@asd.asd', '+55654321', 'www.example.com', 'teszt3', 'f6529e2a4a0fcfb629ac78007f71379c'),
-(6, 'Roland East Europe Kft.', 23960, 'FSD Park', 3, 'ree.service@roland.com', '', 'www.roland.com/hu/', 'roland', '2055167ef63a43fcb1e6e589bd0e4e4f');
+(6, 'Roland East Europe Kft.', 23960, 'FSD Park', 3, 'ree.service@roland.com', '', 'www.roland.com/hu/', 'roland', '2055167ef63a43fcb1e6e589bd0e4e4f'),
+(7, 'erefefef', 8565, 'efefef', 123, 'efef@efef.eef', '222', 'wewew.wewew', 'awew', '385386c8d525b5b43acb5f4a932a298e');
 
 -- --------------------------------------------------------
 
@@ -18486,6 +18628,13 @@ CREATE TABLE `trips` (
   `cargoID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `trips`
+--
+
+INSERT INTO `trips` (`tripID`, `fromComp`, `toComp`, `tripLength`, `cargoID`) VALUES
+(1, 6, 3, 0, 65);
+
 -- --------------------------------------------------------
 
 --
@@ -18529,7 +18678,8 @@ ALTER TABLE `adr`
 -- Indexes for table `cargo`
 --
 ALTER TABLE `cargo`
-  ADD PRIMARY KEY (`cargoID`);
+  ADD PRIMARY KEY (`cargoID`),
+  ADD KEY `ibfk_connect_adrtocargo` (`adr`);
 
 --
 -- Indexes for table `companies`
@@ -18625,19 +18775,19 @@ ALTER TABLE `trucks`
 -- AUTO_INCREMENT for table `adr`
 --
 ALTER TABLE `adr`
-  MODIFY `adrID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `adrID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `cargoID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `cargoID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `compID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `drivers`
@@ -18679,7 +18829,7 @@ ALTER TABLE `towns`
 -- AUTO_INCREMENT for table `trips`
 --
 ALTER TABLE `trips`
-  MODIFY `tripID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `tripID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `trucks`
@@ -18696,6 +18846,12 @@ ALTER TABLE `trucks`
 --
 ALTER TABLE `admins`
   ADD CONSTRAINT `ibfk_admin_driver` FOREIGN KEY (`id`) REFERENCES `drivers` (`driverID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `cargo`
+--
+ALTER TABLE `cargo`
+  ADD CONSTRAINT `ibfk_connect_adrtocargo` FOREIGN KEY (`adr`) REFERENCES `adr` (`adrID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `companies`

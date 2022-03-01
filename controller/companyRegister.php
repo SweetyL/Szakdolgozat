@@ -11,6 +11,7 @@
             if (!($result->num_rows > 0)) {
                 $sql2 = "INSERT INTO `companies`(`name`, `townID`, `street`, `houseNumber`, `email`, `phoneNumber`, `webpage`, `username`, `password`) VALUES ('".mysqli_real_escape_string($conn,$_POST['companyname'])."','".mysqli_real_escape_string($conn,$_POST['town'])."','".mysqli_real_escape_string($conn,$_POST['street'])."','".mysqli_real_escape_string($conn,$_POST['houseNumber'])."','".mysqli_real_escape_string($conn,$_POST['email'])."','".mysqli_real_escape_string($conn,$_POST['phoneNumber'])."','".mysqli_real_escape_string($conn,$_POST['webpage'])."','".mysqli_real_escape_string($conn,$_POST['username'])."',MD5('".mysqli_real_escape_string($conn,$_POST['password'])."'));";
                 $result = $conn->query($sql2);
+                logger("[I]".date("Y-m-d H:i:s")." - ".$_SERVER['REMOTE_ADDR']." a".$_POST['user']." uj vallalat regisztralt\n");
                 header('Location: index.php?page=index');
                 exit();
             }else{
@@ -18,5 +19,6 @@
             }
         }
     }
+    logger("[I]".date("Y-m-d H:i:s")." - ".$_SERVER['REMOTE_ADDR']." belepett a vallalat regisztracio oldalra\n");
     include 'view/companyRegister.php';
 ?>

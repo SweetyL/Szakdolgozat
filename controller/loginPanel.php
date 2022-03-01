@@ -6,6 +6,7 @@ if(empty($_REQUEST['action'])){
     exit();
 }
 if($_REQUEST['action'] == 'logout'){
+    logger("[I]".date("Y-m-d H:i:s")." - ".$_SERVER['REMOTE_ADDR']." a".$_SESSION["id"]." id-s ember, tipusa ".$_SESSION["type"]." kilepett\n");
     session_unset();
     header('Location: index.php?page=index');
     exit();
@@ -31,6 +32,7 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
                             $_SESSION["id"] = $row['driverID'];
                             $_SESSION["name"] = $driver->get_lastname()." ".$driver->get_firstname();
                             $_SESSION["type"] = "driver";
+                            logger("[I]".date("Y-m-d H:i:s")." - ".$_SERVER['REMOTE_ADDR']." a".$_POST['user']." nevu felhasznalo belepett az oldalra(sofor)\n");
                             header('Location: index.php?page=index');
                             exit();
                         }
@@ -42,6 +44,7 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
                             $_SESSION["id"] = $row['compID'];
                             $_SESSION["name"] = $company->get_name();
                             $_SESSION["type"] = "company";
+                            logger("[I]".date("Y-m-d H:i:s")." - ".$_SERVER['REMOTE_ADDR']." a".$_POST['user']." nevu felhasznalo belepett az oldalra(vallalat)\n");
                             header('Location: index.php?page=index');
                             exit();
                         }
