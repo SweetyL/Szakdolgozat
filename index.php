@@ -49,6 +49,8 @@ if($_REQUEST['page']=="driverRegister"){
         $title = "Profilom";
 }else if($_REQUEST['page']=="settings"){
         $title = "Beállítások";
+}else if($_REQUEST['page']=="genPage"){
+        $title = "QR kód generálás";
 }
 else{
         $title = $menupontok[$page];

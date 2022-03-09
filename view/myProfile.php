@@ -24,3 +24,11 @@
 ?>
 <br>
 <button type="button" class="btn btn-hcbutton" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
+<button type="button" class="btn btn-hcbutton" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
+<?php
+    if(file_exists("./generatedPages/".$filename.".html")){
+        echo "igen van generalt cucc es itt jelenik meg";
+    }else{
+        echo "nincs";
+    }
+?>
