@@ -15,7 +15,7 @@ class Country{
                 $this->name = $row['name'];
         } 
         else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: country model, ".$conn->error);
         }
         }
     }

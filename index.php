@@ -1,5 +1,5 @@
 <?php
-
+session_name("kamionSzakdoga");
 session_start();
 
 require 'includes/db.inc.php';

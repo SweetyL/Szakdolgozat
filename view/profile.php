@@ -2,7 +2,7 @@
     if($_SESSION["type"]=="driver"){
 ?>
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="img-thumbnail img-responsive">
-<p>Név: <?php echo $company->get_name()?></p>
+<p id="name">Név: <?php echo $company->get_name()?></p>
 <p>Ország: <?php echo $country->get_name() ?></p>
 <p>Város: <?php echo $town->get_name()?></p>
 <p>Utca, házszám: <?php echo $company->get_street()." ".$company->get_houseNumber()?></p>
@@ -13,7 +13,7 @@
 }else{
 ?>
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="img-thumbnail img-responsive">
-<p>Név: <?php echo $driver->get_lastname()." ".$driver->get_firstname()?></p>
+<p id="name">Név: <?php echo $driver->get_lastname()." ".$driver->get_firstname()?></p>
 <p>Ország: <?php echo $country->get_name() ?></p>
 <p>Város: <?php echo $town->get_name()?></p>
 <p>Utca, házszám: <?php echo $driver->get_street()." ".$driver->get_houseNumber()?></p>
@@ -22,3 +22,9 @@
 <?php
 }
 ?>
+<script type="text/javascript">
+    let title = $("#name").text();
+    $(document).ready(function() {
+        document.title = title.substring(4,11)+"... profilja";
+    });
+</script>

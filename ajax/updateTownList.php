@@ -11,7 +11,7 @@ if (isset($_POST['countryID']) && !empty($_POST['countryID'])) {
             }
         }
     else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: varos lista ajax, ".$conn->error);
     }
     }
 }else{

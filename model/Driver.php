@@ -32,7 +32,7 @@ class Driver {
                 $this->password = $row['password'];
         } 
         else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: driver model, ".$conn->error);
         }
         }
     }

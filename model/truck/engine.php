@@ -19,7 +19,7 @@ class Engine{
                 $this->power = $row['power'];
         } 
         else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: engine model, ".$conn->error);
         }
         }
     }

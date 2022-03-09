@@ -25,7 +25,7 @@ class Engine{
                 $this->numberOfAxles = $row['numberOfAxles'];
         } 
         else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: truck model, ".$conn->error);
         }
         }
     }

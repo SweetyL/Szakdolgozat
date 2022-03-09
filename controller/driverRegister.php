@@ -1,7 +1,8 @@
 <?php
     $country = new Country();
     $countryIDs = $country->countriesList($conn);
-
+    $err = "";
+    if(is_numeric($value) && $value > 0){}
     if(isset($_POST['lastname']) and isset($_POST['firstname']) and isset($_POST['town']) and 
     isset($_POST['street']) and isset($_POST['houseNumber']) and isset($_POST['email']) and isset($_POST['phoneNumber']) and 
     isset($_POST['username']) and isset($_POST['password'])) {

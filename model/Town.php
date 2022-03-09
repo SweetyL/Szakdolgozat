@@ -17,7 +17,7 @@ class Town{
                 $this->cID = $row['countryID'];
         } 
         else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: town model, ".$conn->error);
         }
         }
     }
