@@ -84,6 +84,7 @@
             if(isset($_POST["webpage"])){
                 $htmlFile .="<p>Weboldal: <a href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a></p>";
             }
+            $htmlFile .= "</div>\n</body>\n</html>";
             $myfile = @fopen("./generatedPages/".$fname.".html", "w") or die("Critical ERROR!");
             fwrite($myfile, $htmlFile);
             fclose($myfile);
