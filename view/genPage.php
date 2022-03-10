@@ -13,7 +13,7 @@
         <legend>Adatok</legend>
         <div>
             <h3>Teljes vagy rövidített neve jelenjen meg?</h3>  
-            <input type="radio" name="nameQ" value="full"><span>Teljes</span>
+            <input type="radio" name="nameQ" value="full" checked><span>Teljes</span>
             <br>
             <input type="radio" name="nameQ" value="short"><span>Rövidített</span>
         </div>   
@@ -41,11 +41,15 @@
 <?php
     }else{
 ?>
-<p>Megjegyzés: cégeknél a név megjelenítése kötelező!</p>
 <form method="post" action="index.php?page=genPage">      
     <fieldset>      
-        <legend>Adatok</legend> 
+        <legend>Adatok</legend>
         <div>
+            <h3>Megjegyzés: cégeknél a név megjelenítése kötelező! Elfogadja?</h3>  
+            <input type="checkbox" name="nameQ" value="yes"><span>Igen</span>
+        </div> 
+        <div>
+            <h3>Egyéb adatok</h3>
             <input type="checkbox" name="country" value="yes"><span>Ország</span>
             <br>
             <input type="checkbox" name="town" value="yes"><span>Város</span>

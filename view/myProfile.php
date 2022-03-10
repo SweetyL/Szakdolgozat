@@ -27,7 +27,7 @@
 <button type="button" class="btn btn-hcbutton" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
 <?php
     if(file_exists("./generatedPages/".$filename.".html")){
-       // echo '<img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Fbanki.komarom.net%2Fklaszlo%2Fszakdolgozat%2FgeneratedPages%2F'.$filename.'.html&amp;qzone=1&amp;margin=0&amp;size=200x200&amp;ecc=L" alt="QR kód" />';
-        echo '<img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Flocalhost%2Fszakdolgozat%2FgeneratedPages%2F'.$filename.'.html&amp;qzone=1&amp;margin=0&amp;size=200x200&amp;ecc=L" alt="QR kód" />';
+       echo '<img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Fbanki13.komarom.net%2Fklaszlo%2Fszakdolgozat%2FgeneratedPages%2F'.$filename.'.html&amp;qzone=1&amp;margin=0&amp;size=200x200&amp;ecc=L" alt="QR kód" />';
+    //echo '<img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Flocalhost%2Fszakdolgozat%2FgeneratedPages%2F'.$filename.'.html&amp;qzone=1&amp;margin=0&amp;size=200x200&amp;ecc=L" alt="QR kód" />';
     }
 ?>

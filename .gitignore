@@ -1,2 +1,4 @@
-
+#logfile
 log.log
+#ignoring generatedPages folder
+generatedPages/

@@ -54,17 +54,42 @@
             fclose($myfile);
             header('Location: index.php?page=myProfile');
             exit();
-        }else{
-            echo "<div class='alert alert-danger alert-dismissible'>
-            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-            <p>A névnél kérem válassza ki a formátumot!</p>
-            </div>";
         }
     }else{
-        $company->set_user($_SESSION["id"], $conn);
-        $town->set_town($company->get_townID(),$conn);
-        $country->set_country($town->get_country(),$conn);
-        $fname = md5($company->get_username())."C";
+        if(isset($_POST["nameQ"])){
+            $company->set_user($_SESSION["id"], $conn);
+            $town->set_town($company->get_townID(),$conn);
+            $country->set_country($town->get_country(),$conn);
+            $fname = md5($company->get_username())."C";
+            $htmlFile .= "<title>".$company->get_name()."</title>\n</head>\n<body class='bbody'>\n";
+            $htmlFile .= "<h1>".$company->get_name()."</h1>\n";
+            if(isset($_POST["country"])){
+                $htmlFile .= "<p>Ország: ".$country->get_name()."</p>\n";
+            }
+            if(isset($_POST["town"])){
+                $htmlFile .= "<p>Város: ".$town->get_name()."</p>\n";
+            }
+            if(isset($_POST["street"])){
+                $htmlFile .= "<p>Utca: ".$company->get_street()."</p>\n";
+            }
+            if(isset($_POST["houseNum"])){
+                $htmlFile .= "<p>Házszám: ".$company->get_houseNumber()."</p>\n";
+            }
+            if(isset($_POST["email"])){
+                $htmlFile .= "<p>E-mail: ".$company->get_email()."</p>\n";
+            }
+            if(isset($_POST["phone"])){
+                $htmlFile .= "<p>Telefonszám: ".$company->get_phone()."</p>\n";
+            }
+            if(isset($_POST["webpage"])){
+                $htmlFile .="<p>Weboldal: <a href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a></p>";
+            }
+            $myfile = @fopen("./generatedPages/".$fname.".html", "w") or die("Critical ERROR!");
+            fwrite($myfile, $htmlFile);
+            fclose($myfile);
+            header('Location: index.php?page=myProfile');
+            exit();
+        }
     }
     include 'view/genPage.php';
 ?>
