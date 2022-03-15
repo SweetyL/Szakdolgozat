@@ -2,6 +2,7 @@
 <html lang="hu">
 <head>
 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 	<title><?php echo $title; ?></title>	
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,5 +28,5 @@
 
     <!-- SweetAlert 2 https://sweetalert2.github.io/-->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-borderless@5.0.10">
 </head>
