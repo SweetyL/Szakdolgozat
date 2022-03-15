@@ -8,11 +8,17 @@
     }
     else{
 	    if(isset($_POST['user'])) {
-			
-		    echo "<div class='alert alert-danger alert-dismissible'>
-					<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-					<p>".$loginError."</p>
-				</div>";
+			echo '<script type="text/JavaScript">
+			Swal.fire({
+				title: "Bejelentkezési hiba",
+				icon: "error",
+				html: "'.$loginError.'",
+			})
+			</script>';
+		    //echo "<div class='alert alert-danger alert-dismissible wow flash'>
+					//<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+					//<p>".$loginError."</p>
+				//</div>";
 	    }
 ?>
 <div class="container">
@@ -20,14 +26,18 @@
 	<fieldset>
 		<legend class="text-center">Belépés</legend>
 		<div class="input-group">
-			<label for="usr">Felhasználó név:</label>
+			<label for="usr">Felhasználó név: </label>
+			<br>
 			<input type="text" id="usr" name="user" class="form-control">
 		</div>
+		<br>
 		<div class="input-group">
-			<label for="pass">Jelszó:</label>
+			<label for="pass">Jelszó: </label>
+			<br>
 			<input type="password" id="pass" name="pw" class="form-control">
 		</div>
-			<input class="btn btn-hcbutton" type="submit" value="Belépés">
+			<br>
+			<input class="btn btn-primary rounded-pill" type="submit" value="Belépés">
 	</fieldset>
 	</form>
 </div>
