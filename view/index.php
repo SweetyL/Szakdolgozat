@@ -10,8 +10,12 @@
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport & Logistics Solution</h5>
                                 <h1 class="display-3 text-white animated slideInDown mb-4">I. számú megoldás <span class="text-primary">sofőrök</span> számára</h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Vállalatot keresne ahol munkába állhat? Velünk megteheti!</p>
-                                <a href="index.php?page=register" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Regisztrálok!</a>
-                                <a href="index.php?page=login" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Belépek!</a>
+                                <?php
+                                    if(empty($_SESSION["id"])){
+                                        echo '<a href="index.php?page=register" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Regisztrálok!</a>';
+                                        echo '<a href="index.php?page=login" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Belépek!</a>';
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -26,8 +30,12 @@
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport & Logistics Solution</h5>
                                 <h1 class="display-3 text-white animated slideInDown mb-4">I. számú megoldás <span class="text-primary">vállalatok</span> számára</h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Sofőrt keresne, aki el tudna vállalni egy vagy több megbízást? Velünk megteheti!</p>
-                                <a href="index.php?page=register" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Regisztrálok!</a>
-                                <a href="index.php?page=login" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Belépek!</a>
+                                <?php
+                                    if(empty($_SESSION["id"])){
+                                        echo '<a href="index.php?page=register" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Regisztrálok!</a>';
+                                        echo '<a href="index.php?page=login" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Belépek!</a>';
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>

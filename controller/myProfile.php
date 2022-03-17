@@ -19,5 +19,6 @@
         $country->set_country($town->get_country(),$conn);
         $filename = md5($company->get_username())."C";
     }
+    echo '<script src="js/showQR.js"></script>';
     include 'view/myProfile.php';
 ?>

@@ -35,7 +35,7 @@
             <input type="checkbox" id="all" value=""><span>Minden</span>
         </div>
         <br>
-        <input class="btn btn-hcbutton" type="submit" value="Generálás!">     
+        <input class="btn btn-primary rounded-pill" type="submit" value="Generálás!">     
     </fieldset>      
 </form>
 <?php
@@ -68,7 +68,7 @@
             <input type="checkbox" id="all" value=""><span>Minden</span>
         </div>
         <br>
-        <input class="btn btn-hcbutton" type="submit" value="Generálás!">     
+        <input class="btn btn-primary rounded-pill" type="submit" value="Generálás!">     
     </fieldset>      
 </form>
 <?php

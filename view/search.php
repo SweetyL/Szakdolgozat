@@ -9,7 +9,7 @@
 			    <label for="nm">Cég neve:</label>
 			    <input type="text" id="nm" name="name" class="form-control">
 		    </div>
-		    <input class="btn btn-hcbutton" type="submit" value="Keresés">
+		    <input class="btn btn-primary rounded-pill" type="submit" value="Keresés">
 	    </fieldset>
     </form>
 </div>
@@ -28,7 +28,7 @@
 			    <label for="nm">Keresztnév:</label>
 			    <input type="text" id="nm" name="fname" class="form-control">
 		    </div>
-		    <input class="btn btn-hcbutton" type="submit" value="Keresés">
+		    <input class="btn btn-primary rounded-pill" type="submit" value="Keresés">
 	    </fieldset>
     </form>
 </div>

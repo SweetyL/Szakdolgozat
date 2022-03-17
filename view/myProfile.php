@@ -1,7 +1,8 @@
+<div class="container">
 <?php 
     if(!empty($_SESSION["id"]) and $_SESSION["type"]=="driver"){
 ?>
-<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="img-thumbnail img-responsive">
+<img class="rounded mx-auto d-block img-fluid" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="img-thumbnail img-responsive">
 <p>Név: <?php echo $driver->get_lastname()." ".$driver->get_firstname()?></p>
 <p>Ország: <?php echo $country->get_name() ?></p>
 <p>Város: <?php echo $town->get_name()?></p>
@@ -11,7 +12,7 @@
 <?php
 }else if(!empty($_SESSION["id"]) and $_SESSION["type"]=="company"){
 ?>
-<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="img-thumbnail img-responsive">
+<img class="rounded mx-auto d-block" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="img-thumbnail img-responsive">
 <p>Név: <?php echo $company->get_name()?></p>
 <p>Ország: <?php echo $country->get_name() ?></p>
 <p>Város: <?php echo $town->get_name()?></p>
@@ -23,11 +24,14 @@
 }
 ?>
 <br>
-<button type="button" class="btn btn-hcbutton" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
-<button type="button" class="btn btn-hcbutton" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
+<br>
 <?php
     if(file_exists("./generatedPages/".$filename.".html")){
-       echo '<img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Fbanki13.komarom.net%2Fklaszlo%2Fszakdolgozat%2FgeneratedPages%2F'.$filename.'.html&amp;qzone=1&amp;margin=0&amp;size=200x200&amp;ecc=L" alt="QR kód" />';
+    echo "<button type='button' class='btn btn-primary rounded-pill my-2' onclick='showQR(`".$filename."`)'>QR kód mutatása</button>";
     //echo '<img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Flocalhost%2Fszakdolgozat%2FgeneratedPages%2F'.$filename.'.html&amp;qzone=1&amp;margin=0&amp;size=200x200&amp;ecc=L" alt="QR kód" />';
     }
 ?>
+</div>
