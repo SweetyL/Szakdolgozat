@@ -27,7 +27,7 @@
             $company->set_user($item,$conn);
             $town->set_town($company->get_townID(),$conn);
             $country->set_country($town->get_country(),$conn);
-            echo '<div class="container-fluid result p-2 flex-fill">
+            echo '<div class="container-fluid result p-2 flex-fill wow fadeInLeft">
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
                 <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$company->get_name().'</a></h1>
                 <p>Ország: '.$country->get_name().'</p>
@@ -44,7 +44,7 @@
                 $company->set_user($item,$conn);
                 $town->set_town($company->get_townID(),$conn);
                 $country->set_country($town->get_country(),$conn);
-                echo '<div class="container-fluid result p-2 flex-fill">
+                echo '<div class="container-fluid result p-2 flex-fill wow fadeInLeft">
                     <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
                     <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$company->get_name().'</a></h1>
                     <p>Ország: '.$country->get_name().'</p>
@@ -79,7 +79,7 @@
                 continue;
             }
             #endregion
-            echo '<div class="container-fluid result p-2 flex-fill">
+            echo '<div class="container-fluid result p-2 flex-fill wow fadeInLeft">
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
                 <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$driver->get_lastname().' '.$driver->get_firstname().'</a></h1>
                 <p>Ország: '.$country->get_name().'</p>
@@ -101,7 +101,7 @@
                     continue;
                 }
                 #endregion
-                echo '<div class="container-fluid result p-2 flex-fill">
+                echo '<div class="container-fluid result p-2 flex-fill wow fadeInLeft">
                     <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
                     <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$driver->get_lastname().' '.$driver->get_firstname().'</a></h1>
                     <p>Ország: '.$country->get_name().'</p>

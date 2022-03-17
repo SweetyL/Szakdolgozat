@@ -13,7 +13,6 @@
                         echo '<p class="mb-4">A keresett oldal nem található!</p>';
                     }
                 ?>
-                <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or try to use a search?</p>
                 <a class="btn btn-primary rounded-pill py-3 px-5" href="index.php?page=index">Vissza a főoldalra</a>
             </div>
         </div>

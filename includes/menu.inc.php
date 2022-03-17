@@ -22,6 +22,9 @@
             if(empty($_SESSION["id"]) and ($key=="myProfile" or $key=="search" or $key=="advancedSearch" or $key=="browser")){
               continue;
             }
+            if($key=="index"){
+              continue;
+            }
             ?>
                 <a class="nav-item nav-link" href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a>
             <?php            

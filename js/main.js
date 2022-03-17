@@ -77,8 +77,9 @@
 
     // Header carousel
     $(".header-carousel").owlCarousel({
-        autoplay: false,
-        smartSpeed: 1500,
+        autoplay: true,
+        autoplayTimeout: 10000,
+        smartSpeed: 2500,
         items: 1,
         dots: false,
         loop: true,
@@ -88,6 +89,14 @@
             '<i class="bi bi-chevron-right"></i>'
         ]
     });
+
+    // on mouse hover pause
+    $('.header-carousel').on('mouseover',function(){
+        $(this).trigger('stop.owl.autoplay');
+    })
+    $('.header-carousel').on('mouseleave',function(){
+        $(this).trigger('play.owl.autoplay');
+    })
 
 
     // Testimonials carousel
