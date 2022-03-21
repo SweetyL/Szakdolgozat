@@ -4,7 +4,7 @@
         exit();
     }
     include 'view/browser.php';
-    echo '<div class="d-flex flex-column align-items-center justify-content-center">';
+    echo '<div class="container mx-auto">';
     $driver = new Driver();
     $company = new Company();
     $country = new Country();
@@ -27,7 +27,8 @@
             $company->set_user($item,$conn);
             $town->set_town($company->get_townID(),$conn);
             $country->set_country($town->get_country(),$conn);
-            echo '<div class="container-fluid result p-2 flex-fill wow fadeInLeft">
+            echo '<div class="row">';
+            echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
                 <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$company->get_name().'</a></h1>
                 <p>Ország: '.$country->get_name().'</p>
@@ -37,6 +38,7 @@
                 <p>Telefonszám: '.$company->get_phone().'</p>
                 <p>Weboldal: <a href="https://'.$company->get_webpage().'" target="_blank">'.$company->get_webpage().'</a>
             </div>';
+            echo '</div>';
         }
         //show other profiles (drivers)
         foreach ($company->companiesList($conn) as $item){
@@ -44,7 +46,8 @@
                 $company->set_user($item,$conn);
                 $town->set_town($company->get_townID(),$conn);
                 $country->set_country($town->get_country(),$conn);
-                echo '<div class="container-fluid result p-2 flex-fill wow fadeInLeft">
+                echo '<div class="row">';
+                echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
                     <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
                     <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$company->get_name().'</a></h1>
                     <p>Ország: '.$country->get_name().'</p>
@@ -54,6 +57,7 @@
                     <p>Telefonszám: '.$company->get_phone().'</p>
                     <p>Weboldal: <a href="https://'.$company->get_webpage().'" target="_blank">'.$company->get_webpage().'</a>
                 </div>';
+                echo '</div>';
             }
         }
     }else if($_SESSION["type"]=="company"){
@@ -79,7 +83,8 @@
                 continue;
             }
             #endregion
-            echo '<div class="container-fluid result p-2 flex-fill wow fadeInLeft">
+            echo '<div class="row">';
+            echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
                 <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$driver->get_lastname().' '.$driver->get_firstname().'</a></h1>
                 <p>Ország: '.$country->get_name().'</p>
@@ -88,6 +93,7 @@
                 <p>Email: '.$driver->get_email().'</p>
                 <p>Telefonszám: '.$driver->get_phone().'</p>
             </div>';
+            echo '</div>';
         }
         //show other profiles (companies)
         foreach ($driver->driversList($conn) as $item){
@@ -101,7 +107,8 @@
                     continue;
                 }
                 #endregion
-                echo '<div class="container-fluid result p-2 flex-fill wow fadeInLeft">
+                echo '<div class="row">';
+                echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
                     <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
                     <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$driver->get_lastname().' '.$driver->get_firstname().'</a></h1>
                     <p>Ország: '.$country->get_name().'</p>
@@ -110,6 +117,7 @@
                     <p>Email: '.$driver->get_email().'</p>
                     <p>Telefonszám: '.$driver->get_phone().'</p>
                 </div>';
+                echo '</div>';
             }
         }
     }
