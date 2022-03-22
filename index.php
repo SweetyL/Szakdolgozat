@@ -7,6 +7,8 @@ require 'model/Company.php';
 require 'model/Driver.php';
 require 'model/Country.php';
 require 'model/Town.php';
+require 'model/ADR.php';
+require 'model/Cargo.php';
 require 'includes/functions.inc.php';
 
 if(!isset($_REQUEST['page'])){
