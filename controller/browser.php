@@ -10,7 +10,7 @@
     $country = new Country();
     $town = new Town();
     $nearList = array();
-    if($_SESSION["type"]=="driver"){
+    if($_SESSION["type"]=="driver" or $_SESSION["type"]=="admin"){
         $driver->set_user($_SESSION["id"], $conn);
         $town->set_town($driver->get_townID(),$conn);
         $country->set_country($town->get_country(),$conn);
@@ -60,11 +60,11 @@
                 echo '</div>';
             }
         }
-    }else if($_SESSION["type"]=="company"){
+    }else if($_SESSION["type"]=="company" or $_SESSION["type"]=="admin"){
         $company->set_user($_SESSION["id"], $conn);
         $town->set_town($company->get_townID(),$conn);
         $country->set_country($town->get_country(),$conn);
-        $sqlGetNear = 'SELECT driverID FROM drivers INNER JOIN towns ON towns.townID=companies.townID WHERE countryID LIKE "'.$country->get_id().'"';
+        $sqlGetNear = 'SELECT driverID FROM drivers INNER JOIN towns ON towns.townID=drivers.townID WHERE countryID LIKE "'.$country->get_id().'"';
         if($result = $conn->query($sqlGetNear)) {
             if ($result->num_rows > 0) {
 				while($row = $result->fetch_assoc()) {
@@ -75,14 +75,11 @@
         //show near profiles (companies)
         foreach($nearList as $item){
             $driver->set_user($item,$conn);
-            $town->set_town($driver->get_townID(),$conn);
-            $country->set_country($town->get_country(),$conn);
-            // skip admins HOTFIX
-            #region
-            if(empty($driver->get_email())){
+            if(in_array($driver->get_id(),$admins)){
                 continue;
             }
-            #endregion
+            $town->set_town($driver->get_townID(),$conn);
+            $country->set_country($town->get_country(),$conn);
             echo '<div class="row">';
             echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
@@ -99,14 +96,11 @@
         foreach ($driver->driversList($conn) as $item){
             if(!in_array($item,$nearList)){
                 $driver->set_user($item,$conn);
-                $town->set_town($driver->get_townID(),$conn);
-                $country->set_country($town->get_country(),$conn);
-                // skip admins HOTFIX
-                #region
-                if(empty($driver->get_email())){
+                if(in_array($driver->get_id(),$admins)){
                     continue;
                 }
-                #endregion
+                $town->set_town($driver->get_townID(),$conn);
+                $country->set_country($town->get_country(),$conn);
                 echo '<div class="row">';
                 echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
                     <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">

@@ -31,7 +31,11 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
                         if(md5($_POST['pw']) == $driver->get_password()) {
                             $_SESSION["id"] = $row['driverID'];
                             $_SESSION["name"] = $driver->get_lastname()." ".$driver->get_firstname();
-                            $_SESSION["type"] = "driver";
+                            if(in_array($driver->get_id(),$admins)){
+                                $_SESSION["type"] = "admin";
+                            }else{
+                                $_SESSION["type"] = "driver";
+                            }
                             logger("[I]".date("Y-m-d H:i:s")." - ".$_SERVER['REMOTE_ADDR']." a".$_POST['user']." nevu felhasznalo belepett az oldalra(sofor)\n");
                             header('Location: index.php?page=index');
                             exit();

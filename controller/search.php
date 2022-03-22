@@ -9,7 +9,7 @@
     $company = new Company();
     $country = new Country();
     $town = new Town();
-    if($_SESSION["type"]=="driver"){
+    if($_SESSION["type"]=="driver" or $_SESSION["type"]=="admin"){
         if(isset($_POST['name'])) {
             $sql = "SELECT compID FROM companies WHERE name LIKE '%".mysqli_real_escape_string($conn,$_POST['name'])."%'";
             if($result = $conn->query($sql)) {
@@ -33,7 +33,7 @@
             }
         }
     }
-    else if($_SESSION["type"]=="company"){
+    else if($_SESSION["type"]=="company" or $_SESSION["type"]=="admin"){
             if(!empty($_POST['lname']) and empty($_POST['fname'])){
                 $sql = "SELECT driverID FROM drivers WHERE lastname LIKE '%".mysqli_real_escape_string($conn,$_POST['lname'])."%'";
             }else if(!empty($_POST['fname']) and empty($_POST['lname'])){

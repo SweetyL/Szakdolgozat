@@ -15,10 +15,6 @@
 				html: "'.$loginError.'",
 			})
 			</script>';
-		    //echo "<div class='alert alert-danger alert-dismissible wow flash'>
-					//<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-					//<p>".$loginError."</p>
-				//</div>";
 	    }
 ?>
 <div class="container">

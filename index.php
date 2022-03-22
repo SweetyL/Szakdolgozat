@@ -15,6 +15,7 @@ if(!isset($_REQUEST['page'])){
 }
 // default oldal
 $page = 'index';
+$admins = getAdmins($conn);
 
 // router
 if(isset($_REQUEST['page'])) {
@@ -51,8 +52,15 @@ if($_REQUEST['page']=="driverRegister"){
         $title = "Beállítások";
 }else if($_REQUEST['page']=="genPage"){
         $title = "QR kód generálás";
-}
-else{
+}else if($_REQUEST['page']=="editCargo"){
+        $title = "Szállítmányok kezelése";
+}else if($_REQUEST['page']=="editJobs"){
+        $title = "Megbízások kezelése";
+}else if($_REQUEST['page']=="editTrips"){
+        $title = "Utak kezelése";
+}else if($_REQUEST['page']=="editTrucks"){
+        $title = "Kamionok kezelése";
+}else{
         $title = $menupontok[$page];
 }
 

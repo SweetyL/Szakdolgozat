@@ -1,5 +1,5 @@
 <?php
-    if($_SESSION["type"]=="driver"){
+    if($_SESSION["type"]=="driver" or $_SESSION["type"]=="admin"){
 ?>
 <div class="p-2 flex-fill">
     <form action="index.php?page=search" method="post">

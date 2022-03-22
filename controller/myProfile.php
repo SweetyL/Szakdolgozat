@@ -18,6 +18,8 @@
         $town->set_town($company->get_townID(),$conn);
         $country->set_country($town->get_country(),$conn);
         $filename = md5($company->get_username())."C";
+    }else if($_SESSION["type"]=="admin"){
+        $driver->set_user($_SESSION["id"], $conn);
     }
     echo '<script src="js/showQR.js"></script>';
     include 'view/myProfile.php';

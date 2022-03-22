@@ -9,6 +9,11 @@
 <p>Utca, házszám: <?php echo $driver->get_street()." ".$driver->get_houseNumber()?></p>
 <p>Email: <?php echo $driver->get_email()?></p>
 <p>Telefonszám: <?php echo $driver->get_phone()?></p>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
+<br>
 <?php
 }else if(!empty($_SESSION["id"]) and $_SESSION["type"]=="company"){
 ?>
@@ -20,18 +25,28 @@
 <p>Email: <?php echo $company->get_email()?></p>
 <p>Telefonszám: <?php echo $company->get_phone()?></p>
 <p>Weboldal: <?php echo "<a href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a>"?>
-<?php
-}
-?>
 <br>
 <button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
 <br>
 <button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
 <br>
 <?php
-    if(file_exists("./generatedPages/".$filename.".html")){
+}else{
+?>
+<h1>Üdvözöljük az admin panelen!</h1>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editCargo'">Szállítmányok módosítása</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok és motorjaik módosítása</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editJobs'">Megbízások módosítása</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editTrips'">Utak módosítása</button>
+<?php
+}
+?>
+<?php
+    if(file_exists("./generatedPages/".$filename.".html") and $_SESSION!="admin"){
     echo "<button type='button' class='btn btn-primary rounded-pill my-2' onclick='showQR(`".$filename."`)'>QR kód mutatása</button>";
-    //echo '<img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Flocalhost%2Fszakdolgozat%2FgeneratedPages%2F'.$filename.'.html&amp;qzone=1&amp;margin=0&amp;size=200x200&amp;ecc=L" alt="QR kód" />';
     }
 ?>
 </div>
