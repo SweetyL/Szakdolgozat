@@ -11,6 +11,10 @@ if($_REQUEST['action'] == 'logout'){
     header('Location: index.php?page=index');
     exit();
 }
+else if(!empty($_SESSION["id"])){
+    header('Location: index.php?page=404');
+    exit();
+}
 if(isset($_POST['user']) and isset($_POST['pw'])) {
     $loginError = '';
     if(strlen($_POST['user']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";

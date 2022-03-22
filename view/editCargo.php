@@ -1,36 +1,19 @@
-<script>
-	function confirm() {
-		Swal.fire({
-  			title: 'Biztos benne?',
-  			text: "Ha kitörli, akkor már nincs visszaút!",
-  			icon: 'warning',
-  			showCancelButton: true,
-  			confirmButtonColor: '#3085d6',
-  			cancelButtonColor: '#d33',
-  			confirmButtonText: 'Igen, mehet!',
-			cancelButtonText: 'Vissza'
-		}).then((result) => {
-  			if (result.isConfirmed) {
-				document.delete.submit();
-  			}
-		})
-	}
-</script>
 <div class="container">
 <h1>Szállítmány hozzáadása</h1>
-	<form action="" method="post">
+	<div class="borderForForm">
+	<form name="add" action="" method="post">
 	<fieldset>
 		<legend class="text-center">Hozzáadás</legend>
 		<div class="input-group">
 			<label for="modName">Szállítmány neve: </label>
 			<br>
-			<input type="text" id="modName" name="mName" class="form-control">
+			<input type="text" id="modName" name="mName" class="form-control" required>
 		</div>
 		<br>
 		<div class="input-group">
-			<label for="modMass">Szállítmány tömege: </label>
+			<label for="modMass">Szállítmány tömege (tonnában): </label>
 			<br>
-			<input type="password" id="modMass" name="mMass" class="form-control">
+			<input type="number" id="modMass" name="mMass" class="form-control" required>
 		</div>
 		<br>
 		<div class="input-group">
@@ -47,12 +30,14 @@
 				?>							
 			</select>
 		</div>
-			<input class="btn btn-primary rounded-pill" type="submit" value="Hozzáadás">
 	</fieldset>
 	</form>
+	<button class="btn btn-primary rounded-pill m-2" onclick="confirmAdd()">Hozzáadás</button>
+	</div>
 </div>
 <div class="container">
 <h1>Szállítmány törlése</h1>
+	<div class="borderForForm">
 	<form name="delete" action="" method="post">
 	<fieldset>
 		<legend class="text-center">Törlés</legend>
@@ -73,11 +58,13 @@
 		<br>
 	</fieldset>
 	</form>
-	<button class="btn btn-primary rounded-pill" onclick="confirm()">Törlés</button>
+	<button class="btn btn-primary rounded-pill m-2" onclick="confirmDelete()">Törlés</button>
+	</div>
 </div>
 <div class="container">
 <h1>Szállítmány módosítása</h1>
-	<form action="" method="post">
+	<div class="borderForForm">
+	<form name="modify" action="" method="post">
 	<fieldset>
 		<legend class="text-center">Módosítás</legend>
 		<div class="input-group">
@@ -92,7 +79,10 @@
 			<input type="password" id="pass" name="pw" class="form-control">
 		</div>
 			<br>
-			<input class="btn btn-primary rounded-pill" type="submit" value="Módosít">
+			<input class="btn btn-primary rounded-pill m-2" type="submit" value="Módosít">
 	</fieldset>
 	</form>
+
+	</div>
 </div>
+<script src="js/cargo.js"></script>

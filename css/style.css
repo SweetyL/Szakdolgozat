@@ -13,7 +13,9 @@
     width: 500px;
     background-color: #343A40;
 }
-
+.borderForForm{
+    border: 1px solid #e47908;
+}
 /********** Template CSS **********/
 :root {
     --primary: #e47908;

@@ -1,7 +1,10 @@
 <?php
     $country = new Country();
     $countryIDs = $country->countriesList($conn);
-
+    if(!empty($_SESSION["id"])){
+        header('Location: index.php?page=404');
+        exit();
+    }
     if((isset($_POST['companyname']) and isset($_POST['town']) and 
     isset($_POST['street']) and isset($_POST['houseNumber']) and isset($_POST['email']) and isset($_POST['phoneNumber']) and 
     isset($_POST['webpage']) and isset($_POST['username']) and isset($_POST['password']))) {
