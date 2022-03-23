@@ -4,6 +4,9 @@
 .success{
     color: green;
 }
+.ajaxColor{
+    color: #e47908;
+}
 .smallPic{
     height: 100px;
     width: 100px;

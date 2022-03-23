@@ -70,7 +70,7 @@ if($_REQUEST['page']=="driverRegister"){
 
 include 'includes/htmlheader.inc.php';
 ?>
-<body class="bbody">
+<body>
 <?php
 
 include 'includes/menu.inc.php';

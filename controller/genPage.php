@@ -24,10 +24,10 @@
         $fname = md5($driver->get_username())."D";
         if(isset($_POST["nameQ"])){
             if($_POST["nameQ"]=="full"){
-                $htmlFile .= "<title>".$driver->get_lastname()." ".$driver->get_firstname()."</title>\n</head>\n<body class='bbody'>\n";
+                $htmlFile .= "<title>".$driver->get_lastname()." ".$driver->get_firstname()."</title>\n</head>\n<body>\n";
                 $htmlFile .= "<h1>".$driver->get_lastname()." ".$driver->get_firstname()."</h1>\n";
             }else if($_POST["nameQ"]=="short"){
-                $htmlFile .= "<title>".substr($driver->get_lastname(), 0, 1).". ".$driver->get_firstname()."</title>\n</head>\n<body class='bbody'>\n<div class='container'>\n";
+                $htmlFile .= "<title>".substr($driver->get_lastname(), 0, 1).". ".$driver->get_firstname()."</title>\n</head>\n<body>\n<div class='container'>\n";
                 $htmlFile .= "<h1>".substr($driver->get_lastname(), 0, 1).". ".$driver->get_firstname()."</h1>\n";
             }
             if(isset($_POST["country"])){
@@ -61,7 +61,7 @@
             $town->set_town($company->get_townID(),$conn);
             $country->set_country($town->get_country(),$conn);
             $fname = md5($company->get_username())."C";
-            $htmlFile .= "<title>".$company->get_name()."</title>\n</head>\n<body class='bbody'>\n";
+            $htmlFile .= "<title>".$company->get_name()."</title>\n</head>\n<body>\n";
             $htmlFile .= "<h1>".$company->get_name()."</h1>\n";
             if(isset($_POST["country"])){
                 $htmlFile .= "<p>Ország: ".$country->get_name()."</p>\n";

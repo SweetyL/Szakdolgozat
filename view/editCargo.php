@@ -5,20 +5,20 @@
 	<fieldset>
 		<legend class="text-center">Hozzáadás</legend>
 		<div class="input-group">
-			<label for="modName">Szállítmány neve: </label>
+			<label for="addName">Szállítmány neve: </label>
 			<br>
-			<input type="text" id="modName" name="mName" class="form-control" required>
+			<input type="text" id="addName" name="aName" class="form-control" required>
 		</div>
 		<br>
 		<div class="input-group">
-			<label for="modMass">Szállítmány tömege (tonnában): </label>
+			<label for="addMass">Szállítmány tömege (tonnában): </label>
 			<br>
-			<input type="number" id="modMass" name="mMass" class="form-control" required>
+			<input type="number" id="addMass" name="aMass" class="form-control" required>
 		</div>
 		<br>
 		<div class="input-group">
-			<label for="modADR">Szállítmány ADR osztálya:</label>
-        	<select class="form-control" name="modADR" id="modADR" required>
+			<label for="addADR">Szállítmány ADR osztálya:</label>
+        	<select class="form-control" name="addADR" id="addADR" required>
             	<option value="">Válasszon ADR osztályt!</option>
 				<?php
                 	if ($adrIDs) {
@@ -44,7 +44,7 @@
 		<div class="input-group">
 			<label for="delCargo">Szállítmány azonosítója:</label>
         	<select class="form-control" name="delCargo" id="delCargo" required>
-            	<option value="">Válasszon azonosítót!</option>
+            	<option value="">Válasszon ki szállítmányt!</option>
 				<?php
                 	if ($cargoIDs) {
 						foreach($cargoIDs as $row) {
@@ -68,21 +68,64 @@
 	<fieldset>
 		<legend class="text-center">Módosítás</legend>
 		<div class="input-group">
-			<label for="usr">Felhasználó név: </label>
-			<br>
-			<input type="text" id="usr" name="user" class="form-control">
+			<label for="modCargo">Szállítmány azonosítója:</label>
+        	<select class="form-control" name="modCargo" id="modCargo" required>
+            	<option value="">Válasszon azonosítót!</option>
+				<?php
+                	if ($cargoIDs) {
+						foreach($cargoIDs as $row) {
+							$cargo->set_cargo($row, $conn);
+							if($cargo->get_id()) echo '<option value="'.$row.'">'.$cargo->get_name().", ".$cargo->get_mass().'</option>';
+						}
+					}
+				?>							
+			</select>
 		</div>
+		<label for="modName" >Név: </label>
+        <p><i>Jelenlegi: <span id="curName"  class="ajaxColor"></span></i></p>
+        <input class="form-control" type="text" id="modName" name="mn">
+        <br>
+        <label for="modMass" >Tömeg:</label>
+        <p><i>Jelenlegi: <span id="curMass"  class="ajaxColor"></span></i></p>
+        <input  class="form-control" type="number" id="modMass" name="ms">
 		<br>
 		<div class="input-group">
-			<label for="pass">Jelszó: </label>
+			<label for="modADR">ADR osztály:</label>
 			<br>
-			<input type="password" id="pass" name="pw" class="form-control">
+			<br>
+        	<select class="form-control" name="modADR" id="modADR" required>
+            	<option value="">Válasszon ADR osztályt!</option>
+				<?php
+                	if ($adrIDs) {
+						foreach($adrIDs as $row) {
+							$ADR->set_adr($row, $conn);
+							if($ADR->get_name()) echo '<option value="'.$row.'">'.$ADR->get_name().'</option>';
+						}
+					}
+				?>							
+			</select>
 		</div>
-			<br>
-			<input class="btn btn-primary rounded-pill m-2" type="submit" value="Módosít">
+		<p><i>Jelenlegi: <span id="curADR" class="ajaxColor"></span></i></p>
 	</fieldset>
 	</form>
-
+	<button class="btn btn-primary rounded-pill m-2" onclick="confirmModify()">Módosít</button>
 	</div>
 </div>
 <script src="js/cargo.js"></script>
+<script type="text/javascript">
+    $("#modCargo").on("change", function(){
+        let cargoID = $(this).val();
+        $.ajax({
+            url :"ajax/updateCargo.php",
+            type:"POST",
+			dataType: "json",
+            cache:false,
+            data:{cargoID:cargoID},
+            success:function(response){
+                $("#curName").html(response['name']);
+				$("#curMass").html(response['mass']);
+				$("#curADR").html(response['adr']);
+            }
+        });
+    });
+</script>

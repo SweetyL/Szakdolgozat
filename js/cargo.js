@@ -26,9 +26,9 @@ function confirmDelete() {
 }
 
 function confirmAdd(){
-    let check = $("#modName").val();
-    let check2 = $("#modMass").val();
-    let check3 = $("#modADR").val();
+    let check = $("#addName").val();
+    let check2 = $("#addMass").val();
+    let check3 = $("#addADR").val();
     if(!check || !check2 || !check3){
         Swal.fire({
             icon: 'error',
@@ -36,7 +36,7 @@ function confirmAdd(){
             text: 'Hibás adatok!'
         })
     }else{
-        let item = $("#modName").val()+"&ensp;"+$("#modMass").val()+" tonna&ensp;"+$("#modADR option:selected").text();
+        let item = $("#addName").val()+"&ensp;"+$("#addMass").val()+" tonna&ensp;"+$("#addADR option:selected").text();
         Swal.fire({
               title: 'Biztos benne?',
               html: "<p>Hozzáadja a következő elemet?</p><p>"+item+"</p>",
@@ -55,18 +55,23 @@ function confirmAdd(){
 }
 
 function confirmModify(){
-    let check = $("#modADR").val();
-    if(!check){
+    let check = $("#modCargo").val();
+    let check2 = $("#modName").val();
+    let check3 = $("#modMass").val();
+    let check4 = $("#modADR").val();
+    let curItem = $("#curName").text()+", "+$("#curMass").text()+", "+$("#curADR").text();
+    let change = check2+", "+check3+" tonna, "+$("#modADR option:selected").text();
+    if(!check || !check2 || !check3 || !check4){
         Swal.fire({
             icon: 'error',
             title: 'Hiba!',
-            text: 'Nem választott ki semmit!'
+            text: 'Hibás adatok!'
         })
     }else{
         let item = $("#modADR option:selected").text();
         Swal.fire({
               title: 'Biztos benne?',
-              html: "<p>Hozzá adja a következő elemet?</p><p>"+item+"</p>",
+              html: "<p>Jelenlegi elem: </p><p>"+curItem+"</p><br><p>Megváltoztatja a következőre?</p><p>"+change+"</p>",
               icon: 'warning',
               showCancelButton: true,
               confirmButtonColor: '#3085d6',
@@ -75,7 +80,7 @@ function confirmModify(){
             cancelButtonText: 'Vissza'
         }).then((result) => {
               if (result.isConfirmed) {
-                document.add.submit();
+                document.modify.submit();
               }
         })
     }
