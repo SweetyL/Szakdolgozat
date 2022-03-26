@@ -7,8 +7,6 @@ require 'model/Company.php';
 require 'model/Driver.php';
 require 'model/Country.php';
 require 'model/Town.php';
-require 'model/ADR.php';
-require 'model/Cargo.php';
 require 'includes/functions.inc.php';
 
 if(!isset($_REQUEST['page'])){
@@ -62,7 +60,7 @@ if($_REQUEST['page']=="driverRegister"){
         $title = "Utak kezelése";
 }else if($_REQUEST['page']=="editTrucks"){
         $title = "Kamionok kezelése";
-}else if($_REQUEST['page']=="redirectFromCargo"){
+}else if($_REQUEST['page']=="redirect"){
         $title = "Átirányítás...";
 }else{
         $title = $menupontok[$page];

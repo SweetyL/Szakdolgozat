@@ -1,6 +1,6 @@
 <?php
 
-class Engine{
+class Truck{
     private $tID;
     private $name;
     private $brand;
@@ -9,8 +9,8 @@ class Engine{
     private $consumption;
     private $numberOfAxles;
 
-    public function set_engine($id, $conn) {
-        $sql = "SELECT truckID, name, brand, engineID, tankSize, consumption, numberOfAxles FROM engines";
+    public function set_truck($id, $conn) {
+        $sql = "SELECT truckID, name, brand, engineID, tankSize, consumption, numberOfAxles FROM trucks";
         $sql .= " WHERE truckID = '".mysqli_real_escape_string($conn,$id)."' ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
@@ -31,7 +31,7 @@ class Engine{
     }
 
     public function get_id(){
-        return $this->engineID;
+        return $this->tID;
     }
 
     public function get_name(){
@@ -58,7 +58,7 @@ class Engine{
         return $this->numberOfAxles;
     }
 
-    public function engineList($conn) {
+    public function truckList($conn) {
         $list = array();
         $sql = "SELECT truckID FROM trucks";
         if($result = $conn->query($sql)) {

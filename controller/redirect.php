@@ -11,5 +11,5 @@
     setTimeout();
     </script>
     ";
-    include 'view/redirectFromCargo.php';
+    include 'view/redirect.php';
 ?>

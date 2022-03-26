@@ -1,4 +1,6 @@
 <?php
+    require 'model/ADR.php';
+    require 'model/Cargo.php';
     $ADR = new ADR();
     $cargo = new Cargo();
     $cargoIDs = $cargo->cargoList($conn);
@@ -7,13 +9,13 @@
     if(isset($_POST['aName']) and isset($_POST['aMass']) and isset($_POST['addADR'])){
         $sql = "INSERT INTO `cargo`(`name`, `mass`, `adr`) VALUES ('".mysqli_real_escape_string($conn,$_POST['aName'])."','".mysqli_real_escape_string($conn,$_POST['aMass'])." tonna','".mysqli_real_escape_string($conn,$_POST['addADR'])."')";
         $result = $conn->query($sql);
-        header('Location: index.php?page=redirectFromCargo');
+        header('Location: index.php?page=redirect');
         exit();
     }
     if(isset($_POST['delCargo'])){
         $sql = "DELETE FROM `cargo` WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['delCargo']);
         $result = $conn->query($sql);
-        header('Location: index.php?page=redirectFromCargo');
+        header('Location: index.php?page=redirect');
         exit();
     }
     if(isset($_POST['modCargo']) and isset($_POST['mn']) and isset($_POST['ms']) and isset($_POST['modADR'])){
@@ -30,7 +32,7 @@
         $sql .= "WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['modCargo']);
         echo $sql;
         $result = $conn->query($sql);
-        header('Location: index.php?page=redirectFromCargo');
+        header('Location: index.php?page=redirect');
         exit();
     }
     include 'view/editCargo.php';
