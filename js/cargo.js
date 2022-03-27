@@ -59,16 +59,30 @@ function confirmModify(){
     let check2 = $("#modName").val();
     let check3 = $("#modMass").val();
     let check4 = $("#modADR").val();
-    let curItem = $("#curName").text()+", "+$("#curMass").text()+", "+$("#curADR").text();
-    let change = check2+", "+check3+" tonna, "+$("#modADR option:selected").text();
-    if(!check || !check2 || !check3 || !check4){
+    let curItem = $("#curName").text()+", "+$("#curMass").text()+" tonna, "+$("#curADR").text();
+    let change = "";
+    if(!check2){
+        change = change+$("#curName").text()+", ";
+    }else{
+        change = change+check2+", ";
+    }
+    if(!check3){
+        change = change+$("#curMass").text()+" tonna, ";
+    }else{
+        change = change+check3+" tonna, ";
+    }
+    if(!check4){
+        change = change+$("#curADR").text();
+    }else{
+        change = change+$("#modADR option:selected").text();;
+    }
+    if(!check){
         Swal.fire({
             icon: 'error',
             title: 'Hiba!',
             text: 'Hibás adatok!'
         })
     }else{
-        let item = $("#modADR option:selected").text();
         Swal.fire({
               title: 'Biztos benne?',
               html: "<p>Jelenlegi elem: </p><p>"+curItem+"</p><br><p>Megváltoztatja a következőre?</p><p>"+change+"</p>",
