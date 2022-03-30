@@ -62,6 +62,8 @@ if($_REQUEST['page']=="driverRegister"){
         $title = "Kamionok kezelése";
 }else if($_REQUEST['page']=="redirect"){
         $title = "Átirányítás...";
+}else if($_REQUEST['page']=="editEngines"){
+        $title = "Motorok kezelése";
 }else{
         $title = $menupontok[$page];
 }

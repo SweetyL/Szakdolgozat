@@ -38,6 +38,8 @@
 <br>
 <button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok módosítása</button>
 <br>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editEngines'">Motorok módosítása</button>
+<br>
 <button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editJobs'">Megbízások módosítása</button>
 <br>
 <button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editTrips'">Utak módosítása</button>

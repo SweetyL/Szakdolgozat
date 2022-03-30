@@ -27,9 +27,7 @@
         //this code cheks if the user wants to change the cargo's name
         if(isset($_POST['mn']) and !empty($_POST['mn'])){
             $sql .= "`name`='".mysqli_real_escape_string($conn,$_POST['mn'])."', ";
-            echo "van";
         }else{
-            echo "nincs";
             $tmpSql = "SELECT name FROM cargo WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['modCargo']);
             $res = $conn->query($tmpSql);
             $row = $res->fetch_assoc();
@@ -39,9 +37,7 @@
         //this code checks if the user wants to change the cargo's mass
         if(isset($_POST['ms']) and !empty($_POST['ms'])){
             $sql .= "`mass`='".mysqli_real_escape_string($conn,$_POST['ms'])." tonna', ";
-            echo "van";
         }else{
-            echo "nincs";
             $tmpSql = "SELECT mass FROM cargo WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['modCargo']);
             $res = $conn->query($tmpSql);
             $row = $res->fetch_assoc();
@@ -51,9 +47,7 @@
         //this code checks if the user wants to change the cargo's ADR class
         if(isset($_POST['modADR']) and !empty($_POST['modADR'])){
             $sql .= "`adr`=".mysqli_real_escape_string($conn,$_POST['modADR'])." ";
-            echo "van";
         }else{
-            echo "nincs";
             $tmpSql = "SELECT adr FROM cargo WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['modCargo']);
             $res = $conn->query($tmpSql);
             $row = $res->fetch_assoc();
@@ -61,7 +55,6 @@
         }
 
         $sql .= "WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['modCargo']);
-        echo $sql;
         $result = $conn->query($sql);
         header('Location: index.php?page=redirect');
         exit();
