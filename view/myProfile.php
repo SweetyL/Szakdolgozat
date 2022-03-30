@@ -33,16 +33,18 @@
 <?php
 }else{
 ?>
-<h1>Üdvözöljük az admin panelen!</h1>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editCargo'">Szállítmányok módosítása</button>
+<div class="container h-100 row align-items-center my-5 wow slideInLeft">
+<h1 class="text-center my-5">Üdvözöljük az admin panelen!</h1>
+<button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editCargo'">Szállítmányok módosítása</button>
 <br>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok módosítása</button>
+<button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok módosítása</button>
 <br>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editEngines'">Motorok módosítása</button>
+<button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editEngines'">Motorok módosítása</button>
 <br>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editJobs'">Megbízások módosítása</button>
+<button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editTrips'">Utak módosítása</button>
 <br>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editTrips'">Utak módosítása</button>
+<button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editJobs'">Megbízások módosítása</button>
+</div>
 <?php
 }
 ?>

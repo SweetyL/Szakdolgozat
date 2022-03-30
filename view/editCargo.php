@@ -17,7 +17,7 @@
 		</div>
 		<br>
 		<div class="input-group">
-			<label for="addADR">Szállítmány ADR osztálya:</label>
+			<label for="addCargo">Szállítmány ADR osztálya:</label>
         	<select class="form-control" name="addADR" id="addADR" required>
             	<option value="">Válasszon ADR osztályt!</option>
 				<?php
