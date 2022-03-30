@@ -65,3 +65,74 @@ function confirmDelete() {
         })
     }
 }
+
+function confirmModify(){
+    let check = $("#modTruck").val();
+    let check2 = $("#modBrand").val();
+    let check3 = $("#modName").val();
+    let check4 = $("#modEngine").val();
+    let check5 = $("#modTank").text();
+    let check6 = $("#modCons").val();
+    let check7 = $("#modAxles").val();
+    let curItem = $("#curBrand").text()+", "+$("#curName").text()+", "+$("#curEngine").text()+", "+$("#curTank").text()+", "+$("#curCons").text()+", "+$("#curAxles").text()+
+    " tengely";
+    let change = "";
+    if(!check2){
+        change = change+$("#curBrand").text()+", ";
+    }else{
+        change = change+check2+", ";
+    }
+
+    if(!check3){
+        change = change+$("#curName").text()+", ";
+    }else{
+        change = change+check3+", ";
+    }
+
+    if(!check4){
+        change = change+$("#curEngine").text();
+    }else{
+        change = change+$("#modEngine option:selected").text()+", ";
+    }
+
+    if(!check5){
+        change = change+$("#curTank").text()+" L, ";
+    }else{
+        change = change+check5+" L, ";
+    }
+
+    if(!check6){
+        change = change+$("#curCons").text()+" L/100KM, ";
+    }else{
+        change = change+check5+" L/100KM, ";
+    }
+
+    if(!check7){
+        change = change+$("#curAxles").text()+" tengely";
+    }else{
+        change = change+check7;
+    }
+
+    if(!check){
+        Swal.fire({
+            icon: 'error',
+            title: 'Hiba!',
+            text: 'Hibás adatok!'
+        })
+    }else{
+        Swal.fire({
+              title: 'Biztos benne?',
+              html: "<p>Jelenlegi elem: </p><p>"+curItem+"</p><br><p>Megváltoztatja a következőre?</p><p>"+change+"</p>",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Igen, mehet!',
+            cancelButtonText: 'Vissza'
+        }).then((result) => {
+              if (result.isConfirmed) {
+                document.modify.submit();
+              }
+        })
+    }
+}

@@ -1,7 +1,7 @@
 <div class="container">
 <h1>Szállítmány hozzáadása</h1>
 	<div class="borderForForm">
-	<form name="add" action="" method="post">
+	<form name="add" action="index.php?page=editCargo" method="post">
 	<fieldset>
 		<legend class="text-center">Hozzáadás</legend>
 		<div class="input-group">
@@ -38,7 +38,7 @@
 <div class="container">
 <h1>Szállítmány törlése</h1>
 	<div class="borderForForm">
-	<form name="delete" action="" method="post">
+	<form name="delete" action="index.php?page=editCargo" method="post">
 	<fieldset>
 		<legend class="text-center">Törlés</legend>
 		<div class="input-group">
@@ -64,7 +64,7 @@
 <div class="container">
 <h1>Szállítmány módosítása</h1>
 	<div class="borderForForm">
-	<form name="modify" action="" method="post">
+	<form name="modify" action="index.php?page=editCargo" method="post">
 	<fieldset>
 		<legend class="text-center">Módosítás</legend>
 		<div class="input-group">

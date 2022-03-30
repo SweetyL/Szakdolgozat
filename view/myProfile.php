@@ -36,7 +36,7 @@
 <h1>Üdvözöljük az admin panelen!</h1>
 <button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editCargo'">Szállítmányok módosítása</button>
 <br>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok és motorjaik módosítása</button>
+<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok módosítása</button>
 <br>
 <button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=editJobs'">Megbízások módosítása</button>
 <br>
