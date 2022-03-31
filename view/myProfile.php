@@ -44,6 +44,8 @@
 <button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editTrips'">Utak módosítása</button>
 <br>
 <button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editJobs'">Megbízások módosítása</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editAdmin'">Adminok kezelése</button>
 </div>
 <?php
 }

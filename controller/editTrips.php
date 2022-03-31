@@ -1,4 +1,9 @@
 <?php
+    if(!empty($_SESSION["id"]) and !$_SESSION["type"] == "admin"){
+        header('Location: index.php?page=404');
+        exit();
+    }
+    
     include 'model/Cargo.php';
     include 'model/Trip.php';
     $cargo = new Cargo();

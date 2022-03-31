@@ -1,4 +1,8 @@
 <?php
+    if(!empty($_SESSION["id"]) and !$_SESSION["type"] == "admin"){
+        header('Location: index.php?page=404');
+        exit();
+    }
     require 'model/truck/Engine.php';
     $engine = new Engine();
     $engineIDs = $engine->engineList($conn);
