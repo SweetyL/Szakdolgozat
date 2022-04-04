@@ -39,6 +39,7 @@
                         $sql = "DELETE FROM `admins` WHERE id =".mysqli_real_escape_string($conn,$_POST['delAdmin']);
                         echo $sql;
                         $result = $conn->query($sql);
+                        $_SESSION["type"] = "driver";
                         header('Location: index.php?page=redirect');
                         exit();
                     }

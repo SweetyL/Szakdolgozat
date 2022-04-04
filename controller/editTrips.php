@@ -32,7 +32,7 @@
     if(isset($_POST['modTrip']) and isset($_POST['mStart']) and isset($_POST['mEnd']) and isset($_POST['mLength']) and isset($_POST['modCargo'])){
         $sql = "UPDATE `trips` SET ";
 
-        //this code cheks if the user wants to change the cargo's name
+        //this code checks if the user wants to change the cargo's name
         if(isset($_POST['mStart']) and !empty($_POST['mStart'])){
             $sql .= "`tripStart`='".mysqli_real_escape_string($conn,$_POST['mStart'])."', ";
         }else{

@@ -1,21 +1,33 @@
+<?php
+    if(!empty($error)){
+        echo '<script type="text/JavaScript">
+			Swal.fire({
+				title: "Azonosítási probléma",
+				icon: "error",
+				html: "'.$error.'",
+			})
+			</script>';
+    }
+?>
 <h1>Beállítások</h1>
 <?php
     if($_SESSION["type"]=="driver"){
 ?>
 <div class="container">
-<form action="index.php?page=settings" method="post">
+<div class="borderForForm">
+<form name="driverChange" action="index.php?page=settings" method="post">
     <fieldset>
         <legend>Sofőr adatok:</legend>
-        <label for="ln" >Vezetéknév: </label>
-        <p>Jelenlegi: <?php echo $driver->get_lastname(); ?></p>
-        <input class="form-control" type="text" id="ln" name="lastname">
+        <label for="lastname" >Vezetéknév: </label>
+        <p>Jelenlegi:<span id="curLastname" class="ajaxColor"> <?php echo $driver->get_lastname(); ?></span></p>
+        <input class="form-control" type="text" id="lastname" name="lastname">
         <br>
-        <label for="fn" >Keresztnév:</label>
-        <p>Jelenlegi: <?php echo $driver->get_firstname(); ?></p>
-        <input  class="form-control" type="text" id="fn" name="firstname">
+        <label for="firstname" >Keresztnév:</label>
+        <p>Jelenlegi: <span id="curFirstname" class="ajaxColor"><?php echo $driver->get_firstname(); ?></span></p>
+        <input  class="form-control" type="text" id="firstname" name="firstname">
         <br>
         <label for="country">Ország:</label>
-        <p>Jelenlegi: <?php echo $currentCountry; ?></p>
+        <p>Jelenlegi:<span id="curCountry" class="ajaxColor"> <?php echo $currentCountry; ?></span></p>
         <select class="form-control" name="country" id="country">
             <option value="">Válasszon országot!</option>
 			<?php
@@ -29,47 +41,50 @@
 		</select>
         <br>
         <label for="town" >Város:</label>
-        <p>Jelenlegi: <?php echo $currentTown; ?></p>
+        <p>Jelenlegi: <span id="curTown" class="ajaxColor"><?php echo $currentTown; ?></span></p>
         <select class="form-control" name="town" id="town">
             <option value="">Válasszon várost!</option>
         </select>
         <br>
-        <label for="str" >Utca: </label>
-        <p>Jelenlegi: <?php echo $driver->get_street(); ?></p>
-        <input class="form-control" type="text" id="str" name="street">
+        <label for="street" >Utca: </label>
+        <p>Jelenlegi: <span id="curStreet" class="ajaxColor"><?php echo $driver->get_street(); ?></span></p>
+        <input class="form-control" type="text" id="street" name="street">
         <br>
-        <label for="hn" >Házszám: </label>
-        <p>Jelenlegi: <?php echo $driver->get_houseNumber(); ?></p>
-        <input class="form-control" type="text" id="hn" name="houseNumber">
+        <label for="houseNumber" >Házszám: </label>
+        <p>Jelenlegi: <span id="curHouseNumber" class="ajaxColor"><?php echo $driver->get_houseNumber(); ?></span></p>
+        <input class="form-control" type="text" id="houseNumber" name="houseNumber">
         <br>
-        <label for="em" >E-mail: </label>
-        <p>Jelenlegi: <?php echo $driver->get_email(); ?></p>
-        <input class="form-control" type="email" id="em" name="email">
+        <label for="email" >E-mail: </label>
+        <p>Jelenlegi: <span id="curEmail" class="ajaxColor"><?php echo $driver->get_email(); ?></span></p>
+        <input class="form-control" type="email" id="email" name="email">
         <br>
-        <label for="pn" >Telefonszám: </label>
-        <p>Jelenlegi: <?php echo $driver->get_phone(); ?></p>
-        <input class="form-control" type="text" id="pn" name="phoneNumber">
+        <label for="phoneNumber" >Telefonszám: </label>
+        <p>Jelenlegi: <span id="curPhoneNumber" class="ajaxColor"><?php echo $driver->get_phone(); ?></span></p>
+        <input class="form-control" type="text" id="phoneNumber" name="phoneNumber">
         <br>
         <label for="password">Jelszó:</label>
         <input class="form-control" type="password" name="password" id="password">
         <br>
-        <input class="btn btn-hcbutton" type="submit" value="Módosít">
     </fieldset>
 </form>
+<button class="btn btn-primary rounded-pill m-2" onclick="confirmModify()">Módosít</button>
 </div>
+</div>
+<script src="js/settingsDriver.js"></script>
 <?php
     }else if($_SESSION["type"]=="company"){
 ?>
 <div class="container">
-<form action="index.php?page=settings method="post">
+<div class="borderForForm">
+<form name="companyChange" action="index.php?page=settings" method="post">
     <fieldset>
         <legend>Vállalati adatok:</legend>
-        <label for="cn" >Cég név: </label>
-        <p>Jelenlegi: <?php echo $company->get_name(); ?></p>
-        <input class="form-control" type="text" id="cn" name="companyname">
+        <label for="companyName" >Cég név: </label>
+        <p>Jelenlegi: <span id="curName" class="ajaxColor"><?php echo $company->get_name(); ?></span></p>
+        <input class="form-control" type="text" id="companyName" name="companyName">
         <br>
         <label for="country">Ország:</label>
-        <p>Jelenlegi: <?php echo $currentCountry; ?></p>
+        <p>Jelenlegi: <span id="curCountry" class="ajaxColor"><?php echo $currentCountry; ?></span></p>
         <select class="form-control" name="country" id="country">
             <option value="">Válasszon országot!</option>
 			<?php
@@ -83,38 +98,40 @@
 		</select>
         <br>
         <label for="town" >Város:</label>
-        <p>Jelenlegi: <?php echo $currentTown; ?></p>
+        <p>Jelenlegi: <span id="curTown" class="ajaxColor"><?php echo $currentTown; ?></span></p>
         <select class="form-control" name="town" id="town">
             <option value="">Válasszon várost!</option>
         </select>
         <br>
-        <label for="str" >Utca: </label>
-        <p>Jelenlegi: <?php echo $company->get_street(); ?></p>
-        <input class="form-control" type="text" id="str" name="street">
+        <label for="street" >Utca: </label>
+        <p>Jelenlegi: <span id="curStreet" class="ajaxColor"><?php echo $company->get_street(); ?></span></p>
+        <input class="form-control" type="text" id="street" name="street">
         <br>
-        <label for="hn" >Házszám: </label>
-        <p>Jelenlegi: <?php echo $company->get_houseNumber(); ?></p>
-        <input class="form-control" type="text" id="hn" name="houseNumber">
+        <label for="houseNumber" >Házszám: </label>
+        <p>Jelenlegi: <span id="curHouseNumber" class="ajaxColor"><?php echo $company->get_houseNumber(); ?></span></p>
+        <input class="form-control" type="text" id="houseNumber" name="houseNumber">
         <br>
-        <label for="em" >E-mail: </label>
-        <p>Jelenlegi: <?php echo $company->get_email(); ?></p>
-        <input class="form-control" type="email" id="em" name="email">
+        <label for="email" >E-mail: </label>
+        <p>Jelenlegi: <span id="curEmail" class="ajaxColor"><?php echo $company->get_email(); ?></span></p>
+        <input class="form-control" type="email" id="email" name="email">
         <br>
-        <label for="pn" >Telefonszám: </label>
-        <p>Jelenlegi: <?php echo $company->get_phone(); ?></p>
-        <input class="form-control" type="text" id="pn" name="phoneNumber">
+        <label for="phoneNumber" >Telefonszám: </label>
+        <p>Jelenlegi: <span id="curPhoneNumber" class="ajaxColor"><?php echo $company->get_phone(); ?></span></p>
+        <input class="form-control" type="text" id="phoneNumber" name="phoneNumber">
         <br>
-        <label for="www" >Weboldal: </label>
-        <p>Jelenlegi: <?php echo $company->get_webpage(); ?></p>
-        <input class="form-control" type="text" id="www" name="webpage">
+        <label for="webpage" >Weboldal: </label>
+        <p>Jelenlegi: <span id="curWebpage" class="ajaxColor"><?php echo $company->get_webpage(); ?></span></p>
+        <input class="form-control" type="text" id="webpage" name="webpage" placeholder="www.valami.hu">
         <br>
         <label for="password">Jelszó:</label>
         <input class="form-control" type="password" name="password" id="password">
         <br>
-        <input class="btn btn-hcbutton" type="submit" value="Módosít">
     </fieldset>
 </form>
+<button class="btn btn-primary rounded-pill m-2" onclick="confirmModify()">Módosít</button>
 </div>
+</div>
+<script src="js/settingsCompany.js"></script>
 <?php
     }
 ?>
