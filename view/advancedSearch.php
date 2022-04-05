@@ -1,1 +1,0 @@
-<h1>Részletes keresés</h1>

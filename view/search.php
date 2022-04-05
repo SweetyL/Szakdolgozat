@@ -1,37 +1,78 @@
-<?php
-    if($_SESSION["type"]=="driver" or $_SESSION["type"]=="admin"){
-?>
-<div class="p-2 flex-fill">
-    <form action="index.php?page=search" method="post">
-        <fieldset>
-		    <legend class="text-center">Keresés</legend>
-		    <div class="input-group">
-			    <label for="nm">Cég neve:</label>
-			    <input type="text" id="nm" name="name" class="form-control">
-		    </div>
-		    <input class="btn btn-primary rounded-pill" type="submit" value="Keresés">
-	    </fieldset>
-    </form>
+<h1>Keresés</h1>
+<p>Töltse ki azokat az adatokat amikre rá szeretne szűrni. Minél több adatot ad meg, annál pontosabb eredményeket fog kapni!</p>
+<div class="container">
+    <div class="borderForForm">
+        <?php
+            if($_SESSION["type"]=="driver"){
+        ?>
+    <form name="companySearch" action="index.php?page=search" method="post">
+    <fieldset>
+        <legend>Vállalati adatok:</legend>
+        <div class="row">
+            <div class="col">
+                <label for="companyName" >Cég név: </label>
+                <input class="form-control" type="text" id="companyName" name="companyName">
+            </div>
+            <div class="col">
+                <label for="country">Ország:</label>
+                <select class="form-control" name="country" id="country">
+                    <option value="">Válasszon országot!</option>
+			            <?php
+                            if ($countryIDs) {
+					            foreach($countryIDs as $row) {
+						            $country->set_country($row, $conn);
+						            if($country->get_name()) echo '<option value="'.$row.'">'.$country->get_name().'</option>';
+					            }
+				            }
+			            ?>							
+		        </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="town" >Város:</label>
+                <select class="form-control" name="town" id="town">
+                    <option value="">Válasszon várost!</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="street" >Utca: </label>
+                <input class="form-control" type="text" id="street" name="street">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="houseNumber" >Házszám: </label>
+                <input class="form-control" type="text" id="houseNumber" name="houseNumber">
+            </div>
+            <div class="col">
+                <label for="email" >E-mail: </label>
+                <input class="form-control" type="email" id="email" name="email">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="phoneNumber" >Telefonszám: </label>
+                <input class="form-control" type="text" id="phoneNumber" name="phoneNumber">
+            </div>
+            <div class="col">
+                <label for="webpage" >Weboldal: </label>
+                <input class="form-control" type="text" id="webpage" name="webpage" placeholder="www.valami.hu">
+            </div>
+        </div>
+    </fieldset>
+</form>
+<button class="btn btn-primary rounded-pill m-2" onclick="confirmModify()">Módosít</button>
 </div>
-<?php
-    }else if($_SESSION["type"]=="company"){
-?>
-<div class="result p-2 flex-fill">
-    <form action="index.php?page=search" method="post">
-        <fieldset>
-		    <legend class="text-center">Keresés</legend>
-		    <div class="input-group">
-			    <label for="nm">Családnév:</label>
-			    <input type="text" id="nm" name="lname" class="form-control">
-		    </div>
-            <div class="input-group">
-			    <label for="nm">Keresztnév:</label>
-			    <input type="text" id="nm" name="fname" class="form-control">
-		    </div>
-		    <input class="btn btn-primary rounded-pill" type="submit" value="Keresés">
-	    </fieldset>
-    </form>
+        <?php
+            }else if($_SESSION["type"]=="company"){
+        ?>
+
+        <?php
+            }
+        ?>
+    </div>
 </div>
-<?php
-    }
-?>

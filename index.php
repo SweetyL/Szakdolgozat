@@ -28,8 +28,7 @@ $menupontok = array(    'index' => "Főoldal",
                         'register' => "Regisztrálás",
                         'myProfile' => "Profilom",
                         'browser' => "Böngészés",
-                        'search' => "Alap keresés",
-                        'advancedSearch' => "Részletes keresés",
+                        'search' => "Keresés",
                         'login' => "Belépés"
                 );
 
