@@ -36,7 +36,7 @@ class Town{
 
     public function townList($conn) {
         $list = array();
-        $sql = "SELECT townID FROM towns";
+        $sql = "SELECT townID FROM towns ORDER BY name ASC";
         if($result = $conn->query($sql)) {
             if ($result->num_rows > 0) {
 				while($row = $result->fetch_assoc()) {

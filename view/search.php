@@ -63,9 +63,9 @@
                 <input class="form-control" type="text" id="webpage" name="webpage" placeholder="www.valami.hu">
             </div>
         </div>
+        <input class="btn btn-primary rounded-pill" type="submit" value="Keresés">
     </fieldset>
 </form>
-<button class="btn btn-primary rounded-pill m-2" onclick="confirmModify()">Módosít</button>
 </div>
         <?php
             }else if($_SESSION["type"]=="company"){
@@ -76,3 +76,17 @@
         ?>
     </div>
 </div>
+<script type="text/javascript">
+    $("#country").on("change", function(){
+        var countryID = $(this).val();
+        $.ajax({
+            url :"ajax/updateTownList.php",
+            type:"POST",
+            cache:false,
+            data:{countryID:countryID},
+            success:function(data){
+                $("#town").html(data);
+            }
+        });
+    });
+</script>

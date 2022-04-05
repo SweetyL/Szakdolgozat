@@ -3,23 +3,52 @@
         header('Location: index.php?page=404');
         exit();
     }
-    include 'view/search.php';
     $driver = new Driver();
     $company = new Company();
     $country = new Country();
     $town = new Town();
+    $countryIDs = $country->countriesList($conn);
+    include 'view/search.php';
     if($_SESSION["type"]=="driver"){
-        if(isset($_POST['name'])) {
-            $name = "";
-            $townID = "";
-            $street = "";
-            $houseNumber = "";
-            $email = "";
-            $phoneNumber = "";
-            $webpage = "";
-            $sql = "SELECT compID FROM companies WHERE name LIKE '?' AND townID = ? AND street LIKE '?' AND houseNumber LIKE '?' AND email LIKE '?' AND phoneNumber LIKE '?' AND webpage LIKE '?'";
+        if(!empty($_POST['companyName']) || !empty($_POST['country']) || !empty($_POST['town']) || !empty($_POST['street']) || !empty($_POST['houseNumber']) || !empty($_POST['email']) || !empty($_POST['phoneNumber']) || !empty($_POST['webpage'])) {
+            $name = "%";
+            $townID = "%";
+            $street = "%";
+            $houseNumber = "%";
+            $email = "%";
+            $phoneNumber = "%";
+            $webpage = "%";
+            //$sql = "SELECT compID FROM companies WHERE name LIKE '?' AND townID IN('?') AND street LIKE '?' AND houseNumber LIKE '?' AND email LIKE '?' AND phoneNumber LIKE '?' AND webpage LIKE '?'";
+            $sql = "SELECT compID FROM companies WHERE name LIKE '?'";
             $stmt = $conn->prepare($sql);
+            if(isset($_POST['companyName']) and !empty($_POST['companyName'])){
+                $name = "%".htmlspecialchars($_POST['companyName'])."%";
+            }
 
+            if(isset($_POST['town']) and !empty($_POST['town'])){
+                $townID = intval(htmlspecialchars($_POST['town']));
+            }
+
+            if(isset($_POST['street']) and !empty($_POST['street'])){
+                $street = "%".htmlspecialchars($_POST['street'])."%";
+            }
+
+            if(isset($_POST['houseNumber']) and !empty($_POST['houseNumber'])){
+                $houseNumber = "%".htmlspecialchars($_POST['houseNumber'])."%";
+            }
+
+            if(isset($_POST['email']) and !empty($_POST['email'])){
+                $email = "%".htmlspecialchars($_POST['email'])."%";
+            }
+
+            if(isset($_POST['phoneNumber']) and !empty($_POST['phoneNumber'])){
+                $phoneNumber = "%".htmlspecialchars($_POST['phoneNumber'])."%";
+            }
+
+            if(isset($_POST['webpage']) and !empty($_POST['webpage'])){
+                $webpage = "%".htmlspecialchars($_POST['webpage'])."%";
+            }
+            $stmt->bind_param("sisssss",$name ,$townID, $street, $houseNumber, $email, $phoneNumber, $webpage);
             $stmt->execute();
             if($result = $stmt->get_result()) {
                 if ($result->num_rows > 0) {
@@ -40,6 +69,7 @@
                     }
                 }
             }
+            $stmt->close();
         }
     }else if($_SESSION["type"]=="company"){
         if(isset($_POST['name'])) {
@@ -65,5 +95,4 @@
             }
         }
     }
-    $stmt->close();
 ?>
