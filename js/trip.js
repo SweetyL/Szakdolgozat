@@ -68,24 +68,24 @@ function confirmModify(){
     let curItem = $("#curStart").text()+" - "+$("#curEnd").text()+", "+$("#curLength").text()+", "+$("#curCargo").text();
     let change = "";
     if(!check2){
-        change = change+$("#curStart").text()+" - ";
+        change += $("#curStart").text()+" - ";
     }else{
-        change = change+check2+" - ";
+        change += check2+" - ";
     }
     if(!check3){
-        change = change+$("#curEnd").text()+", ";
+        change += $("#curEnd").text()+", ";
     }else{
-        change = change+check3+", ";
+        change += check3+", ";
     }
     if(!check4){
-        change = change+$("#curLength").text()+", ";
+        change += $("#curLength").text()+", ";
     }else{
-        change = change+check4+", ";
+        change += check4+", ";
     }
     if(!check5){
-        change = change+$("#curCargo").text();
+        change += $("#curCargo").text();
     }else{
-        change = change+$("#modCargo option:selected").text();
+        change += $("#modCargo option:selected").text();
     }
     if(!check || (!check4 && !isNumber(parseInt(check4)))){
         Swal.fire({
