@@ -541,12 +541,23 @@ h1, h2, h3, h4, h5, h6{
 .result a{
     color:#e47908 !important;
 }
+
 .result a:hover{
     color:#b15d06 !important;
 }
+
 .normalLink a{
     color:#e47908 !important;
 }
+
 .normalLink a:hover{
     color:#b15d06 !important;
+}
+
+.online{
+    color: green;
+}
+
+.offline{
+    color: gray;
 }

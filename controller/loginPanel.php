@@ -7,6 +7,17 @@ if(empty($_REQUEST['action'])){
 }
 if($_REQUEST['action'] == 'logout'){
     logger("[I]".date("Y-m-d H:i:s")." - ".$_SERVER['REMOTE_ADDR']." a".$_SESSION["id"]." id-s ember, tipusa ".$_SESSION["type"]." kilepett\n");
+    if($_SESSION['type']=="driver"){
+        $sql = "DELETE FROM `driverstatus` WHERE id =".$_SESSION['id'];
+        $conn->query($sql);
+        $sql2 = "INSERT INTO `driverstatus`(`id`, `date`) VALUES (".$_SESSION['id'].",'".date("Y-m-d H:i:s")."')";
+        $conn->query($sql2);
+    }else if($_SESSION['type']=="company"){
+        $sql = "DELETE FROM `compstatus` WHERE id =".$_SESSION['id'];
+        $conn->query($sql);
+        $sql2 = "INSERT INTO `compstatus`(`id`, `date`) VALUES (".$_SESSION['id'].",'".date("Y-m-d H:i:s")."')";
+        $conn->query($sql2);
+    }
     session_unset();
     header('Location: index.php?page=index');
     exit();
@@ -17,8 +28,8 @@ else if(!empty($_SESSION["id"])){
 }
 if(isset($_POST['user']) and isset($_POST['pw'])) {
     $loginError = '';
-    if(strlen($_POST['user']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
-    if(strlen($_POST['pw']) == 0) $loginError .= "Nem írtál be jelszót<br>";
+    if(strlen($_POST['user']) == 0) $loginError .= "Nem írtál be felhasználónevet!<br>";
+    if(strlen($_POST['pw']) == 0) $loginError .= "Nem írtál be jelszót!<br>";
     if($loginError == '') {
         if($_REQUEST['action']=="drivers"){
             $sql = "SELECT driverID FROM ".$_REQUEST['action']." WHERE username LIKE '".mysqli_real_escape_string($conn,$_POST['user'])."'";
@@ -40,6 +51,10 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
                             }else{
                                 $_SESSION["type"] = "driver";
                             }
+                            $sql = "DELETE FROM `driverstatus` WHERE id =".$row['driverID'];
+                            $conn->query($sql);
+                            $sql2 = "INSERT INTO `driverstatus`(`id`) VALUES (".$row['driverID'].")";
+                            $conn->query($sql2);
                             logger("[I]".date("Y-m-d H:i:s")." - ".$_SERVER['REMOTE_ADDR']." a".$_POST['user']." nevu felhasznalo belepett az oldalra(sofor)\n");
                             header('Location: index.php?page=index');
                             exit();
@@ -52,6 +67,10 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
                             $_SESSION["id"] = $row['compID'];
                             $_SESSION["name"] = $company->get_name();
                             $_SESSION["type"] = "company";
+                            $sql = "DELETE FROM `compstatus` WHERE id =".$row['compID'];
+                            $conn->query($sql);
+                            $sql2 = "INSERT INTO `compstatus`(`id`) VALUES (".$row['compID'].")";
+                            $conn->query($sql2);
                             logger("[I]".date("Y-m-d H:i:s")." - ".$_SERVER['REMOTE_ADDR']." a".$_POST['user']." nevu felhasznalo belepett az oldalra(vallalat)\n");
                             header('Location: index.php?page=index');
                             exit();

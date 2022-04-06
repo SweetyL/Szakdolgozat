@@ -11,6 +11,7 @@
     $countryIDs = $country->countriesList($conn);
     $companyIDs = $company->companiesList($conn);
     $driverIDs = $driver->driversList($conn);
+    $online = array();
     include 'view/search.php';
     if($_SESSION["type"]=="driver"){
         if(!empty($_POST['companyName']) || !empty($_POST['country']) || !empty($_POST['town']) || !empty($_POST['street']) || !empty($_POST['houseNumber']) || !empty($_POST['email']) || !empty($_POST['phoneNumber']) || !empty($_POST['webpage'])) {
@@ -91,10 +92,16 @@
                         $company->set_user($row,$conn);
                         $town->set_town($company->get_townID(),$conn);
                         $country->set_country($town->get_country(),$conn);
+                        $online = getOnlineCompanies($conn);
+                        if(in_array($row,$online)){
+                            $status = "<p><i class='fas fa-circle offline'></i> Jelenleg online</p>";
+                        }else{
+                            $status = "<p><i class='fas fa-circle offline'></i> Utoljára online: ".str_replace("-","/",getCompanyLastOnline($company->get_id(),$conn))."</p>";
+                        }
                         echo "<div class='row'>";
                         echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
                                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
-                                <h1>Név: <a href="index.php?page=profile&id='.$row.'" target="_blank">'.$company->get_name().'</a></h1>
+                                <h1>Név: <a href="index.php?page=profile&id='.$row.'" target="_blank">'.$company->get_name().'</a></h1>'.$status.'
                                 <p>Ország: '.$country->get_name().'</p>
                                 <p>Város: '.$town->get_name().'</p>
                                 <p>Utca, házszám: '.$company->get_street().' '.$company->get_houseNumber().'</p>
@@ -191,10 +198,16 @@
                         $driver->set_user($row,$conn);
                         $town->set_town($driver->get_townID(),$conn);
                         $country->set_country($town->get_country(),$conn);
+                        $online = getOnlineDrivers($conn);
+                        if(in_array($row,$online)){
+                            $status = "<p><i class='fas fa-circle offline'></i> Jelenleg online</p>";
+                        }else{
+                            $status = "<p><i class='fas fa-circle offline'></i> Utoljára online: ".getDriverLastOnline($driver->get_id(),$conn)."</p>";
+                        }
                         echo "<div class='row'>";
                         echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
                                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
-                                <h1>Név: <a href="index.php?page=profile&id='.$row.'" target="_blank">'.$driver->get_lastname().' '.$driver->get_firstname().'</a></h1>
+                                <h1>Név: <a href="index.php?page=profile&id='.$row.'" target="_blank">'.$driver->get_lastname().' '.$driver->get_firstname().'</a></h1>'.$status.'
                                 <p>Ország: '.$country->get_name().'</p>
                                 <p>Város: '.$town->get_name().'</p>
                                 <p>Utca, házszám: '.$driver->get_street().' '.$driver->get_houseNumber().'</p>

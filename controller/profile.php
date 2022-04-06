@@ -16,6 +16,12 @@
             $driver->set_user($id,$conn);
             $town->set_town($driver->get_townID(),$conn);
             $country->set_country($town->get_country(),$conn);
+            $online = getOnlineCompanies($conn);
+            if(in_array($driver->get_id(),$online)){
+                $status = "<p><i class='fas fa-circle offline'></i> Jelenleg online</p>";
+            }else{
+                $status = "<p><i class='fas fa-circle offline'></i> Utoljára online: ".str_replace("-","/",getDriverLastOnline($driver->get_id(),$conn))."</p>";
+            }
         }
     }
 
@@ -27,6 +33,12 @@
             $company->set_user($id,$conn);
             $town->set_town($company->get_townID(),$conn);
             $country->set_country($town->get_country(),$conn);
+            $online = getOnlineDrivers($conn);
+            if(in_array($company->get_id(),$online)){
+                $status = "<p><i class='fas fa-circle online'></i> Jelenleg online</p>";
+            }else{
+                $status = "<p><i class='fas fa-circle offline'></i> Utoljára online: ".str_replace("-","/",getCompanyLastOnline($company->get_id(),$conn))."</p>";
+            }
         }
     }
 
