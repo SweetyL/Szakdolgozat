@@ -24,7 +24,7 @@
 <p>Utca, házszám: <?php echo $company->get_street()." ".$company->get_houseNumber()?></p>
 <p>Email: <?php echo $company->get_email()?></p>
 <p>Telefonszám: <?php echo $company->get_phone()?></p>
-<p>Weboldal: <?php echo "<a href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a>"?>
+<p>Weboldal: <?php echo "<a class='normalLink' href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a>"?>
 <br>
 <button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
 <br>
