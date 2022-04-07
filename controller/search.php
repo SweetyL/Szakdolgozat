@@ -75,9 +75,14 @@
                 }else{
                     $webpage = $company->get_webpage();
                 }
-                if(str_contains(strtolower($company->get_name()), strtolower($name))==true and intval($company->get_townID())==intval($townID) and str_contains(strtolower($country->get_id()),strtolower($countryID)) and 
-                str_contains(strtolower($company->get_street()), strtolower($street))==true and str_contains(strtolower($company->get_houseNumber()), strtolower($houseNumber))==true and str_contains(strtolower($company->get_email()), strtolower($email))==true and 
-                str_contains(strtolower($company->get_phone()), strtolower($phoneNumber))==true and str_contains(strtolower($company->get_webpage()), strtolower($webpage))==true){
+                if(strpos(strtolower($company->get_name()), strtolower($name))!==false and 
+                intval($company->get_townID())==intval($townID) and 
+                strpos(strtolower($country->get_id()),strtolower($countryID))!==false and 
+                strpos(strtolower($company->get_street()), strtolower($street))!==false and 
+                strpos(strtolower($company->get_houseNumber()), strtolower($houseNumber))!==false and 
+                strpos(strtolower($company->get_email()), strtolower($email))!==false and 
+                strpos(strtolower($company->get_phone()), strtolower($phoneNumber))!==false and 
+                strpos(strtolower($company->get_webpage()), strtolower($webpage))!==false){
                     $resultIDs[] = $row;
                 }
 
@@ -177,9 +182,14 @@
                     $phoneNumber = $driver->get_phone();
                 }
 
-                if(str_contains(strtolower($driver->get_firstname()), strtolower($firstname))==true and str_contains(strtolower($driver->get_lastname()), strtolower($lastname))==true and intval($driver->get_townID())==intval($townID) and str_contains(strtolower($country->get_id()),strtolower($countryID)) and 
-                str_contains(strtolower($driver->get_street()), strtolower($street))==true and str_contains(strtolower($driver->get_houseNumber()), strtolower($houseNumber))==true and 
-                str_contains(strtolower($driver->get_email()), strtolower($email))==true and str_contains(strtolower($driver->get_phone()), strtolower($phoneNumber))==true){
+                if(strpos(strtolower($driver->get_firstname()), strtolower($firstname))!==false and 
+                strpos(strtolower($driver->get_lastname()), strtolower($lastname))!==false and 
+                intval($driver->get_townID())==intval($townID) and 
+                strpos(strtolower($country->get_id()),strtolower($countryID)) and 
+                strpos(strtolower($driver->get_street()), strtolower($street))!==false and 
+                strpos(strtolower($driver->get_houseNumber()), strtolower($houseNumber))!==false and 
+                strpos(strtolower($driver->get_email()), strtolower($email))!==false and 
+                strpos(strtolower($driver->get_phone()), strtolower($phoneNumber))!==false){
                     if(in_array($row,$admins)){
                         continue;
                     }else{

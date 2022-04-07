@@ -63,7 +63,6 @@
                 <input class="form-control" type="text" id="webpage" name="webpage" placeholder="www.valami.hu">
             </div>
         </div>
-    </div>
         <br>
         <input class="btn btn-primary rounded-pill" type="submit" value="Keresés">
     </fieldset>
@@ -141,8 +140,8 @@
         <?php
             }
         ?>
+        </div>
     </div>
-</div>
 <script type="text/javascript">
     $("#country").on("change", function(){
         var countryID = $(this).val();
