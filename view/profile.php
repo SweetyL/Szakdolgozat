@@ -1,3 +1,4 @@
+<div class="container">
 <?php 
     if($_SESSION["type"]=="driver"){
 ?>
@@ -14,6 +15,21 @@
 }else{
 ?>
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="img-thumbnail img-responsive">
+<div>
+<?php
+    if ($adrIDs) {
+        foreach($adrIDs as $row) {
+            if(in_array($row,array_intersect($driverADRs,$adrIDs))){
+                echo "<img class='smallPic' src='img/ADR/Class_".$row.".svg' alt='ADR osztály".$row."'>";
+            }else{
+                if($row!=9){
+                    echo "<img class='disabledPic smallPic' src='img/ADR/Class_".$row.".svg' alt='ADR osztály".$row."'>";
+                }
+            }
+        }
+    }
+?>
+</div>
 <p id="name">Név: <?php echo $driver->get_lastname()." ".$driver->get_firstname()?></p>
 <?php echo $status;?>
 <p>Ország: <?php echo $country->get_name() ?></p>
@@ -24,6 +40,7 @@
 <?php
 }
 ?>
+</div>
 <script type="text/javascript">
     let title = $("#name").text();
     $(document).ready(function() {

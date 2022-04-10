@@ -65,6 +65,8 @@ if($_REQUEST['page']=="driverRegister"){
         $title = "Motorok kezelése";
 }else if($_REQUEST['page']=="editAdmin"){
         $title = "Adminok kezelése";
+}else if($_REQUEST['page']=="editADR"){
+        $title = "ADR tanúsítványok kezelése";
 }else{
         $title = $menupontok[$page];
 }

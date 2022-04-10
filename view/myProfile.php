@@ -2,7 +2,26 @@
 <?php 
     if(!empty($_SESSION["id"]) and $_SESSION["type"]=="driver"){
 ?>
-<img class="rounded mx-auto d-block img-fluid" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="img-thumbnail img-responsive">
+<div>
+    <img class="rounded mx-auto profilePic d-block" src="img/default.svg" alt="Profilkép" class="img-thumbnail img-responsive">
+</div>
+<br>
+<div>
+    <?php
+        if ($adrIDs) {
+            foreach($adrIDs as $row) {
+                if(in_array($row,array_intersect($driverADRs,$adrIDs))){
+                    echo "<img class='smallPic' src='img/ADR/Class_".$row.".svg' alt='ADR osztály ".$row."'>";
+                }else{
+                    if($row!=9){
+                       echo "<img class='disabledPic smallPic' src='img/ADR/Class_".$row.".svg' alt='ADR osztály ".$row."'>";
+                    }
+                }
+            }
+        }
+    ?>
+</div>
+<br>
 <p>Név: <?php echo $driver->get_lastname()." ".$driver->get_firstname()?></p>
 <p>Ország: <?php echo $country->get_name() ?></p>
 <p>Város: <?php echo $town->get_name()?></p>
@@ -17,7 +36,9 @@
 <?php
 }else if(!empty($_SESSION["id"]) and $_SESSION["type"]=="company"){
 ?>
-<img class="rounded mx-auto d-block" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="img-thumbnail img-responsive">
+<div>
+    <img class="rounded mx-auto profilePic d-block" src="img/default.svg" alt="Profilkép" class="img-thumbnail img-responsive">
+</div>
 <p>Név: <?php echo $company->get_name()?></p>
 <p>Ország: <?php echo $country->get_name() ?></p>
 <p>Város: <?php echo $town->get_name()?></p>
@@ -46,6 +67,8 @@
 <button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editJobs'">Megbízások módosítása</button>
 <br>
 <button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editAdmin'">Adminok kezelése</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill p-3 my-3" onclick="window.location.href = 'index.php?page=editADR'">ADR tanúsítványok kezelése</button>
 </div>
 <?php
 }

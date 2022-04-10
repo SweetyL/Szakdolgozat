@@ -37,7 +37,7 @@
             }
             echo '<div class="row">';
             echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
+            <img class="smallPic" src="img/default.svg" alt="Profilkép">
                 <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$company->get_name().'</a></h1>'.$status.'
                 <p>Ország: '.$country->get_name().'</p>
                 <p>Város: '.$town->get_name().'</p>
@@ -61,7 +61,7 @@
                 }
                 echo '<div class="row">';
                 echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
+                <img class="smallPic" src="img/default.svg" alt="Profilkép">
                     <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$company->get_name().'</a></h1>'.$status.'
                     <p>Ország: '.$country->get_name().'</p>
                     <p>Város: '.$town->get_name().'</p>
@@ -101,7 +101,7 @@
             }
             echo '<div class="row">';
             echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
+                <img class="smallPic" src="img/default.svg" alt="Profilkép">
                 <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$driver->get_lastname().' '.str_replace("-","/",$driver->get_firstname()).'</a></h1>'.$status.'
                 <p>Ország: '.$country->get_name().'</p>
                 <p>Város: '.$town->get_name().'</p>
@@ -127,7 +127,7 @@
                 }
                 echo '<div class="row">';
                 echo '<div class="mx-auto col-sm-6 my-5 result p-2 wow fadeInLeft">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F65%2F25%2Fa0%2F6525a08f1df98a2e3a545fe2ace4be47.jpg&f=1&nofb=1" alt="Profilkép" class="smallPic">
+                    <img class="smallPic" src="img/default.svg" alt="Profilkép">
                     <h1>Név: <a href="index.php?page=profile&id='.$item.'" target="_blank">'.$driver->get_lastname().' '.str_replace("-","/",$driver->get_firstname()).'</a></h1>'.$status.'
                     <p>Ország: '.$country->get_name().'</p>
                     <p>Város: '.$town->get_name().'</p>

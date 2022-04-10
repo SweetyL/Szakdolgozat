@@ -98,4 +98,18 @@ function getCompanyLastOnline($id,$conn){
         }
     }
 }
+
+
+function getADRcertificate($id,$conn){
+    $list = array();
+    $sql = "SELECT driverID, adrID FROM `skills` WHERE driverID =".$id;
+    if($result = $conn->query($sql)) {
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $list[] = $row['adrID'];
+            }
+        }
+    }
+    return $list;
+}
 ?>

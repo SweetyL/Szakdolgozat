@@ -3,11 +3,15 @@
         header('Location: index.php?page=404');
         exit();
     }
+    require 'model/ADR.php';
     $driver = new Driver();
     $company = new Company();
     $country = new Country();
     $town = new Town();
     $id = $_REQUEST['id'];
+    $ADR = new ADR();
+    $adrIDs = $ADR->adrList($conn);
+    $driverADRs = array();
     if($_SESSION["type"]=="company"){
         if(!in_array($id,$driver->driversList($conn))){
             header('Location: index.php?page=404');
@@ -17,6 +21,7 @@
             $town->set_town($driver->get_townID(),$conn);
             $country->set_country($town->get_country(),$conn);
             $online = getOnlineCompanies($conn);
+            $driverADRs = getADRcertificate($driver->get_id(),$conn);
             if(in_array($driver->get_id(),$online)){
                 $status = "<p><i class='fas fa-circle offline'></i> Jelenleg online</p>";
             }else{

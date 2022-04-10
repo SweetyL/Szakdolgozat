@@ -561,3 +561,12 @@ h1, h2, h3, h4, h5, h6{
 .offline{
     color: gray;
 }
+
+.disabledPic{
+    filter: contrast(15%);
+}
+
+.profilePic{
+    height: 200px;
+    width: 200px;
+}

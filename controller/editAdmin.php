@@ -17,7 +17,6 @@
                         $loginError .= 'Érvénytelen jelszó!';
                     }else{
                         $sql = "INSERT INTO `admins`(`id`) VALUES ('".mysqli_real_escape_string($conn,$_POST['addAdmin'])."')";
-                        echo $sql;
                         $result = $conn->query($sql);
                         header('Location: index.php?page=redirect');
                         exit();
@@ -37,7 +36,6 @@
                         $loginError .= 'Érvénytelen jelszó!';
                     }else{
                         $sql = "DELETE FROM `admins` WHERE id =".mysqli_real_escape_string($conn,$_POST['delAdmin']);
-                        echo $sql;
                         $result = $conn->query($sql);
                         if($_SESSION['id']==$_POST['delAdmin']){
                             $_SESSION["type"] = "driver";
