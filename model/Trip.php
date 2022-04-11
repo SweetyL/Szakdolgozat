@@ -44,7 +44,7 @@ class Trip {
     }
 
     public function get_cargoID(){
-        return $this->tripLength;
+        return $this->cargoID;
     }
 
     public function tripList($conn) {
