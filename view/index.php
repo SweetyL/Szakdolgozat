@@ -7,7 +7,7 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport & Logistics Solution</h5>
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown"><i>TransportGO</i></h5>
                                 <h1 class="display-3 text-white animated slideInDown mb-4">I. számú megoldás <span class="text-primary">sofőrök</span> számára</h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Vállalatot keresne ahol munkába állhat? Velünk megteheti!</p>
                                 <?php
@@ -27,7 +27,7 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport & Logistics Solution</h5>
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown"><i>TransportGO</i></h5>
                                 <h1 class="display-3 text-white animated slideInDown mb-4">I. számú megoldás <span class="text-primary">vállalatok</span> számára</h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Sofőrt keresne, aki el tudna vállalni egy vagy több megbízást? Velünk megteheti!</p>
                                 <?php

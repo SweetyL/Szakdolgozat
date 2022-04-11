@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow border-top border-5 border-primary sticky-top p-0">
   <a href="index.php?page=index" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
-    <h2 class="mb-2 text-white">App neve</h2>
+    <h2 class="mb-2 text-white"><i>TransportGO</i></h2>
   </a>
   <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
     <span class="navbar-toggler-icon"></span>
