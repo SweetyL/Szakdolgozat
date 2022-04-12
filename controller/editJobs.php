@@ -14,11 +14,12 @@
     $trip = new Trip();
     $job = new Job();
     $engineIDs = $engine->engineList($conn);
-    $truckIDs = $truck->truckList($conn);
+    $truckIDs = array();
     $cargoIDs = $cargo->cargoList($conn);
     $tripIDs = $trip->tripList($conn);
-    $jobIDs = array();
+    $company = new Company();
     if($_SESSION['type']=="company"){
+        $jobIDs = array();
         $sql = "SELECT jobID FROM jobs WHERE ownerOfJob =".$_SESSION['id'];
             if($result = $conn->query($sql)) {
                 if ($result->num_rows > 0) {
@@ -27,8 +28,17 @@
                     }
                 }
         }
+        $sql = "SELECT compID, truckID FROM owneroftrucks WHERE compID=".$_SESSION['id'];
+            if($result = $conn->query($sql)){
+                if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()){
+                        $truckIDs[] = $row['truckID'];
+                    }
+                }
+            }
     }else{
-
+        $compIDs = $company->companiesList($conn);
+        $jobIDs = $job->jobList($conn);
     }
     
     include 'view/editJobs.php';
