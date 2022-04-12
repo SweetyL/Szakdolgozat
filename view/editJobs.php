@@ -59,6 +59,7 @@
         </div>
 	</fieldset>
 	</form>
+	<br>
 	<button class="btn btn-primary rounded-pill m-2" onclick="companyConfirmAdd()">Hozzáadás</button>
 	</div>
     <br>
@@ -171,6 +172,7 @@
         </div>
             </fieldset>
         </form>
+		<br>
         <button class="btn btn-primary rounded-pill m-2" onclick="companyConfirmModify()">Módosít</button>
     </div>
 <?php

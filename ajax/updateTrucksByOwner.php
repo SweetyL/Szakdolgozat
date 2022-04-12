@@ -2,7 +2,6 @@
 include "../includes/db.inc.php";
 include "../model/truck/Truck.php";
 $truck = new Truck();
-//include "../includes/functions.inc.php";
 if (isset($_POST['compID']) && !empty($_POST['compID'])) {
     $sql = "SELECT compID, truckID FROM owneroftrucks WHERE compID = ".mysqli_real_escape_string($conn,$_POST['compID'])."";
     $result = $conn->query($sql);
