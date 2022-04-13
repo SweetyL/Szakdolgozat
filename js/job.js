@@ -4,21 +4,21 @@ function companyConfirmAdd() {
     let check4 = $("#addComment").val();
     let check5 = $("#addDeadline").val();
     let length = 0;
+    let dateNow = new Date();
+    let dateInput = new Date(check5);
     if(!check4){
         length = check4.length;
     }
-
-    if(!check || !check2 || !check5 || length > 200){
+    if(!check || !check2 || !check5 || length > 200 || !(dateNow.getTime() <= dateInput.getTime())){
         Swal.fire({
             icon: 'error',
             title: 'Hiba!',
             text: 'Hibás adatok!'
         })
     }else{
-        let item = $("#delCargo option:selected").text();
         Swal.fire({
               title: 'Biztos benne?',
-              html: "<p>Ha kitörli a következő elemet, akkor már nincs visszaút!</p><p>"+item+"</p>",
+              html: "<p>Létrehozza ezt a megbízást?</p>",
               icon: 'warning',
               showCancelButton: true,
               confirmButtonColor: '#3085d6',
@@ -60,29 +60,42 @@ function companyConfirmDel(){
     }
 }
 
-function confirmModify(){
-    let check = $("#modCargo").val();
-    let check2 = $("#modName").val();
-    let check3 = $("#modMass").val();
-    let check4 = $("#modADR").val();
-    let curItem = $("#curName").text()+", "+$("#curMass").text()+" tonna, "+$("#curADR").text();
+function companyConfirmModify(){
+    let check = $("#modJob").val();
+    let check2 = $("#modTrip").val();
+    let check3 = $("#modTruck").val();
+    let check4 = $("#modReward").val();
+    let check5 = $("#modComment").val();
+    let check6 = $("#modDeadline").val();
+    let dateNow = new Date();
+    let dateInput = new Date(check5);
+    let length = 0;
+    if(!check5){
+        length = check4.length;
+    }
+    let curItem = $("#curTrip").text()+", "+$("#curTruck").text()+", "+$("#curReward").text()+" EUR, "+$("#curDeadline").text();
     let change = "";
     if(!check2){
-        change = change+$("#curName").text()+", ";
+        change += $("#curTrip").text()+", ";
     }else{
-        change = change+check2+", ";
+        change += $("#modTrip option:selected").text()+", ";
     }
     if(!check3){
-        change = change+$("#curMass").text()+" tonna, ";
+        change += $("#curTruck").text()+", ";
     }else{
-        change = change+check3+" tonna, ";
+        change += $("#modTruck option:selected").text()+", ";
     }
     if(!check4){
-        change = change+$("#curADR").text();
+        change += $("#curReward").text()+" EUR, ";
     }else{
-        change = change+$("#modADR option:selected").text();
+        change += check4+" EUR, ";
     }
-    if(!check){
+    if(!check6){
+        change += $("#curDeadline").text();
+    }else{
+        change += check6;
+    }
+    if(!check || length > 200 || (!check6 && (dateNow.getTime() <= dateInput.getTime()))){
         Swal.fire({
             icon: 'error',
             title: 'Hiba!',
@@ -100,7 +113,7 @@ function confirmModify(){
             cancelButtonText: 'Vissza'
         }).then((result) => {
               if (result.isConfirmed) {
-                document.modify.submit();
+                document.companyMod.submit();
               }
         })
     }

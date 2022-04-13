@@ -67,19 +67,19 @@ function confirmModify(){
     let curItem = $("#curBrand").text()+", "+$("#curName").text()+", "+$("#curPower").text()+"";
     let change = "";
     if(!check2){
-        change = change+$("#curBrand").text()+", ";
+        change += $("#curBrand").text()+", ";
     }else{
-        change = change+check2+", ";
+        change += check2+", ";
     }
     if(!check3){
-        change = change+$("#curName").text()+", ";
+        change += $("#curName").text()+", ";
     }else{
-        change = change+check3+", ";
+        change += check3+", ";
     }
     if(!check4){
-        change = change+$("#curPower").text()+" kW";
+        change += $("#curPower").text()+"";
     }else{
-        change = change+check4+" kW";
+        change += check4+"";
     }
     if(!check){
         Swal.fire({

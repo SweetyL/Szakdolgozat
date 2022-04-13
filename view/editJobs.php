@@ -99,7 +99,7 @@
 	<h1>Megbízás módosítása</h1>
     <div class="borderForForm">
         <legend class="text-center">Módosítás</legend>
-	    <form name="companyDel" action="index.php?page=editJobs" method="post">
+	    <form name="companyMod" action="index.php?page=editJobs" method="post">
             <fieldset>
                 <div class="input-group">
 			    <label for="modJob">Módosítani kívánt megbízás: </label>
@@ -145,7 +145,7 @@
                 	if ($truckIDs) {
 						foreach($truckIDs as $row) {
 							$truck->set_truck($row, $conn);
-							if($truck->get_id()) echo '<option value="'.$row.'">'.$truck->get_brand().", ".$truck->get_name().'</option>';
+							if($truck->get_id()) echo '<option value="'.$row.'">'.$truck->get_brand()." ".$truck->get_name().'</option>';
 						}
 					}
 				?>							
@@ -369,3 +369,21 @@
 ?>
 </div>
 <script src="js/job.js"></script>
+<script type="text/javascript">
+    $("#modJob").on("change", function(){
+        let jobID = $(this).val();
+        $.ajax({
+            url :"ajax/updateJob.php",
+            type:"POST",
+			dataType: "json",
+            cache:false,
+            data:{jobID:jobID},
+            success:function(response){
+                $("#curTrip").html(response['trip']);
+				$("#curTruck").html(response['truck']);
+				$("#curReward").html(response['reward']);
+				$("#curDeadline").html(response['deadline']);
+            }
+        });
+    });
+</script>
