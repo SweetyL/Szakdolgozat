@@ -282,7 +282,7 @@
 <h1>Megbízás módosítása</h1>
     <div class="borderForForm">
         <legend class="text-center">Módosítás</legend>
-	    <form name="adminDel" action="index.php?page=editJobs" method="post">
+	    <form name="adminMod" action="index.php?page=editJobs" method="post">
             <fieldset>
                 <div class="input-group">
 			    <label for="modJob">Módosítani kívánt megbízás: </label>
@@ -348,7 +348,7 @@
         </div>
             </fieldset>
         </form>
-        <button class="btn btn-primary rounded-pill m-2" onclick="companyConfirmModify()">Módosít</button>
+        <button class="btn btn-primary rounded-pill m-2" onclick="adminConfirmModify()">Módosít</button>
     </div>
 <script type="text/javascript">
     $("#addCompany").on("change", function(){
