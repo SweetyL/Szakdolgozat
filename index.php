@@ -13,11 +13,11 @@ if(!isset($_REQUEST['page'])){
         header('Location: index.php?page=index');
         exit();
 }
-// default oldal
+
 $page = 'index';
 $admins = getAdmins($conn);
 
-// router
+
 if(isset($_REQUEST['page'])) {
         if(file_exists('controller/'.$_REQUEST['page'].'.php')) {
                 $page = $_REQUEST['page']; 
@@ -32,43 +32,84 @@ $menupontok = array(    'index' => "Főoldal",
                         'login' => "Belépés"
                 );
 
+switch($_REQUEST['page']){
+        case("driverRegister"):
+                $title = "Sofőr regisztrálás";
+                break;
 
-if($_REQUEST['page']=="driverRegister"){
-        $title = "Sofőr regisztrálás";
-}else if($_REQUEST['page']=="companyRegister"){
-        $title = "Vállalat regisztrálás";
-}else if($_REQUEST['page']=="loginPanel" and $_REQUEST['action']=="drivers"){
-        $title = "Sofőr belépés";
-}else if($_REQUEST['page']=="loginPanel" and $_REQUEST['action']=="companies"){
-        $title = "Vállalati belépés";
-}else if($_REQUEST['page']=="profile" and isset($_REQUEST['id'])){
-        $title = "X profilja";
-}else if($_REQUEST['page']=="404"){
-        $title = "Hiba 404";
-}else if($_REQUEST['page']=="myProfile"){
-        $title = "Profilom";
-}else if($_REQUEST['page']=="settings"){
-        $title = "Beállítások";
-}else if($_REQUEST['page']=="genPage"){
-        $title = "QR kód generálás";
-}else if($_REQUEST['page']=="editCargo"){
-        $title = "Szállítmányok kezelése";
-}else if($_REQUEST['page']=="editJobs"){
-        $title = "Megbízások kezelése";
-}else if($_REQUEST['page']=="editTrips"){
-        $title = "Utak kezelése";
-}else if($_REQUEST['page']=="editTrucks"){
-        $title = "Kamionok kezelése";
-}else if($_REQUEST['page']=="redirect"){
-        $title = "Átirányítás...";
-}else if($_REQUEST['page']=="editEngines"){
-        $title = "Motorok kezelése";
-}else if($_REQUEST['page']=="editAdmin"){
-        $title = "Adminok kezelése";
-}else if($_REQUEST['page']=="editADR"){
-        $title = "ADR tanúsítványok kezelése";
-}else{
-        $title = $menupontok[$page];
+        case("companyRegister"):
+                $title = "Vállalat regisztrálás";
+                break;
+        
+        case("loginPanel"):
+                if($_REQUEST['action']=="drivers"){
+                        $title = "Sofőr belépés";
+                }else{
+                        $title = "Vállalati belépés";
+                }
+                break;
+
+        case("profile"):
+                if(isset($_REQUEST['id'])){
+                        $title = "X profilja";
+                }
+                break;
+
+        case("404"):
+                $title = "Hiba 404";
+                break;
+
+        case("myProfile"):
+                $title = "Profilom";
+                break;
+
+        case("settings"):
+                $title = "Beállítások";
+                break;
+
+        case("genPage"):
+                $title = "QR kód generálás";
+                break;
+                
+        case("editCargo"):
+                $title = "Szállítmányok kezelése";
+                break;
+
+        case("editJobs"):
+                $title = "Megbízások kezelése";
+                break;
+                        
+        case("editTrips"):
+                $title = "Utak kezelése";
+                break;
+
+        case("editTrucks"):
+                $title = "Kamionok kezelése";
+                break;
+
+        case("editEngines"):
+                $title = "Motorok kezelése";
+                break;
+
+        case("editAdmin"):
+                $title = "Adminok kezelése";
+                break;
+
+        case("editADR"):
+                $title = "ADR tanúsítványok kezelése";
+                break;
+
+        case("showJobs"):
+                $title = "A cég megbízásai";
+                break;
+
+        case("redirect"):
+                $title = "Átirányítás...";
+                break;
+
+        default:
+                $title = $menupontok[$page];
+                break;
 }
 
 include 'includes/htmlheader.inc.php';

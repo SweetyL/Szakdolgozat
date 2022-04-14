@@ -11,7 +11,7 @@
 ?>
 <h1>Beállítások</h1>
 <?php
-    if($_SESSION["type"]=="driver"){
+    if($_SESSION['type']=="driver"){
 ?>
 <div class="container">
 <div class="borderForForm">
@@ -72,7 +72,7 @@
 </div>
 <script src="js/settingsDriver.js"></script>
 <?php
-    }else if($_SESSION["type"]=="company"){
+    }else if($_SESSION['type']=="company"){
 ?>
 <div class="container">
 <div class="borderForForm">

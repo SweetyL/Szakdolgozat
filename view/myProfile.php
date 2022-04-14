@@ -1,6 +1,6 @@
 <div class="container">
 <?php 
-    if(!empty($_SESSION["id"]) and $_SESSION["type"]=="driver"){
+    if(!empty($_SESSION['id']) and $_SESSION['type']=="driver"){
 ?>
 <div>
     <img class="rounded mx-auto profilePic d-block" src="img/default.svg" alt="Profilkép" class="img-thumbnail img-responsive">
@@ -29,12 +29,14 @@
 <p>Email: <?php echo $driver->get_email()?></p>
 <p>Telefonszám: <?php echo $driver->get_phone()?></p>
 <br>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
 <br>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editADR'">ADR tanúsítványok kezelése</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
 <br>
 <?php
-}else if(!empty($_SESSION["id"]) and $_SESSION["type"]=="company"){
+}else if(!empty($_SESSION['id']) and $_SESSION['type']=="company"){
 ?>
 <div>
     <img class="rounded mx-auto profilePic d-block" src="img/default.svg" alt="Profilkép" class="img-thumbnail img-responsive">
@@ -47,22 +49,18 @@
 <p>Telefonszám: <?php echo $company->get_phone()?></p>
 <p class="normalLink">Weboldal: <?php echo "<a href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a>"?>
 <br>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
-            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editTrips'">Utak felvitele</button>
-            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editCargo'">Szállítmányok felvitele</button>
-            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editEngines'">Motorok felvitele</button>
-            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok felvitele</button>
-        </div>
-    </div>
-</div>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editTrips'">Utak felvitele</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editCargo'">Szállítmányok felvitele</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editEngines'">Motorok felvitele</button>
+<br>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok felvitele</button>
+<br>
 <?php
 }else{
 ?>
@@ -86,8 +84,8 @@
 }
 ?>
 <?php
-    if(file_exists("./generatedPages/".$filename.".html") and $_SESSION!="admin"){
-    echo "<button type='button' class='btn btn-primary rounded-pill my-2 p-1' onclick='showQR(`".$filename."`)'>QR kód mutatása</button>";
+    if(file_exists("./generatedPages/".$filename.".html") and $_SESSION['type']!="admin"){
+        echo "<button type='button' class='btn btn-primary rounded-pill my-2 p-1' onclick='showQR(`".$filename."`)'>QR kód mutatása</button>";
     }
 ?>
 </div>

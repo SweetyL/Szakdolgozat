@@ -6,7 +6,7 @@
     A következőkben be bírja állítani, hogy milyen adatok látszódjanak a generált oldalon. 
 </p>
 <?php
-    if(!empty($_SESSION["id"]) and $_SESSION["type"]=="driver"){
+    if(!empty($_SESSION['id']) and $_SESSION['type']=="driver"){
 ?>
 <form method="post" action="index.php?page=genPage">      
     <fieldset>      

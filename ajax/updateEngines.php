@@ -1,7 +1,7 @@
 <?php 
-include "../includes/db.inc.php";
-include "../includes/functions.inc.php";
-include "../model/truck/Engine.php";
+include '../includes/db.inc.php';
+include '../includes/functions.inc.php';
+include '../model/truck/Engine.php';
 $engine = new Engine();
 if (isset($_POST['engineID']) && !empty($_POST['engineID'])) {
     $sql = "SELECT engineID, name, brand, power FROM engines WHERE engineID = ".htmlspecialchars($_POST['engineID'])."";

@@ -43,12 +43,12 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
                     if($_REQUEST['action']=="drivers"){
                         $driver->set_user($row['driverID'], $conn);
                         if(md5($_POST['pw']) == $driver->get_password()) {
-                            $_SESSION["id"] = $row['driverID'];
-                            $_SESSION["name"] = $driver->get_lastname()." ".$driver->get_firstname();
+                            $_SESSION['id'] = $row['driverID'];
+                            $_SESSION['name'] = $driver->get_lastname()." ".$driver->get_firstname();
                             if(in_array($driver->get_id(),$admins)){
-                                $_SESSION["type"] = "admin";
+                                $_SESSION['type'] = "admin";
                             }else{
-                                $_SESSION["type"] = "driver";
+                                $_SESSION['type'] = "driver";
                             }
                             $sql = "DELETE FROM `driverstatus` WHERE id =".$row['driverID'];
                             $conn->query($sql);
@@ -62,9 +62,9 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
                     else{
                         $company->set_user($row['compID'], $conn);
                         if(md5($_POST['pw']) == $company->get_password()) {
-                            $_SESSION["id"] = $row['compID'];
-                            $_SESSION["name"] = $company->get_name();
-                            $_SESSION["type"] = "company";
+                            $_SESSION['id'] = $row['compID'];
+                            $_SESSION['name'] = $company->get_name();
+                            $_SESSION['type'] = "company";
                             $sql = "DELETE FROM `compstatus` WHERE id =".$row['compID'];
                             $conn->query($sql);
                             $sql2 = "INSERT INTO `compstatus`(`id`) VALUES (".$row['compID'].")";

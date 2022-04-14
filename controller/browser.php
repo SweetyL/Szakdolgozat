@@ -1,5 +1,5 @@
 <?php
-    if(empty($_SESSION["id"])){
+    if(empty($_SESSION['id'])){
         header('Location: index.php?page=404');
         exit();
     }
@@ -11,8 +11,8 @@
     $town = new Town();
     $nearList = array();
     $online = array();
-    if($_SESSION["type"]=="driver"){
-        $driver->set_user($_SESSION["id"], $conn);
+    if($_SESSION['type']=="driver"){
+        $driver->set_user($_SESSION['id'], $conn);
         $town->set_town($driver->get_townID(),$conn);
         $country->set_country($town->get_country(),$conn);
         $online = getOnlineCompanies($conn);
@@ -73,8 +73,8 @@
                 echo '</div>';
             }
         }
-    }else if($_SESSION["type"]=="company"){
-        $company->set_user($_SESSION["id"], $conn);
+    }else if($_SESSION['type']=="company"){
+        $company->set_user($_SESSION['id'], $conn);
         $town->set_town($company->get_townID(),$conn);
         $country->set_country($town->get_country(),$conn);
         $online = getOnlineDrivers($conn);

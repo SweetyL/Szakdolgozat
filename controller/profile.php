@@ -12,7 +12,7 @@
     $ADR = new ADR();
     $adrIDs = $ADR->adrList($conn);
     $driverADRs = array();
-    if($_SESSION["type"]=="company"){
+    if($_SESSION['type']=="company"){
         if(!in_array($id,$driver->driversList($conn))){
             header('Location: index.php?page=404');
             exit();
@@ -30,7 +30,7 @@
         }
     }
 
-    if($_SESSION["type"]=="driver"){
+    if($_SESSION['type']=="driver"){
         if(!in_array($id,$company->companiesList($conn))){
             header('Location: index.php?page=404');
             exit();

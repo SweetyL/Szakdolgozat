@@ -1,5 +1,5 @@
 <?php
-    if(empty($_SESSION["id"]) or $_SESSION["type"] == "driver"){
+    if(empty($_SESSION['id']) or $_SESSION['type'] == "driver"){
         header('Location: index.php?page=404');
         exit();
     }

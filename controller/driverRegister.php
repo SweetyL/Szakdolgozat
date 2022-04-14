@@ -2,7 +2,7 @@
     $country = new Country();
     $countryIDs = $country->countriesList($conn);
     $err = "";
-    if(empty($_SESSION["id"])){
+    if(!empty($_SESSION['id'])){
         header('Location: index.php?page=404');
         exit();
     }

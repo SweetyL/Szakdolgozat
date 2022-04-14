@@ -1,5 +1,5 @@
 <?php
-    if(empty($_SESSION["id"]) or !$_SESSION["type"] == "admin"){
+    if(empty($_SESSION['id']) or !$_SESSION['type'] == "admin"){
         header('Location: index.php?page=404');
         exit();
     }
@@ -8,7 +8,7 @@
     //    ADD ADMIN   //
     if(isset($_POST['addAdmin']) and isset($_POST['aPass'])){
         $loginError = '';
-        $driver->set_user($_SESSION["id"],$conn);
+        $driver->set_user($_SESSION['id'],$conn);
         $sql = "SELECT driverID FROM drivers WHERE username LIKE '".$driver->get_username()."'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -24,8 +24,8 @@
             }
         }
     }
-     //    DELETE ADMIN   //
-     if(isset($_POST['delAdmin']) and isset($_POST['dPass'])){
+    //    DELETE ADMIN   //
+    if(isset($_POST['delAdmin']) and isset($_POST['dPass'])){
         $loginError = '';
         $driver->set_user($_SESSION["id"],$conn);
         $sql = "SELECT driverID FROM drivers WHERE username LIKE '".$driver->get_username()."'";
@@ -38,7 +38,7 @@
                         $sql = "DELETE FROM `admins` WHERE id =".htmlspecialchars($_POST['delAdmin']);
                         $result = $conn->query($sql);
                         if($_SESSION['id']==$_POST['delAdmin']){
-                            $_SESSION["type"] = "driver";
+                            $_SESSION['type'] = "driver";
                         }
                         header('Location: index.php?page=redirect');
                         exit();

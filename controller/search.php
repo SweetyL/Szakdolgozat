@@ -1,5 +1,5 @@
 <?php
-    if(empty($_SESSION["id"])){
+    if(empty($_SESSION['id'])){
         header('Location: index.php?page=404');
         exit();
     }
@@ -13,7 +13,7 @@
     $driverIDs = $driver->driversList($conn);
     $online = array();
     include 'view/search.php';
-    if($_SESSION["type"]=="driver"){
+    if($_SESSION['type']=="driver"){
         if(!empty($_POST['companyName']) || !empty($_POST['country']) || !empty($_POST['town']) || !empty($_POST['street']) || !empty($_POST['houseNumber']) || !empty($_POST['email']) || !empty($_POST['phoneNumber']) || !empty($_POST['webpage'])) {
             $name = "";
             $townID = "";
@@ -119,7 +119,7 @@
                 }
             echo "</div>";
         }
-    }else if($_SESSION["type"]=="company"){
+    }else if($_SESSION['type']=="company"){
         if(!empty($_POST['firstname']) || !empty($_POST['lastname']) || !empty($_POST['country']) || !empty($_POST['town']) || !empty($_POST['street']) || !empty($_POST['houseNumber']) || !empty($_POST['email']) || !empty($_POST['phoneNumber'])) {
             $firstname = "";
             $lastname = "";

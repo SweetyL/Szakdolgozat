@@ -1,7 +1,7 @@
 <?php 
-include "../includes/db.inc.php";
-include "../includes/functions.inc.php";
-include "../model/Cargo.php";
+include '../includes/db.inc.php';
+include '../includes/functions.inc.php';
+include '../model/Cargo.php';
 $cargo = new Cargo();
 
 if (isset($_POST['tripID']) && !empty($_POST['tripID'])) {

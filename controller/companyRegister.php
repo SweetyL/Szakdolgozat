@@ -1,7 +1,7 @@
 <?php
     $country = new Country();
     $countryIDs = $country->countriesList($conn);
-    if(empty($_SESSION["id"])){
+    if(!empty($_SESSION['id'])){
         header('Location: index.php?page=404');
         exit();
     }

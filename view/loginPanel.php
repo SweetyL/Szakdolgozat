@@ -1,5 +1,5 @@
 <?php
-    if(!empty($_SESSION["id"])) {
+    if(!empty($_SESSION['id'])) {
     ?>
         <form action="index.php?page=loginPanel&action=logout" method="post">
 	        <input type="submit" name="logout" value="Kilépés">

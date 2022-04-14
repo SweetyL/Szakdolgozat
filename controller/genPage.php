@@ -1,6 +1,6 @@
 <?php
 //https://goqr.me/api/
-    if(empty($_SESSION["id"])){
+    if(empty($_SESSION['id'])){
         header('Location: index.php?page=404');
         exit();
     }
@@ -17,35 +17,35 @@
     $country = new Country();
     $town = new Town();
     $fname = "";
-    if($_SESSION["type"]=="driver"){
-        $driver->set_user($_SESSION["id"], $conn);
+    if($_SESSION['type']=="driver"){
+        $driver->set_user($_SESSION['id'], $conn);
         $town->set_town($driver->get_townID(),$conn);
         $country->set_country($town->get_country(),$conn);
         $fname = md5($driver->get_username())."D";
-        if(isset($_POST["nameQ"])){
-            if($_POST["nameQ"]=="full"){
+        if(isset($_POST['nameQ'])){
+            if($_POST['nameQ']=="full"){
                 $htmlFile .= "<title>".$driver->get_lastname()." ".$driver->get_firstname()."</title>\n</head>\n<body>\n";
                 $htmlFile .= "<h1>".$driver->get_lastname()." ".$driver->get_firstname()."</h1>\n";
-            }else if($_POST["nameQ"]=="short"){
+            }else if($_POST['nameQ']=="short"){
                 $htmlFile .= "<title>".substr($driver->get_lastname(), 0, 1).". ".$driver->get_firstname()."</title>\n</head>\n<body>\n<div class='container'>\n";
                 $htmlFile .= "<h1>".substr($driver->get_lastname(), 0, 1).". ".$driver->get_firstname()."</h1>\n";
             }
-            if(isset($_POST["country"])){
+            if(isset($_POST['country'])){
                 $htmlFile .= "<p>Ország: ".$country->get_name()."</p>\n";
             }
-            if(isset($_POST["town"])){
+            if(isset($_POST['town'])){
                 $htmlFile .= "<p>Város: ".$town->get_name()."</p>\n";
             }
-            if(isset($_POST["street"])){
+            if(isset($_POST['street'])){
                 $htmlFile .= "<p>Utca: ".$driver->get_street()."</p>\n";
             }
-            if(isset($_POST["houseNum"])){
+            if(isset($_POST['houseNum'])){
                 $htmlFile .= "<p>Házszám: ".$driver->get_houseNumber()."</p>\n";
             }
-            if(isset($_POST["email"])){
+            if(isset($_POST['email'])){
                 $htmlFile .= "<p>E-mail: ".$driver->get_email()."</p>\n";
             }
-            if(isset($_POST["phone"])){
+            if(isset($_POST['phone'])){
                 $htmlFile .= "<p>Telefonszám: ".$driver->get_phone()."</p>\n";
             }
             $htmlFile .= "</div>\n</body>\n</html>";
@@ -56,32 +56,32 @@
             exit();
         }
     }else{
-        if(isset($_POST["nameQ"])){
-            $company->set_user($_SESSION["id"], $conn);
+        if(isset($_POST['nameQ'])){
+            $company->set_user($_SESSION['id'], $conn);
             $town->set_town($company->get_townID(),$conn);
             $country->set_country($town->get_country(),$conn);
             $fname = md5($company->get_username())."C";
             $htmlFile .= "<title>".$company->get_name()."</title>\n</head>\n<body>\n";
             $htmlFile .= "<h1>".$company->get_name()."</h1>\n";
-            if(isset($_POST["country"])){
+            if(isset($_POST['country'])){
                 $htmlFile .= "<p>Ország: ".$country->get_name()."</p>\n";
             }
-            if(isset($_POST["town"])){
+            if(isset($_POST['town'])){
                 $htmlFile .= "<p>Város: ".$town->get_name()."</p>\n";
             }
-            if(isset($_POST["street"])){
+            if(isset($_POST['street'])){
                 $htmlFile .= "<p>Utca: ".$company->get_street()."</p>\n";
             }
-            if(isset($_POST["houseNum"])){
+            if(isset($_POST['houseNum'])){
                 $htmlFile .= "<p>Házszám: ".$company->get_houseNumber()."</p>\n";
             }
-            if(isset($_POST["email"])){
+            if(isset($_POST['email'])){
                 $htmlFile .= "<p>E-mail: ".$company->get_email()."</p>\n";
             }
-            if(isset($_POST["phone"])){
+            if(isset($_POST['phone'])){
                 $htmlFile .= "<p>Telefonszám: ".$company->get_phone()."</p>\n";
             }
-            if(isset($_POST["webpage"])){
+            if(isset($_POST['webpage'])){
                 $htmlFile .="<p>Weboldal: <a href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a></p>";
             }
             $htmlFile .= "</div>\n</body>\n</html>";

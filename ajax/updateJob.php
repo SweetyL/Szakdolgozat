@@ -1,8 +1,8 @@
 <?php 
-include "../includes/db.inc.php";
-include "../includes/functions.inc.php";
-include "../model/Trip.php";
-include "../model/truck/Truck.php";
+include '../includes/db.inc.php';
+include '../includes/functions.inc.php';
+include '../model/Trip.php';
+include '../model/truck/Truck.php';
 $trip = new Trip();
 $truck = new Truck();
 if (isset($_POST['jobID']) && !empty($_POST['jobID'])) {

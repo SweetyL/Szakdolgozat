@@ -7,7 +7,7 @@
                 <h1 class="display-1">404</h1>
                 <h1 class="mb-4">A keresett oldal nem található!</h1>
                 <?php
-                    if(empty($_SESSION["id"])){
+                    if(empty($_SESSION['id'])){
                         echo '<p class="mb-4">A keresett oldal nem található vagy nem vagy <a href="index.php?page=login">bejelentkezve!</a></p>';
                     }else{
                         echo '<p class="mb-4">A keresett oldal nem található!</p>';

@@ -1,5 +1,5 @@
 <?php 
-include "../includes/db.inc.php";
+include '../includes/db.inc.php';
 if (isset($_POST['countryID']) && !empty($_POST['countryID'])) {
     $sql = "SELECT townID, name FROM towns WHERE countryID LIKE '".htmlspecialchars($_POST['countryID'])."'  ORDER BY name ASC";
     $result = $conn->query($sql);

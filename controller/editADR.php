@@ -1,9 +1,9 @@
 <?php
-    if(empty($_SESSION["id"]) or $_SESSION['type']=="company"){
+    if(empty($_SESSION['id']) or $_SESSION['type']=="company"){
         header('Location: index.php?page=404');
         exit();
     }
-    require "model/ADR.php";
+    require 'model/ADR.php';
     $ADR = new ADR();
     $adrIDs = $ADR->adrList($conn);
     $driver = new Driver();
