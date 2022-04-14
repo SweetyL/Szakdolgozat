@@ -17,9 +17,6 @@ if (isset($_POST["cargoID"]) && !empty($_POST["cargoID"])) {
             $returnV["adr"] = $ADR->get_name();
             echo json_encode($returnV);
         }
-    else {
-        logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: update cargo ajax, ".$conn->error);
-    }
     }
 }
 $stmt->close();

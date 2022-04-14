@@ -13,7 +13,7 @@ class Job {
 
     public function set_job($id, $conn) {
         $sql = "SELECT jobID, driverID, tripID, truckID, reward, comment, deadline, ownerOfJob FROM jobs";
-        $sql .= " WHERE jobID = ".mysqli_real_escape_string($conn,$id)." ";
+        $sql .= " WHERE jobID = ".htmlspecialchars($id)." ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {

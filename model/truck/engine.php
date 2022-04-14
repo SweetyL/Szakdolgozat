@@ -8,7 +8,7 @@ class Engine{
 
     public function set_engine($id, $conn) {
         $sql = "SELECT engineID, name, brand, `power` FROM engines";
-        $sql .= " WHERE engineID = '".mysqli_real_escape_string($conn,$id)."' ";
+        $sql .= " WHERE engineID = '".htmlspecialchars($id)."' ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
@@ -17,10 +17,7 @@ class Engine{
                 $this->name = $row['name'];
                 $this->brand = $row['brand'];
                 $this->power = $row['power'];
-        } 
-        else {
-            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: engine model, ".$conn->error);
-        }
+            } 
         }
     }
 

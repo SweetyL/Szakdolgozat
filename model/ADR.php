@@ -9,7 +9,7 @@ class ADR {
 
     public function set_adr($id, $conn) {
         $sql = "SELECT adrID, `name`, icon, comment FROM adr";
-        $sql .= " WHERE adrID = ".mysqli_real_escape_string($conn,$id)." ";
+        $sql .= " WHERE adrID = ".htmlspecialchars($id)." ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
@@ -18,10 +18,7 @@ class ADR {
                 $this->name = $row['name'];
                 $this->icon = $row['icon'];
                 $this->comment = $row['comment'];
-        } 
-        else {
-            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: adr model, ".$conn->error);
-        }
+            } 
         }
     }
 

@@ -9,7 +9,7 @@ class Cargo {
 
     public function set_cargo($id, $conn) {
         $sql = "SELECT cargoID, `name`, mass, adr FROM cargo";
-        $sql .= " WHERE cargoID = ".mysqli_real_escape_string($conn,$id)." ";
+        $sql .= " WHERE cargoID = ".htmlspecialchars($id)." ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
@@ -18,10 +18,7 @@ class Cargo {
                 $this->name = $row['name'];
                 $this->mass = $row['mass'];
                 $this->adr = $row['adr'];
-        } 
-        else {
-            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: cargo model, ".$conn->error);
-        }
+            } 
         }
     }
 

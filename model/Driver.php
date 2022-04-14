@@ -15,7 +15,7 @@ class Driver {
 
     public function set_user($id, $conn) {
         $sql = "SELECT driverID, firstname, lastname, townID, street, houseNumber, email, phoneNumber, username, `password` FROM drivers";
-        $sql .= " WHERE driverID = ".mysqli_real_escape_string($conn,$id)." ";
+        $sql .= " WHERE driverID = ".htmlspecialchars($id)." ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
@@ -30,10 +30,7 @@ class Driver {
                 $this->phoneNumber = $row['phoneNumber'];
                 $this->username = $row['username'];
                 $this->password = $row['password'];
-        } 
-        else {
-            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: driver model, ".$conn->error);
-        }
+            } 
         }
     }
 

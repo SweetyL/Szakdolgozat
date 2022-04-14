@@ -1,3 +1,64 @@
+<?php
+	if($_SESSION['type']=="company"){
+?>
+<div class="container">
+<h1>Kamion hozzáadása</h1>
+	<div class="borderForForm">
+	<form name="add" action="index.php?page=editTrucks" method="post">
+	<fieldset>
+		<legend class="text-center">Hozzáadás</legend>
+		<div class="input-group">
+			<label for="addBrand">Kamion márkája: </label>
+			<br>
+			<input type="text" id="addBrand" name="aBrand" class="form-control" required>
+		</div>
+		<br>
+		<div class="input-group">
+			<label for="addName">Kamion neve: </label>
+			<br>
+			<input type="text" id="addName" name="aName" class="form-control" required>
+		</div>
+		<br>
+		<div class="input-group">
+			<label for="addEngine">Kamion motorja:</label>
+        	<select class="form-control" name="addEngine" id="addEngine" required>
+            	<option value="">Válasszon motort!</option>
+				<?php
+                	if ($engineIDs) {
+						foreach($engineIDs as $row) {
+							$engine->set_engine($row, $conn);
+							if($engine->get_id()) echo '<option value="'.$row.'">'.$engine->get_brand().' '.$engine->get_name().'</option>';
+						}
+					}
+				?>							
+			</select>
+		</div>
+        <br>
+		<div class="input-group">
+			<label for="addTank">Kamion tank mérete literben: </label>
+			<br>
+			<input type="number" id="addTank" name="aTank" class="form-control" required>
+		</div>
+        <br>
+		<div class="input-group">
+			<label for="addCons">Kamion fogyasztása L/100KM (opcionális): </label>
+			<br>
+			<input type="number" id="addCons" name="aCons" class="form-control">
+		</div>
+        <br>
+		<div class="input-group">
+			<label for="addAxles">Kamion tengelyeinek száma: </label>
+			<br>
+			<input type="number" id="addAxles" name="aAxles" class="form-control" required>
+		</div>
+	</fieldset>
+	</form>
+	<button class="btn btn-primary rounded-pill m-2" onclick="confirmAdd()">Hozzáadás</button>
+	</div>
+</div>
+<?php
+	}else{
+?>
 <div class="container">
 <h1>Kamion hozzáadása</h1>
 	<div class="borderForForm">
@@ -150,7 +211,6 @@
 	<button class="btn btn-primary rounded-pill m-2" onclick="confirmModify()">Módosít</button>
 	</div>
 </div>
-<script src="js/truck.js"></script>
 <script type="text/javascript">
     $("#modTruck").on("change", function(){
         let truckID = $(this).val();
@@ -171,3 +231,7 @@
         });
     });
 </script>
+<?php
+	}
+?>
+<script src="js/truck.js"></script>

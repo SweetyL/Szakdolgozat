@@ -6,17 +6,14 @@ class Country{
 
     public function set_country($id, $conn) {
         $sql = "SELECT countryID, name FROM countries";
-        $sql .= " WHERE countryID LIKE '".mysqli_real_escape_string($conn,$id)."' ";
+        $sql .= " WHERE countryID LIKE '".htmlspecialchars($id)."' ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $this->cID = $row['countryID'];
                 $this->name = $row['name'];
-        } 
-        else {
-            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: country model, ".$conn->error);
-        }
+            } 
         }
     }
 

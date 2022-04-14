@@ -1,3 +1,52 @@
+<?php
+	if($_SESSION['type']=="company"){
+?>
+<div class="container">
+<h1>Út hozzáadása</h1>
+	<div class="borderForForm">
+	<form name="add" action="index.php?page=editTrips" method="post">
+	<fieldset>
+		<legend class="text-center">Hozzáadás</legend>
+		<div class="input-group">
+			<label for="addStart">Út indulási helye: </label>
+			<br>
+			<input type="text" id="addStart" name="aStart" class="form-control" required>
+		</div>
+		<br>
+		<div class="input-group">
+			<label for="addEnd">Út érkezési helye: </label>
+			<br>
+			<input type="text" id="addEnd" name="aEnd" class="form-control" required>
+		</div>
+		<br>
+        <div class="input-group">
+			<label for="addLength">Út hossza kilométerben: </label>
+			<br>
+			<input type="number" id="addLength" name="aLength" class="form-control" required>
+		</div>
+        <br>
+		<div class="input-group">
+			<label for="addCargo">Szállítmány hozzáadása az úthoz:</label>
+        	<select class="form-control" name="addCargo" id="addCargo" required>
+            	<option value="">Válasszon szállítmányt!</option>
+				<?php
+                	if ($cargoIDs) {
+						foreach($cargoIDs as $row) {
+							$cargo->set_cargo($row, $conn);
+							if($cargo->get_id()) echo '<option value="'.$row.'">'.$cargo->get_name()." ".$cargo->get_mass().'</option>';
+						}
+					}
+				?>							
+			</select>
+		</div>
+	</fieldset>
+	</form>
+	<button class="btn btn-primary rounded-pill m-2" onclick="confirmAdd()">Hozzáadás</button>
+	</div>
+</div>
+<?php
+	}else{
+?>
 <div class="container">
 <h1>Út hozzáadása</h1>
 	<div class="borderForForm">
@@ -119,7 +168,6 @@
 	<button class="btn btn-primary rounded-pill m-2" onclick="confirmModify()">Módosít</button>
 	</div>
 </div>
-<script src="js/trip.js"></script>
 <script type="text/javascript">
     $("#modTrip").on("change", function(){
         let tripID = $(this).val();
@@ -138,3 +186,7 @@
         });
     });
 </script>
+<?php
+	}
+?>
+<script src="js/trip.js"></script>

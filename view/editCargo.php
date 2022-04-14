@@ -1,3 +1,6 @@
+<?php
+	if($_SESSION['type']=="company"){
+?>
 <div class="container">
 <h1>Szállítmány hozzáadása</h1>
 	<div class="borderForForm">
@@ -35,6 +38,9 @@
 	<button class="btn btn-primary rounded-pill m-2" onclick="confirmAdd()">Hozzáadás</button>
 	</div>
 </div>
+<?php
+	}else{
+?>
 <div class="container">
 <h1>Szállítmány törlése</h1>
 	<div class="borderForForm">
@@ -111,7 +117,6 @@
 	<button class="btn btn-primary rounded-pill m-2" onclick="confirmModify()">Módosít</button>
 	</div>
 </div>
-<script src="js/cargo.js"></script>
 <script type="text/javascript">
     $("#modCargo").on("change", function(){
         let cargoID = $(this).val();
@@ -129,3 +134,7 @@
         });
     });
 </script>
+<?php
+	}
+?>
+<script src="js/cargo.js"></script>

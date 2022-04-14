@@ -1,5 +1,5 @@
 <?php
-    if(!empty($_SESSION["id"]) and !$_SESSION["type"] == "admin"){
+    if(empty($_SESSION["id"]) or $_SESSION["type"] == "driver"){
         header('Location: index.php?page=404');
         exit();
     }
@@ -9,7 +9,7 @@
 
     //    ADD ENGINE   //
     if(isset($_POST['aBrand']) and isset($_POST['aName']) and isset($_POST['aPower'])){
-        $sql = "INSERT INTO `engines`(`name`, `brand`, `power`) VALUES ('".mysqli_real_escape_string($conn,$_POST['aBrand'])."','".mysqli_real_escape_string($conn,$_POST['aName'])."','".mysqli_real_escape_string($conn,$_POST['aPower'])." kW')";
+        $sql = "INSERT INTO `engines`(`name`, `brand`, `power`) VALUES ('".htmlspecialchars($_POST['aBrand'])."','".htmlspecialchars($_POST['aName'])."','".htmlspecialchars($_POST['aPower'])." kW')";
         $result = $conn->query($sql);
         header('Location: index.php?page=redirect');
         exit();
@@ -17,7 +17,7 @@
 
     //    DEL ENGINE   //
     if(isset($_POST['delEngine'])){
-        $sql = "DELETE FROM `engines` WHERE engineID = ".mysqli_real_escape_string($conn,$_POST['delEngine']);
+        $sql = "DELETE FROM `engines` WHERE engineID = ".htmlspecialchars($_POST['delEngine']);
         $result = $conn->query($sql);
         header('Location: index.php?page=redirect');
         exit();
@@ -29,9 +29,9 @@
 
         //this code cheks if the user wants to change the cargo's name
         if(isset($_POST['mName']) and !empty($_POST['mName'])){
-            $sql .= "`name`='".mysqli_real_escape_string($conn,$_POST['mName'])."', ";
+            $sql .= "`name`='".htmlspecialchars($_POST['mName'])."', ";
         }else{
-            $tmpSql = "SELECT name FROM engines WHERE engineID = ".mysqli_real_escape_string($conn,$_POST['modEngine']);
+            $tmpSql = "SELECT name FROM engines WHERE engineID = ".htmlspecialchars($_POST['modEngine']);
             $res = $conn->query($tmpSql);
             $row = $res->fetch_assoc();
             $sql .="`name`='".$row['name']."', ";
@@ -39,9 +39,9 @@
 
         //this code checks if the user wants to change the cargo's mass
         if(isset($_POST['mBrand']) and !empty($_POST['mBrand'])){
-            $sql .= "`brand`='".mysqli_real_escape_string($conn,$_POST['mBrand'])."', ";
+            $sql .= "`brand`='".htmlspecialchars($_POST['mBrand'])."', ";
         }else{
-            $tmpSql = "SELECT brand FROM engines WHERE engineID = ".mysqli_real_escape_string($conn,$_POST['modEngine']);
+            $tmpSql = "SELECT brand FROM engines WHERE engineID = ".htmlspecialchars($_POST['modEngine']);
             $res = $conn->query($tmpSql);
             $row = $res->fetch_assoc();
             $sql .="`brand`='".$row['brand']."', ";
@@ -49,15 +49,15 @@
 
         //this code checks if the user wants to change the cargo's ADR class
         if(isset($_POST['mPower']) and !empty($_POST['mPower'])){
-            $sql .= "`power`='".mysqli_real_escape_string($conn,$_POST['mPower'])." kW' ";
+            $sql .= "`power`='".htmlspecialchars($_POST['mPower'])." kW' ";
         }else{
-            $tmpSql = "SELECT power FROM engines WHERE engineID = ".mysqli_real_escape_string($conn,$_POST['modEngine']);
+            $tmpSql = "SELECT power FROM engines WHERE engineID = ".htmlspecialchars($_POST['modEngine']);
             $res = $conn->query($tmpSql);
             $row = $res->fetch_assoc();
             $sql .="`power`='".$row['power']."' ";
         }
 
-        $sql .= "WHERE engineID = ".mysqli_real_escape_string($conn,$_POST['modEngine']);
+        $sql .= "WHERE engineID = ".htmlspecialchars($_POST['modEngine']);
         $result = $conn->query($sql);
         header('Location: index.php?page=redirect');
         exit();

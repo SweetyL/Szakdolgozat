@@ -11,7 +11,7 @@ class Truck{
 
     public function set_truck($id, $conn) {
         $sql = "SELECT truckID, name, brand, engineID, tankSize, consumption, numberOfAxles FROM trucks";
-        $sql .= " WHERE truckID = '".mysqli_real_escape_string($conn,$id)."' ";
+        $sql .= " WHERE truckID = '".htmlspecialchars($id)."' ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
@@ -23,10 +23,7 @@ class Truck{
                 $this->tankSize = $row['tankSize'];
                 $this->consumption = $row['consumption'];
                 $this->numberOfAxles = $row['numberOfAxles'];
-        } 
-        else {
-            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: truck model, ".$conn->error);
-        }
+            } 
         }
     }
 

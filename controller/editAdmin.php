@@ -1,5 +1,5 @@
 <?php
-    if(!empty($_SESSION["id"]) and !$_SESSION["type"] == "admin"){
+    if(empty($_SESSION["id"]) or !$_SESSION["type"] == "admin"){
         header('Location: index.php?page=404');
         exit();
     }
@@ -16,7 +16,7 @@
                     if(!(md5($_POST['aPass']) == $driver->get_password())) {
                         $loginError .= 'Érvénytelen jelszó!';
                     }else{
-                        $sql = "INSERT INTO `admins`(`id`) VALUES ('".mysqli_real_escape_string($conn,$_POST['addAdmin'])."')";
+                        $sql = "INSERT INTO `admins`(`id`) VALUES ('".htmlspecialchars($_POST['addAdmin'])."')";
                         $result = $conn->query($sql);
                         header('Location: index.php?page=redirect');
                         exit();
@@ -35,7 +35,7 @@
                     if(!(md5($_POST['dPass']) == $driver->get_password())) {
                         $loginError .= 'Érvénytelen jelszó!';
                     }else{
-                        $sql = "DELETE FROM `admins` WHERE id =".mysqli_real_escape_string($conn,$_POST['delAdmin']);
+                        $sql = "DELETE FROM `admins` WHERE id =".htmlspecialchars($_POST['delAdmin']);
                         $result = $conn->query($sql);
                         if($_SESSION['id']==$_POST['delAdmin']){
                             $_SESSION["type"] = "driver";

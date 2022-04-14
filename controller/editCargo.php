@@ -1,5 +1,5 @@
 <?php
-    if(!empty($_SESSION["id"]) and !$_SESSION["type"] == "admin"){
+    if(empty($_SESSION["id"]) or $_SESSION["type"] == "driver"){
         header('Location: index.php?page=404');
         exit();
     }
@@ -12,14 +12,14 @@
 
     //    ADD CARGO   //
     if(isset($_POST['aName']) and isset($_POST['aMass']) and isset($_POST['addADR'])){
-        $sql = "INSERT INTO `cargo`(`name`, `mass`, `adr`) VALUES ('".mysqli_real_escape_string($conn,$_POST['aName'])."','".mysqli_real_escape_string($conn,$_POST['aMass'])." tonna','".mysqli_real_escape_string($conn,$_POST['addADR'])."')";
+        $sql = "INSERT INTO `cargo`(`name`, `mass`, `adr`) VALUES ('".htmlspecialchars($_POST['aName'])."','".htmlspecialchars($_POST['aMass'])." tonna','".htmlspecialchars($_POST['addADR'])."')";
         $result = $conn->query($sql);
         header('Location: index.php?page=redirect');
         exit();
     }
     //    DEL CARGO   //
     if(isset($_POST['delCargo'])){
-        $sql = "DELETE FROM `cargo` WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['delCargo']);
+        $sql = "DELETE FROM `cargo` WHERE cargoID = ".htmlspecialchars($_POST['delCargo']);
         $result = $conn->query($sql);
         header('Location: index.php?page=redirect');
         exit();
@@ -30,9 +30,9 @@
 
         //this code cheks if the user wants to change the cargo's name
         if(isset($_POST['mn']) and !empty($_POST['mn'])){
-            $sql .= "`name`='".mysqli_real_escape_string($conn,$_POST['mn'])."', ";
+            $sql .= "`name`='".htmlspecialchars($_POST['mn'])."', ";
         }else{
-            $tmpSql = "SELECT name FROM cargo WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['modCargo']);
+            $tmpSql = "SELECT name FROM cargo WHERE cargoID = ".htmlspecialchars($_POST['modCargo']);
             $res = $conn->query($tmpSql);
             $row = $res->fetch_assoc();
             $sql .="`name`='".$row['name']."', ";
@@ -40,9 +40,9 @@
 
         //this code checks if the user wants to change the cargo's mass
         if(isset($_POST['ms']) and !empty($_POST['ms'])){
-            $sql .= "`mass`='".mysqli_real_escape_string($conn,$_POST['ms'])." tonna', ";
+            $sql .= "`mass`='".htmlspecialchars($_POST['ms'])." tonna', ";
         }else{
-            $tmpSql = "SELECT mass FROM cargo WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['modCargo']);
+            $tmpSql = "SELECT mass FROM cargo WHERE cargoID = ".htmlspecialchars($_POST['modCargo']);
             $res = $conn->query($tmpSql);
             $row = $res->fetch_assoc();
             $sql .="`mass`='".$row['mass']."', ";
@@ -50,15 +50,15 @@
 
         //this code checks if the user wants to change the cargo's ADR class
         if(isset($_POST['modADR']) and !empty($_POST['modADR'])){
-            $sql .= "`adr`=".mysqli_real_escape_string($conn,$_POST['modADR'])." ";
+            $sql .= "`adr`=".htmlspecialchars($_POST['modADR'])." ";
         }else{
-            $tmpSql = "SELECT adr FROM cargo WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['modCargo']);
+            $tmpSql = "SELECT adr FROM cargo WHERE cargoID = ".htmlspecialchars($_POST['modCargo']);
             $res = $conn->query($tmpSql);
             $row = $res->fetch_assoc();
             $sql .="`adr`=".$row['adr']." ";
         }
 
-        $sql .= "WHERE cargoID = ".mysqli_real_escape_string($conn,$_POST['modCargo']);
+        $sql .= "WHERE cargoID = ".htmlspecialchars($_POST['modCargo']);
         $result = $conn->query($sql);
         header('Location: index.php?page=redirect');
         exit();

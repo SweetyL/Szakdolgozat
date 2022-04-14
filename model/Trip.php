@@ -10,7 +10,7 @@ class Trip {
 
     public function set_trip($id, $conn) {
         $sql = "SELECT tripID, `tripStart`, `tripEnd`, tripLength, cargoID FROM trips";
-        $sql .= " WHERE tripID = ".mysqli_real_escape_string($conn,$id)." ";
+        $sql .= " WHERE tripID = ".htmlspecialchars($id)." ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
@@ -20,10 +20,7 @@ class Trip {
                 $this->tripEnd = $row['tripEnd'];
                 $this->tripLength = $row['tripLength'];
                 $this->cargoID = $row['cargoID'];
-        } 
-        else {
-            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: cargo model, ".$conn->error);
-        }
+            } 
         }
     }
 

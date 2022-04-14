@@ -7,7 +7,7 @@ class Town{
 
     public function set_town($id, $conn) {
         $sql = "SELECT townID, name, countryID FROM towns";
-        $sql .= " WHERE townID LIKE '".mysqli_real_escape_string($conn,$id)."' ";
+        $sql .= " WHERE townID LIKE '".htmlspecialchars($id)."' ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
@@ -15,10 +15,7 @@ class Town{
                 $this->tID = $row['townID'];
                 $this->name = $row['name'];
                 $this->cID = $row['countryID'];
-        } 
-        else {
-            logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: town model, ".$conn->error);
-        }
+            } 
         }
     }
 

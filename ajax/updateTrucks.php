@@ -4,7 +4,7 @@ include "../includes/functions.inc.php";
 include "../model/truck/Engine.php";
 $engine = new Engine();
 if (isset($_POST['truckID']) && !empty($_POST['truckID'])) {
-    $sql = "SELECT truckID, name, brand, engineID, tankSize, consumption, numberOfAxles FROM trucks WHERE truckID = ".mysqli_real_escape_string($conn,$_POST['truckID'])."";
+    $sql = "SELECT truckID, name, brand, engineID, tankSize, consumption, numberOfAxles FROM trucks WHERE truckID = ".htmlspecialchars($_POST['truckID'])."";
     $result = $conn->query($sql);
     if ($conn->query($sql)) {
         if ($result->num_rows == 1) {
@@ -18,9 +18,6 @@ if (isset($_POST['truckID']) && !empty($_POST['truckID'])) {
             $returnV['axles'] = $row['numberOfAxles'];
             echo json_encode($returnV);
         }
-    else {
-        logger("[E]".date("Y-m-d H:i:s")." - "." HIBA: update cargo ajax, ".$conn->error);
-    }
     }
 }
 ?>

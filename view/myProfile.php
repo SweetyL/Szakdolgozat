@@ -45,12 +45,24 @@
 <p>Utca, házszám: <?php echo $company->get_street()." ".$company->get_houseNumber()?></p>
 <p>Email: <?php echo $company->get_email()?></p>
 <p>Telefonszám: <?php echo $company->get_phone()?></p>
-<p>Weboldal: <?php echo "<a class='normalLink' href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a>"?>
+<p class="normalLink">Weboldal: <?php echo "<a href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a>"?>
 <br>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
-<br>
-<button type="button" class="btn btn-primary rounded-pill my-2" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
-<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=settings'">Adatok módosítása</button>
+            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=genPage'">QR kód generálás</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editTrips'">Utak felvitele</button>
+            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editCargo'">Szállítmányok felvitele</button>
+            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editEngines'">Motorok felvitele</button>
+            <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok felvitele</button>
+        </div>
+    </div>
+</div>
 <?php
 }else{
 ?>
@@ -75,7 +87,7 @@
 ?>
 <?php
     if(file_exists("./generatedPages/".$filename.".html") and $_SESSION!="admin"){
-    echo "<button type='button' class='btn btn-primary rounded-pill my-2' onclick='showQR(`".$filename."`)'>QR kód mutatása</button>";
+    echo "<button type='button' class='btn btn-primary rounded-pill my-2 p-1' onclick='showQR(`".$filename."`)'>QR kód mutatása</button>";
     }
 ?>
 </div>

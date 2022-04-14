@@ -1,17 +1,4 @@
 <?php
-/*
-*   Egyszerű logoló rendszer
-*   [I] - információ
-*   [W] - figyelmeztetés
-*   [E] - hiba
-*   [C] - kritikus hiba
-*   [D] - debug
-*/
-function logger($txt) {
-    $myfile = @fopen("./log.log", "a") or die("Critical ERROR!");
-    fwrite($myfile, $txt);
-    fclose($myfile);
-}
 
 /**
  * This function runs a MYSQL query which returns with the admin ids from the admins table.

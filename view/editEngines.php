@@ -1,3 +1,37 @@
+<?php
+	if($_SESSION['type']=="company"){
+?>
+<div class="container">
+<h1>Motor hozzáadása</h1>
+	<div class="borderForForm">
+	<form name="add" action="index.php?page=editEngines" method="post">
+	<fieldset>
+		<legend class="text-center">Hozzáadás</legend>
+		<div class="input-group">
+			<label for="addBrand">Motor márkája: </label>
+			<br>
+			<input type="text" id="addBrand" name="aBrand" class="form-control" required>
+		</div>
+		<br>
+		<div class="input-group">
+			<label for="addName">Motor neve: </label>
+			<br>
+			<input type="text" id="addName" name="aName" class="form-control" required>
+		</div>
+        <br>
+        <div class="input-group">
+			<label for="addPower">Motor ereje kW-ban: </label>
+			<br>
+			<input type="text" id="addPower" name="aPower" class="form-control" required>
+		</div>
+	</fieldset>
+	</form>
+	<button class="btn btn-primary rounded-pill m-2" onclick="confirmAdd()">Hozzáadás</button>
+	</div>
+</div>
+<?php
+	}else{
+?>
 <div class="container">
 <h1>Motor hozzáadása</h1>
 	<div class="borderForForm">
@@ -88,7 +122,6 @@
 	<button class="btn btn-primary rounded-pill m-2" onclick="confirmModify()">Módosít</button>
 	</div>
 </div>
-<script src="js/engine.js"></script>
 <script type="text/javascript">
     $("#modEngine").on("change", function(){
         let engineID = $(this).val();
@@ -106,3 +139,7 @@
         });
     });
 </script>
+<?php
+	}
+?>
+<script src="js/engine.js"></script>
