@@ -6,12 +6,14 @@
     <img class="rounded mx-auto profilePic d-block" src="img/default.svg" alt="Profilkép" class="img-thumbnail img-responsive">
 </div>
 <?php echo $status;?>
+<p id="name">Név: <?php echo $company->get_name() ?></p>
 <p>Ország: <?php echo $country->get_name() ?></p>
 <p>Város: <?php echo $town->get_name()?></p>
 <p>Utca, házszám: <?php echo $company->get_street()." ".$company->get_houseNumber()?></p>
 <p>Email: <?php echo $company->get_email()?></p>
 <p>Telefonszám: <?php echo $company->get_phone()?></p>
-<p>Weboldal: <?php echo "<a class='normalLink' href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a>"?>
+<p class="normalLink">Weboldal: <?php echo "<a href='https://".$company->get_webpage()."' target='_blank'>".$company->get_webpage()."</a>"?>
+<p class="normalLink"><?php echo '<a href="index.php?page=showJobs&id='.$company->get_id().'" target="_blank">Megbízások</a>'?>
 <?php
 }else{
 ?>

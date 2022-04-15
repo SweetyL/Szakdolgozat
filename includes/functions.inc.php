@@ -86,7 +86,12 @@ function getCompanyLastOnline($id,$conn){
     }
 }
 
-
+/**
+ * This function runs a MYSQL query which returns with the ADR certificate ids of the driver.
+ * @param integer $id driver's id
+ * @param mixed $conn Database connection variable
+ * @return array Array with ids
+*/
 function getADRcertificate($id,$conn){
     $list = array();
     $sql = "SELECT driverID, adrID FROM `skills` WHERE driverID =".$id;

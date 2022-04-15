@@ -61,6 +61,7 @@
 <br>
 <button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editTrucks'">Kamionok felvitele</button>
 <br>
+<button type="button" class="btn btn-primary rounded-pill my-2 p-1" onclick="window.location.href = 'index.php?page=editJobs'">Megbízások kezelése</button>
 <?php
 }else{
 ?>
